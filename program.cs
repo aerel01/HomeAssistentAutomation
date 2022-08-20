@@ -1,12 +1,10 @@
 using System.Reflection;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NetDaemon.Extensions.Logging;
 using NetDaemon.Extensions.Scheduler;
 using NetDaemon.Extensions.Tts;
 using NetDaemon.Runtime;
 using NetDaemonApps.apps.Service.Tibber;
-using Tibber.Sdk;
 
 #pragma warning disable CA1812
 

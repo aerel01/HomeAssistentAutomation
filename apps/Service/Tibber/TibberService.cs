@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Tibber.Sdk;
 
@@ -17,7 +16,8 @@ namespace NetDaemonApps.apps.Service.Tibber
             _subscriptionQueryBuilder = new SubscriptionQueryBuilder();
             _tibberApiClient = tibberApiClient;
             _logger = logger;
-            _homeId = GetHomeId().Result;
+            
+            _homeId = Task.Run(async () => await GetHomeId()).Result;
             _customQueryBuilder = new TibberQueryBuilder()
                .WithAllScalarFields()
                .WithViewer(
@@ -62,27 +62,7 @@ namespace NetDaemonApps.apps.Service.Tibber
             var current = priceInfo.Current;
             return current;
         }
-
-        public async Task<IList<Price>> GetAsync()
-        {
-            if (_homeId == null)
-            {
-                _logger.LogError("HomeId is null");
-                return new List<Price>();
-            }
-            _subscriptionQueryBuilder
-                .WithPriceInfo(
-                    new PriceInfoQueryBuilder()
-                        .WithToday(new PriceQueryBuilder().WithAllFields())
-                        .WithTomorrow(new PriceQueryBuilder().WithAllFields()));
-            var customQuery = _customQueryBuilder.Build(); // produces plain GraphQL query text
-            var result = await _tibberApiClient.Query(customQuery);
-            var priceInfo = result.Data.Viewer.Home.CurrentSubscription.PriceInfo;
-            var today = priceInfo.Today.ToList();
-            var tomarrow = priceInfo.Tomorrow.ToList();
-            today.AddRange(tomarrow);
-            return today;
-        }
+       
         private async Task<Guid?> GetHomeId()
         {
             var basicData = await _tibberApiClient.GetBasicData();

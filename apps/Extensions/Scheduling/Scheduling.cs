@@ -15,7 +15,6 @@ public class SchedulingApp
 {
     public SchedulingApp(IHaContext ha, INetDaemonScheduler scheduler,TibberService tibberService, TibberAutomation tibberAutomation, CarChargeAutomation carChargeAutomation, ILogger<SchedulingApp> logger)
     {
-        var count = 0;
         var now = DateTime.Now;
         var starttime = DateTime.Today.AddHours(now.Hour+1).AddMinutes(3);
         scheduler.RunEvery(TimeSpan.FromHours(1), new DateTimeOffset(starttime), () => {

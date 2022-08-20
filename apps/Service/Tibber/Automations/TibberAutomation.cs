@@ -1,10 +1,4 @@
 ﻿using HomeAssistantGenerated;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using Tibber.Sdk;
 
 namespace NetDaemonApps.apps.Service.Tibber.Automations
@@ -39,6 +33,7 @@ namespace NetDaemonApps.apps.Service.Tibber.Automations
                     //slå bara på golvvärmen på morgonen mellan kl 5-8
                     if (DateTime.UtcNow.AddHours(2).Hour >= 5 && DateTime.UtcNow.AddHours(2).Hour <= 8)
                     {
+                        _logger.LogInformation($"Slå på golvvärme. priset är {price.Total}");
                         golvvärme.TurnOn();
                     }
                     break;
@@ -47,17 +42,21 @@ namespace NetDaemonApps.apps.Service.Tibber.Automations
                     //slå bara på golvvärmen på morgonen
                     if (DateTime.UtcNow.AddHours(2).Hour >= 5 && DateTime.UtcNow.AddHours(2).Hour <= 8)
                     {
+                        _logger.LogInformation($"Slå på golvvärme. priset är {price.Total}");
                         golvvärme.TurnOn();
                     }
                     break;
                 case PriceLevel.Normal:
-                    utomhusplug.TurnOff();
+                    _logger.LogInformation($"Slå av golvvärme. priset är {price.Total}");
+                    golvvärme.TurnOff();
                     break;
                 case PriceLevel.Expensive:
-                    utomhusplug.TurnOff();
+                    _logger.LogInformation($"Slå av golvvärme. priset är {price.Total}");
+                    golvvärme.TurnOff();
                     break;
                 case PriceLevel.VeryExpensive:
-                    utomhusplug.TurnOff();
+                    _logger.LogInformation($"Slå av golvvärme, allaDekoration1, allaDekoration2. priset är {price.Total}");
+                    golvvärme.TurnOff();
                     allaDekoration1.TurnOff();
                     allaDekoration2.TurnOff();
                     break;
