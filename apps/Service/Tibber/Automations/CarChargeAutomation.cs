@@ -1,6 +1,7 @@
 ﻿using HomeAssistantGenerated;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using Tibber.Sdk;
 
 namespace NetDaemonApps.apps.Service.Tibber.Automations
@@ -19,7 +20,7 @@ namespace NetDaemonApps.apps.Service.Tibber.Automations
         }
         public void HandleChargeCarOnNigth(Subscription subscription)
         {
-            _logger.LogDebug($"ChargeHour left {_chargeCount}");
+            _logger.LogDebug($"ChargeHour run {_chargeCount}");
             var priceInfo = subscription.PriceInfo;
             var prislista = priceInfo.Today.ToList();
             prislista.AddRange(priceInfo.Tomorrow);
@@ -45,14 +46,19 @@ namespace NetDaemonApps.apps.Service.Tibber.Automations
         {
             var current = subscription.PriceInfo.Current;
             var ladtid = activeHours.OrderBy(x => x.Total).Take(6 - _chargeCount);
+            _logger.LogDebug($"Ladtider kvar ({6-_chargeCount}st) {JsonSerializer.Serialize(ladtid.Select(x=> new {StartsAt = x.StartsAt,Total = x.Total}))}");
             if (ladtid.Select(x => x.StartsAt).Contains(current.StartsAt) && activeHours.Count(x => x.Level == PriceLevel.Cheap || x.Level == PriceLevel.VeryCheap) >= 5 - _chargeCount)
             {
                 _logger.LogInformation($"Bil laddas. Pris {current.Total}{current.Currency} laddcount: {_chargeCount}");
+                _logger.LogDebug($"Ladning drar just nu {_myEntities.Sensor.UtomhusplugPower2.State}w");
+                _logger.LogDebug($"Enhet var i state {_myEntities.Switch.Device88.State}");
                 _myEntities.Switch.Device88.TurnOn();
                 _chargeCount++;
             } else
             {
                 _logger.LogInformation($"Billadning stängs av. Pris {current.Total}{current.Currency}");
+                _logger.LogDebug($"Ladning drog innan avstängning {_myEntities.Sensor.UtomhusplugPower2.State}w");
+                _logger.LogDebug($"Enhet var i state {_myEntities.Switch.Device88.State}");
                 _myEntities.Switch.Device88.TurnOff();
             }
         }
