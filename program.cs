@@ -22,7 +22,7 @@ try
                 .AddAppsFromAssembly(Assembly.GetExecutingAssembly())
                 .AddNetDaemonStateManager()
                 .AddNetDaemonScheduler()
-                .UseTibber(host.Configuration)
+                .UseTibber(host)
        )
         .Build()
         .RunAsync()
