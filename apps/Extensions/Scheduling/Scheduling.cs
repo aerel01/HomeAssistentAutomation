@@ -1,5 +1,6 @@
 using NetDaemon.Extensions.Scheduler;
 using NetDaemonApps.apps.Service.Tibber;
+using NetDaemonApps.apps.Service.Tibber.Automations;
 using Tibber.Sdk;
 
 // Use unique namespaces for your apps if you going to share with others to avoid
@@ -12,17 +13,19 @@ namespace Extensions.Scheduling;
 [NetDaemonApp]
 public class SchedulingApp
 {
-    public SchedulingApp(IHaContext ha, INetDaemonScheduler scheduler,TibberService tibberService, TibberAutomation tibberAutomation)
+    public SchedulingApp(IHaContext ha, INetDaemonScheduler scheduler,TibberService tibberService, TibberAutomation tibberAutomation, CarChargeAutomation carChargeAutomation, ILogger<SchedulingApp> logger)
     {
         var count = 0;
         var now = DateTime.Now;
         var starttime = DateTime.Today.AddHours(now.Hour+1).AddMinutes(3);
         scheduler.RunEvery(TimeSpan.FromHours(1), new DateTimeOffset(starttime), () => {
             
-            var price = tibberService.GetCurrentPriceAsync().Result;
-            tibberAutomation.CurrentPriceAutomations(price);
-            ha.CallService("notify", "persistent_notification",
-                data: new { message = $"This is a scheduled action! run at {DateTime.Now} and current price is {price?.Total}{price?.Currency}", title = "Schedule!" });
+            var subscription = tibberService.GetCurrentSubscription().Result;
+            tibberAutomation.CurrentPriceAutomations(subscription);
+            carChargeAutomation.HandleChargeCarOnNigth(subscription);
+            logger.LogInformation($"This is a scheduled action! run at {DateTime.Now} and current price is {subscription?.PriceInfo?.Current?.Total}{subscription?.PriceInfo?.Current?.Currency}");
+            //ha.CallService("notify", "persistent_notification",
+            //    data: new { message = $"This is a scheduled action! run at {DateTime.Now} and current price is {subscription?.PriceInfo?.Current?.Total}{subscription?.PriceInfo?.Current?.Currency}", title = "Schedule!" });
         });
     }
 }

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Tibber.Sdk;
 using NetDaemon.HassModel.Entities;
 using HomeAssistantGenerated;
+using NetDaemonApps.apps.Service.Tibber.Automations;
 
 namespace Tibber;
 
@@ -19,8 +20,14 @@ public class TibberNotification
 {
     //private readonly TibberService _tibberService;
 
-    public TibberNotification(IHaContext ha, TibberService tibberService)
+    public TibberNotification(IHaContext ha, TibberService tibberService, TibberAutomation automation)
     {
+        //var a = tibberService.GetCurrentSubscription().GetAwaiter().GetResult();
+        //var b = DateTime.Parse(a.PriceInfo.Current.StartsAt);
+        //for (int i = 0; i < 10; i++)
+        //{
+        //    automation.NormalPrice(a);
+        //}
         //ha.CallService("notify", "persistent_notification", data: new { message = "Notify me", title = "Hello world!" });
         //var current = tibberService.GetCurrentPriceAsync().Result;
         //var _myEntities = new Entities(ha);
