@@ -19,6 +19,7 @@ namespace NetDaemonApps.apps.Service.Tibber.Automations
         }
         public void HandleChargeCarOnNigth(Subscription subscription)
         {
+            _logger.LogDebug($"ChargeHour left {_chargeCount}");
             var priceInfo = subscription.PriceInfo;
             var prislista = priceInfo.Today.ToList();
             prislista.AddRange(priceInfo.Tomorrow);
