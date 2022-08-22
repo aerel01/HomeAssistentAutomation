@@ -12,6 +12,7 @@ namespace NetDaemonApps.apps.Service.Tibber.Automations
         private readonly IHaContext _ha;
         private readonly Entities _myEntities;
         private int _chargeCount = 0;
+        private readonly int _maxPrice = 400;
         public CarChargeAutomation(IHaContext ha, ILogger<CarChargeAutomation> logger)
         {
             _logger = logger;
@@ -20,7 +21,7 @@ namespace NetDaemonApps.apps.Service.Tibber.Automations
         }
         public void HandleChargeCarOnNigth(Subscription subscription)
         {
-            _logger.LogDebug($"ChargeHour run {_chargeCount}");
+            _logger.LogDebug($"ChargeHour run {_chargeCount}, Max price to use for charging {_maxPrice}");
             var priceInfo = subscription.PriceInfo;
             var prislista = priceInfo.Today.ToList();
             prislista.AddRange(priceInfo.Tomorrow);
@@ -33,7 +34,7 @@ namespace NetDaemonApps.apps.Service.Tibber.Automations
                 CalculateIfCharge(activeHours, subscription);
             } else if (DateTime.Now < DateTime.Today.AddHours(7))
             {
-                var activeHours = translatedPrisLista.Where(x => x.StartTid >= DateTime.Today.AddHours(DateTime.Now.Hour));
+                var activeHours = translatedPrisLista.Where(x => x.StartTid >= DateTime.Today.AddHours(DateTime.Now.Hour) && x.StartTid <= DateTime.Today.AddHours(7));
                 CalculateIfCharge(activeHours, subscription);
             } else
             {
@@ -45,7 +46,7 @@ namespace NetDaemonApps.apps.Service.Tibber.Automations
         private void CalculateIfCharge(IEnumerable<Price> activeHours, Subscription subscription)
         {
             var current = subscription.PriceInfo.Current;
-            var ladtid = activeHours.OrderBy(x => x.Total).Take(6 - _chargeCount);
+            var ladtid = activeHours.Where(x=> x.Total < _maxPrice).OrderBy(x => x.Total).Take(6 - _chargeCount);
             _logger.LogDebug($"Ladtider kvar ({6-_chargeCount}st) {JsonSerializer.Serialize(ladtid.Select(x=> new {StartsAt = x.StartsAt,Total = x.Total}))}");
             if (ladtid.Select(x => x.StartsAt).Contains(current.StartsAt) && activeHours.Count(x => x.Level == PriceLevel.Cheap || x.Level == PriceLevel.VeryCheap) >= 5 - _chargeCount)
             {
