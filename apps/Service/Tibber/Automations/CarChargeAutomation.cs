@@ -66,19 +66,22 @@ public class CarChargeAutomation
         var ladtid = new List<Pris>();
         if (_settings.SkipFulePrice)
         {
+            _logger.LogDebug("Hämtar alla");
             ladtid = activeHours.OrderBy(x => x.Total).Take(6 - _chargeCount).ToList();
         }else if (_settings.SkipPlingotPrice)
         {
-            ladtid = activeHours.Where(x => x.TotalPriceInkElnat < _kostnadpermil).OrderBy(x => x.Total).Take(6 - _chargeCount).ToList();
+            _logger.LogDebug("Hämtar bara billigare än bensinpris");
+            ladtid = activeHours.Where(x => x.TotalPriceInkElnat < _kostnadpermil).OrderBy(x => x.TotalPriceInkElnat).Take(6 - _chargeCount).ToList();
         } else
         {
-            ladtid = activeHours.Where(x => x.Total < _settings.PlingotPrice).OrderBy(x => x.Total).Take(6 - _chargeCount).ToList();
+            _logger.LogDebug("Hämtar bara billigare än Plingot pris");
+            ladtid = activeHours.Where(x => x.Total < _settings.PlingotPrice).OrderBy(x => x.TotalPriceInkElnat).Take(6 - _chargeCount).ToList();
         }
         
         _logger.LogDebug(
-            $"Ladtider kvar ({6 - _chargeCount}st) {JsonSerializer.Serialize(ladtid.Select(x => new {x.StartsAt, x.Total}))}");
+            $"Ladtider kvar ({6 - _chargeCount}st) {JsonSerializer.Serialize(ladtid.Select(x => new {x.StartsAt, x.TotalPriceInkElnat }))}");
         _logger.LogInformation(
-            $"Pris inkl. elnät {currentPris.TotalPriceInkElnat}{currentPris.Currency}. Pris exkl. elnät {currentPris.Total}{currentPris.Currency}");
+            $"Pris inkl. elnät {currentPris.TotalPriceInkElnat}{currentPris.Currency}. Pris exkl. elnät {currentPris.TotalPriceInkElnat}{currentPris.Currency}");
         if (ladtid.Select(x => x.StartsAt).Contains(currentPris.StartsAt) &&
             activeHours.Count(x => x.Level == PriceLevel.Cheap || x.Level == PriceLevel.VeryCheap) >= 5 - _chargeCount)
         {
