@@ -70,11 +70,11 @@ public class CarChargeAutomation
             ladtid = activeHours.OrderBy(x => x.Total).Take(6 - _chargeCount).ToList();
         }else if (_settings.SkipPlingotPrice)
         {
-            _logger.LogDebug("Hämtar bara billigare än bensinpris");
+            _logger.LogDebug($"Hämtar bara billigare än bensinpris {_kostnadpermil}");
             ladtid = activeHours.Where(x => x.TotalPriceInkElnat < _kostnadpermil).OrderBy(x => x.TotalPriceInkElnat).Take(6 - _chargeCount).ToList();
         } else
         {
-            _logger.LogDebug("Hämtar bara billigare än Plingot pris");
+            _logger.LogDebug($"Hämtar bara billigare än Plingot pris {_settings.PlingotPrice}");
             ladtid = activeHours.Where(x => x.Total < _settings.PlingotPrice).OrderBy(x => x.TotalPriceInkElnat).Take(6 - _chargeCount).ToList();
         }
         
@@ -89,6 +89,9 @@ public class CarChargeAutomation
             _logger.LogDebug($"Ladning drar just nu {_myEntities.Sensor.UtomhusplugPower2.State}w");
             _logger.LogDebug($"Enhet var i state {_myEntities.Switch.Device88.State}");
             _myEntities.Switch.Device88.TurnOn();
+            System.Threading.Thread.Sleep(2000);
+            _logger.LogDebug($"Enhet är nu i state {_myEntities.Switch.Device88.State}");
+            _logger.LogDebug($"Ladning drar just nu {_myEntities.Sensor.UtomhusplugPower2.State}w");
             _chargeCount++;
         } else
         {
@@ -96,6 +99,9 @@ public class CarChargeAutomation
             _logger.LogDebug($"Ladning drog innan avstängning {_myEntities.Sensor.UtomhusplugPower2.State}w");
             _logger.LogDebug($"Enhet var i state {_myEntities.Switch.Device88.State}");
             _myEntities.Switch.Device88.TurnOff();
+            System.Threading.Thread.Sleep(2000);
+            _logger.LogDebug($"Enhet är nu i state {_myEntities.Switch.Device88.State}");
+            _logger.LogDebug($"Ladning drar just nu {_myEntities.Sensor.UtomhusplugPower2.State}w");
         }
     }
 
