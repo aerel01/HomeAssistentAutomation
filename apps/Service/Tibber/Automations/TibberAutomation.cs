@@ -23,7 +23,7 @@ namespace NetDaemonApps.apps.Service.Tibber.Automations
                 _logger.LogError("Price is null");
                 return;
             }
-            var utomhusplug = _myEntities.Switch.Device88;
+            //var utomhusplug = _myEntities.Switch.Device88;
             var allaDekoration1 = _myEntities.Light.GruppTavlor;
             var allaDekoration2 = _myEntities.Light.GruppTavlor2;
             var golvvärme = _myEntities.Switch.GolvvarmeTimer;
@@ -38,7 +38,7 @@ namespace NetDaemonApps.apps.Service.Tibber.Automations
                     }
                     break;
                 case PriceLevel.Cheap:
-                    utomhusplug.TurnOn();
+              //      utomhusplug.TurnOn();
                     //slå bara på golvvärmen på morgonen
                     if (DateTime.UtcNow.AddHours(2).Hour >= 5 && DateTime.UtcNow.AddHours(2).Hour <= 8)
                     {
