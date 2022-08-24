@@ -10,27 +10,28 @@ public class CarChargeAutomation
 {
     private readonly IHaContext _ha;
     private readonly ILogger<CarChargeAutomation> _logger;
-    //private readonly decimal _maxPrice = 4.00m;
     private readonly Entities _myEntities;
     private int _chargeCount;
+    private readonly CarSettings _settings;
 
-    private const decimal _bensinpris = 19;
-    private const decimal _kostnadpermil = (_bensinpris * 0.8m * 4) / 13.7m;
+    private readonly decimal _kostnadpermil = 0;
 
     //överföringspris 22,25 öre
     //Energiskatt 45 öre
     //13,7/4*X =16
 
-    public CarChargeAutomation(IHaContext ha, ILogger<CarChargeAutomation> logger)
+    public CarChargeAutomation(IHaContext ha, ILogger<CarChargeAutomation> logger, CarSettings settings)
     {
         _logger = logger;
+        _settings = settings;
         _ha = ha;
         _myEntities = new Entities(_ha);
+        _kostnadpermil = (_settings.FulePrice * 0.8m * 4) / 13.7m;
     }
 
     public void HandleChargeCarOnNigth(Subscription subscription)
     {
-        _logger.LogDebug($"ChargeHour run {_chargeCount}, Max price to use for charging {_kostnadpermil}");
+        _logger.LogDebug($"ChargeHour run {_chargeCount}, Max price to use for charging {_kostnadpermil} or Max price to use if charging at plingot {_settings.PlingotPrice}");
         var priceInfo = subscription.PriceInfo;
         var prislista = priceInfo.Today.ToList();
         prislista.AddRange(priceInfo.Tomorrow);
@@ -62,7 +63,18 @@ public class CarChargeAutomation
     private void CalculateIfCharge(IEnumerable<Pris> activeHours, Pris currentPris)
     {
         //vi vill bara ha tider som totalt är lägre än 
-        var ladtid = activeHours.Where(x => x.TotalPriceInkElnat < _kostnadpermil).OrderBy(x => x.Total).Take(6 - _chargeCount);
+        var ladtid = new List<Pris>();
+        if (_settings.SkipFulePrice)
+        {
+            ladtid = activeHours.OrderBy(x => x.Total).Take(6 - _chargeCount).ToList();
+        }else if (_settings.SkipPlingotPrice)
+        {
+            ladtid = activeHours.Where(x => x.TotalPriceInkElnat < _kostnadpermil).OrderBy(x => x.Total).Take(6 - _chargeCount).ToList();
+        } else
+        {
+            ladtid = activeHours.Where(x => x.Total < _settings.PlingotPrice).OrderBy(x => x.Total).Take(6 - _chargeCount).ToList();
+        }
+        
         _logger.LogDebug(
             $"Ladtider kvar ({6 - _chargeCount}st) {JsonSerializer.Serialize(ladtid.Select(x => new {x.StartsAt, x.Total}))}");
         _logger.LogInformation(
