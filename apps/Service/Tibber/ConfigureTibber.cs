@@ -21,6 +21,7 @@ internal static class ConfigureTibber
         service.AddScoped<TibberService>();
         service.AddScoped<TibberAutomation>();
         service.AddScoped<CarChargeAutomation>();
+        service.AddScoped<FloorHeatAutomation>();
         return service;
     }
 }
