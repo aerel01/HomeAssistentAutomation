@@ -46,7 +46,7 @@ public class CarChargeAutomation
                 x.StartTid <= DateTime.Today.AddDays(value: 1).AddHours(value: 7));
 
             CalculateIfCharge(activeHours, currentPrice);
-        } else if (DateTime.Now < DateTime.Today.AddHours(value: 7))
+        } else if (DateTime.Now < DateTime.Today.AddHours(value: 8))
         {
             //om klockan är innan klockan 7 på morgonen så ska alla tider mellan nu och klockan 7 användas
             var activeHours = translatedPrisLista.Where(x =>
@@ -55,6 +55,19 @@ public class CarChargeAutomation
             CalculateIfCharge(activeHours, currentPrice);
         } else
         {
+            //låt den vara på om priset är low eller verry low
+            if (currentPrice.Level == PriceLevel.VeryCheap || currentPrice.Level == PriceLevel.Cheap)
+            {
+                _myEntities.Switch.Device88.TurnOn();
+                _logger.LogDebug($"price is low, turn on switch. currentPrice {currentPrice?.TotalPriceInkElnat}{currentPrice.Currency}");
+            } else if (_myEntities?.Sensor?.UtomhusplugPower2?.State > 200)//om bilen ladar så ska den inte slås av
+            {
+                _logger.LogDebug($"Bil laddas, rör inte. {_myEntities?.Sensor?.UtomhusplugPower2?.State}W");
+            } else
+            {
+                _myEntities.Switch.Device88.TurnOff();
+                _logger.LogDebug($"Bil laddas inte så brytare stängs av. {_myEntities?.Sensor?.UtomhusplugPower2?.State}W");
+            }
             _logger.LogInformation("ChargeCount nollställs");
             _chargeCount = 0;
         }
@@ -68,7 +81,7 @@ public class CarChargeAutomation
         {
             _logger.LogDebug("Hämtar alla");
             ladtid = activeHours.OrderBy(x => x.Total).Take(6 - _chargeCount).ToList();
-        }else if (_settings.SkipPlingotPrice)
+        } else if (_settings.SkipPlingotPrice)
         {
             _logger.LogDebug($"Hämtar bara billigare än bensinpris {_kostnadpermil}");
             ladtid = activeHours.Where(x => x.TotalPriceInkElnat < _kostnadpermil).OrderBy(x => x.TotalPriceInkElnat).Take(6 - _chargeCount).ToList();
@@ -77,9 +90,9 @@ public class CarChargeAutomation
             _logger.LogDebug($"Hämtar bara billigare än Plingot pris {_settings.PlingotPrice}");
             ladtid = activeHours.Where(x => x.Total < _settings.PlingotPrice).OrderBy(x => x.TotalPriceInkElnat).Take(6 - _chargeCount).ToList();
         }
-        
+
         _logger.LogDebug(
-            $"Ladtider kvar ({6 - _chargeCount}st) {JsonSerializer.Serialize(ladtid.Select(x => new {x.StartsAt, x.TotalPriceInkElnat }))}");
+            $"Ladtider kvar ({6 - _chargeCount}st) {JsonSerializer.Serialize(ladtid.Select(x => new { x.StartsAt, x.TotalPriceInkElnat }))}");
         _logger.LogInformation(
             $"Pris inkl. elnät {currentPris.TotalPriceInkElnat}{currentPris.Currency}. Pris exkl. elnät {currentPris.TotalPriceInkElnat}{currentPris.Currency}");
         if (ladtid.Select(x => x.StartsAt).Contains(currentPris.StartsAt) &&
