@@ -1,10 +1,11 @@
 using System.Reflection;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NetDaemon.Extensions.Logging;
 using NetDaemon.Extensions.Scheduler;
 using NetDaemon.Extensions.Tts;
 using NetDaemon.Runtime;
 using NetDaemonApps.apps.Service.Tibber;
+
 
 #pragma warning disable CA1812
 
@@ -12,7 +13,7 @@ try
 {
     await Host.CreateDefaultBuilder(args)
         .UseNetDaemonAppSettings()
-        //.UseNetDaemonDefaultLogging()
+        .UseNetDaemonDefaultLogging()
         .UseNetDaemonRuntime()
         .UseNetDaemonTextToSpeech()
         .ConfigureServices((host, services) =>
@@ -21,8 +22,8 @@ try
                 .AddNetDaemonStateManager()
                 .AddNetDaemonScheduler()
                 .UseTibber(host)
-                .AddLogging(loggerFactory =>
-        loggerFactory.AddConsole().AddConfiguration(host.Configuration.GetSection("Logging")))
+        //        .AddLogging(loggerFactory =>
+        //loggerFactory.AddConsole().AddConfiguration(host.Configuration.GetSection("Logging")))
        )
         .Build()
         .RunAsync()
