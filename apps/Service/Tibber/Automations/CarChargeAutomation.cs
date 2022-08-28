@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text.Json;
 using HomeAssistantGenerated;
 using Tibber.Sdk;
+using NetDaemonApps.apps.Service.Tibber.Models;
 
 namespace NetDaemonApps.apps.Service.Tibber.Automations;
 
@@ -116,24 +117,5 @@ public class CarChargeAutomation
             _logger.LogDebug($"Enhet är nu i state {_myEntities?.Switch?.Device88?.State}");
             _logger.LogDebug($"Ladning drar just nu {_myEntities?.Sensor?.UtomhusplugPower2?.State}w");
         }
-    }
-
-    private class Pris : Price
-    {
-        private static readonly decimal Overforingsavgift = 0.2225m; //överföringsavgift nätavgift
-        private static readonly decimal Energiskatt = 0.45m; //energiskatt på nätavgift
-
-        public Pris(Price price)
-        {
-            Currency = price.Currency;
-            Energy = price.Energy;
-            Level = price.Level;
-            StartsAt = price.StartsAt;
-            Tax = price.Tax;
-            Total = price.Total;
-        }
-
-        public DateTime StartTid => DateTime.Parse(StartsAt);
-        public decimal? TotalPriceInkElnat => Total + Overforingsavgift + Energiskatt;
     }
 }
