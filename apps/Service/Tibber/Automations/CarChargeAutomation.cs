@@ -86,22 +86,22 @@ public class CarChargeAutomation
             activeHours.Count(x => x.Level == PriceLevel.Cheap || x.Level == PriceLevel.VeryCheap) >= 5 - _chargeCount)
         {
             _logger.LogInformation($"Bil laddas. Laddcount: {_chargeCount}");
-            _logger.LogDebug($"Ladning drar just nu {_myEntities.Sensor.UtomhusplugPower2.State}w");
-            _logger.LogDebug($"Enhet var i state {_myEntities.Switch.Device88.State}");
+            _logger.LogDebug($"Ladning drar just nu {_myEntities?.Sensor?.UtomhusplugPower2?.State}w");
+            _logger.LogDebug($"Enhet var i state {_myEntities?.Switch?.Device88?.State}");
             _myEntities.Switch.Device88.TurnOn();
             System.Threading.Thread.Sleep(2000);
-            _logger.LogDebug($"Enhet är nu i state {_myEntities.Switch.Device88.State}");
-            _logger.LogDebug($"Ladning drar just nu {_myEntities.Sensor.UtomhusplugPower2.State}w");
+            _logger.LogDebug($"Enhet är nu i state {_myEntities?.Switch?.Device88?.State}");
+            _logger.LogDebug($"Ladning drar just nu {_myEntities?.Sensor?.UtomhusplugPower2?.State}w");
             _chargeCount++;
         } else
         {
             _logger.LogInformation("Billadning stängs av.");
-            _logger.LogDebug($"Ladning drog innan avstängning {_myEntities.Sensor.UtomhusplugPower2.State}w");
-            _logger.LogDebug($"Enhet var i state {_myEntities.Switch.Device88.State}");
+            _logger.LogDebug($"Ladning drog innan avstängning {_myEntities?.Sensor?.UtomhusplugPower2?.State}w");
+            _logger.LogDebug($"Enhet var i state {_myEntities?.Switch?.Device88?.State}");
             _myEntities.Switch.Device88.TurnOff();
             System.Threading.Thread.Sleep(2000);
-            _logger.LogDebug($"Enhet är nu i state {_myEntities.Switch.Device88.State}");
-            _logger.LogDebug($"Ladning drar just nu {_myEntities.Sensor.UtomhusplugPower2.State}w");
+            _logger.LogDebug($"Enhet är nu i state {_myEntities?.Switch?.Device88?.State}");
+            _logger.LogDebug($"Ladning drar just nu {_myEntities?.Sensor?.UtomhusplugPower2?.State}w");
         }
     }
 
