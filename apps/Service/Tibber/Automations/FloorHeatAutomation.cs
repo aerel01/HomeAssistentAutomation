@@ -19,36 +19,44 @@ public class FloorHeatAutomation
         var currentPrice = new Pris(subscription.PriceInfo.Current);
         var dayOfWeek = DateTime.Today.DayOfWeek;
 
-        _logger.LogInformation($"Price level is {currentPrice.Level} price is {currentPrice.TotalPriceInkElnat}{currentPrice.Currency}");
+        _logger.LogInformation(
+            $"Price level is {currentPrice.Level} price is {currentPrice.TotalPriceInkElnat}{currentPrice.Currency}");
         if (currentPrice.Level == PriceLevel.VeryCheap || currentPrice.Level == PriceLevel.Cheap)
         {
             if (dayOfWeek == DayOfWeek.Sunday || dayOfWeek == DayOfWeek.Saturday)
             {
-                if (DateTime.Now > DateTime.Today.AddDays(7) && DateTime.Now < DateTime.Today.AddDays(21))
+                if (DateTime.Now > DateTime.Today.AddDays(value: 7) && DateTime.Now < DateTime.Today.AddDays(value: 21))
                 {
-                    _logger.LogInformation($"Price is {currentPrice.TotalPriceInkElnat}{currentPrice.Currency} golvvärme sätts på");
+                    _logger.LogInformation(
+                        $"Price is {currentPrice.TotalPriceInkElnat}{currentPrice.Currency} golvvärme sätts på");
                     _ha.Entity("switch.shellyplug_s_de1fef").CallService("turn_on");
                 } else
                 {
-                    _logger.LogInformation($"Price is {currentPrice.TotalPriceInkElnat}{currentPrice.Currency} golvvärme stängs av");
+                    _logger.LogInformation(
+                        $"Price is {currentPrice.TotalPriceInkElnat}{currentPrice.Currency} golvvärme stängs av");
                     _ha.Entity("switch.shellyplug_s_de1fef").CallService("turn_off");
                 }
             } else
             {
-                if ((DateTime.Now > DateTime.Today.AddDays(5) && DateTime.Now < DateTime.Today.AddDays(7)) ||
-                    (DateTime.Now > DateTime.Today.AddDays(15) && DateTime.Now < DateTime.Today.AddDays(21)))
+                if ((DateTime.Now > DateTime.Today.AddDays(value: 5) &&
+                     DateTime.Now < DateTime.Today.AddDays(value: 7)) ||
+                    (DateTime.Now > DateTime.Today.AddDays(value: 15) &&
+                     DateTime.Now < DateTime.Today.AddDays(value: 21)))
                 {
-                    _logger.LogInformation($"Price is {currentPrice.TotalPriceInkElnat}{currentPrice.Currency} golvvärme sätts på");
+                    _logger.LogInformation(
+                        $"Price is {currentPrice.TotalPriceInkElnat}{currentPrice.Currency} golvvärme sätts på");
                     _ha.Entity("switch.shellyplug_s_de1fef").CallService("turn_on");
                 } else
                 {
-                    _logger.LogInformation($"Price is {currentPrice.TotalPriceInkElnat}{currentPrice.Currency} golvvärme stängs av");
+                    _logger.LogInformation(
+                        $"Price is {currentPrice.TotalPriceInkElnat}{currentPrice.Currency} golvvärme stängs av");
                     _ha.Entity("switch.shellyplug_s_de1fef").CallService("turn_off");
                 }
             }
-        }else
+        } else
         {
-            _logger.LogInformation($"Price is {currentPrice.TotalPriceInkElnat}{currentPrice.Currency} golvvärme stängs av");
+            _logger.LogInformation(
+                $"Price is {currentPrice.TotalPriceInkElnat}{currentPrice.Currency} golvvärme stängs av");
             _ha.Entity("switch.shellyplug_s_de1fef").CallService("turn_off");
         }
     }
