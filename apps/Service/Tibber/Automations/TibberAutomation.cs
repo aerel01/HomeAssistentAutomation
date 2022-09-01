@@ -1,5 +1,6 @@
 ﻿using HomeAssistantGenerated;
 using Tibber.Sdk;
+using NetDaemonApps.apps.Service.Tibber.Models;
 
 namespace NetDaemonApps.apps.Service.Tibber.Automations
 {
@@ -17,12 +18,13 @@ namespace NetDaemonApps.apps.Service.Tibber.Automations
 
         public void CurrentPriceAutomations(Subscription subscription)
         {
-            var price = subscription?.PriceInfo?.Current;
-            if (price == null)
+            
+            if (subscription?.PriceInfo?.Current == null)
             {
                 _logger.LogError("Price is null");
                 return;
             }
+            var price = new Pris(subscription.PriceInfo.Current);
             //var utomhusplug = _myEntities.Switch.Device88;
             var allaDekoration1 = _myEntities.Light.GruppTavlor;
             var allaDekoration2 = _myEntities.Light.GruppTavlor2;
@@ -33,7 +35,7 @@ namespace NetDaemonApps.apps.Service.Tibber.Automations
                     //slå bara på golvvärmen på morgonen mellan kl 5-8
                     if (DateTime.UtcNow.AddHours(2).Hour >= 5 && DateTime.UtcNow.AddHours(2).Hour <= 8)
                     {
-                        _logger.LogInformation($"Slå på golvvärme. priset är {price.Total}");
+                        _logger.LogInformation($"Slå på golvvärme. priset är {price.TotalPriceInkElnat}");
                         golvvärme.TurnOn();
                     }
                     break;
@@ -42,20 +44,20 @@ namespace NetDaemonApps.apps.Service.Tibber.Automations
                     //slå bara på golvvärmen på morgonen
                     if (DateTime.UtcNow.AddHours(2).Hour >= 5 && DateTime.UtcNow.AddHours(2).Hour <= 8)
                     {
-                        _logger.LogInformation($"Slå på golvvärme. priset är {price.Total}");
+                        _logger.LogInformation($"Slå på golvvärme. priset är {price.TotalPriceInkElnat}");
                         golvvärme.TurnOn();
                     }
                     break;
                 case PriceLevel.Normal:
-                    _logger.LogInformation($"Slå av golvvärme. priset är {price.Total}");
+                    _logger.LogInformation($"Slå av golvvärme. priset är {price.TotalPriceInkElnat}");
                     golvvärme.TurnOff();
                     break;
                 case PriceLevel.Expensive:
-                    _logger.LogInformation($"Slå av golvvärme. priset är {price.Total}");
+                    _logger.LogInformation($"Slå av golvvärme. priset är {price.TotalPriceInkElnat}");
                     golvvärme.TurnOff();
                     break;
                 case PriceLevel.VeryExpensive:
-                    _logger.LogInformation($"Slå av golvvärme, allaDekoration1, allaDekoration2. priset är {price.Total}");
+                    _logger.LogInformation($"Slå av golvvärme, allaDekoration1, allaDekoration2. priset är {price.TotalPriceInkElnat}");
                     golvvärme.TurnOff();
                     allaDekoration1.TurnOff();
                     allaDekoration2.TurnOff();
