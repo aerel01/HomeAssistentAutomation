@@ -7,4 +7,6 @@ public class CarSettings
     public bool SkipPlingotPrice { get; set; }
     public decimal PlingotPrice { get; set; }
     public decimal FulePrice { get; set; }
+    public decimal FuleConsumption { get; set; }
+    public decimal ElectricDistance { get; set; }
 }

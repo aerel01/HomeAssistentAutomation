@@ -25,7 +25,7 @@ public class CarChargeAutomation
         _logger = logger;
         _settings = settings;
         _myEntities = new Entities(ha);
-        _kostnadpermil = _settings.FulePrice * 0.8m * 4 / 13.7m;
+        _kostnadpermil = _settings.FulePrice * settings.FuleConsumption * settings.ElectricDistance / 13.7m;
     }
 
     public void HandleChargeCarOnNigth(Subscription subscription)
