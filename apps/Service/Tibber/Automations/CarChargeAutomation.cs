@@ -118,7 +118,6 @@ public class CarChargeAutomation
             _myEntities.Switch.Device88.TurnOff();
             Thread.Sleep(millisecondsTimeout: 2000);
             _logger.LogDebug($"Enhet är nu i state {_myEntities.Switch.Device88.State}");
-            _logger.LogDebug($"Ladning drar just nu {_myEntities.Sensor.UtomhusplugPower2.State}w");
         }
     }
 }
