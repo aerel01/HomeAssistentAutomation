@@ -99,9 +99,8 @@ public class CarChargeAutomation
         _logger.LogDebug(
             $"Ladtider kvar ({6 - _chargeCount}st) {JsonSerializer.Serialize(ladtid.Select(x => new {x.StartsAt, x.TotalPriceInkElnat}))}");
         _logger.LogInformation(
-            $"Pris inkl. elnät {currentPris.TotalPriceInkElnat}{currentPris.Currency}. Pris exkl. elnät {currentPris.TotalPriceInkElnat}{currentPris.Currency}");
-        if (ladtid.Select(x => x.StartsAt).Contains(currentPris.StartsAt) &&
-            activeHours.Count(x => x.Level == PriceLevel.Cheap || x.Level == PriceLevel.VeryCheap) >= 5 - _chargeCount)
+            $"Pris inkl. elnät {currentPris.TotalPriceInkElnat}{currentPris.Currency}. Pris exkl. elnät {currentPris.Total}{currentPris.Currency}. current time {currentPris.StartsAt}");
+        if (ladtid.Select(x => x.StartsAt).Contains(currentPris.StartsAt))
         {
             _logger.LogInformation($"Bil laddas. Laddcount: {_chargeCount}");
             _logger.LogDebug($"Ladning drar just nu {_myEntities.Sensor.UtomhusplugPower2.State}w");
