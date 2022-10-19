@@ -10,14 +10,12 @@ namespace Extensions.Scheduling;
 ///     Showcase the scheduling capabilities of NetDaemon
 /// </summary>
 [NetDaemonApp]
-public class SchedulingApp
-{
-    public SchedulingApp(IHaContext ha, INetDaemonScheduler scheduler,TibberService tibberService, TibberAutomation tibberAutomation, CarChargeAutomation carChargeAutomation, ILogger<SchedulingApp> logger, FloorHeatAutomation floorHeatAutomation)
-    {
+public class SchedulingApp {
+    public SchedulingApp(IHaContext ha, INetDaemonScheduler scheduler, TibberService tibberService, TibberAutomation tibberAutomation, CarChargeAutomation carChargeAutomation, ILogger<SchedulingApp> logger, FloorHeatAutomation floorHeatAutomation) {
         var now = DateTime.Now;
-        var starttime = DateTime.Today.AddHours(now.Hour+1).AddMinutes(3);
+        var starttime = DateTime.Today.AddHours(now.Hour + 1).AddMinutes(3);
         scheduler.RunEvery(TimeSpan.FromHours(1), new DateTimeOffset(starttime), () => {
-            
+
             var subscription = tibberService.GetCurrentSubscription().Result;
             tibberAutomation.CurrentPriceAutomations(subscription);
             carChargeAutomation.HandleChargeCarOnNigth(subscription);

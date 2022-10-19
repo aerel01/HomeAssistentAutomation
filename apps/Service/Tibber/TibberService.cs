@@ -4,16 +4,14 @@ using Tibber.Sdk;
 
 namespace NetDaemonApps.apps.Service.Tibber;
 
-public class TibberService
-{
+public class TibberService {
     private readonly TibberQueryBuilder _customQueryBuilder;
     private readonly Guid? _homeId;
     private readonly ILogger<TibberService> _logger;
     private readonly TibberApiClient _tibberApiClient;
     private readonly SubscriptionQueryBuilder _subscriptionQueryBuilder;
 
-    public TibberService(TibberApiClient tibberApiClient, ILogger<TibberService> logger)
-    {
+    public TibberService(TibberApiClient tibberApiClient, ILogger<TibberService> logger) {
         _subscriptionQueryBuilder = new SubscriptionQueryBuilder();
         _tibberApiClient = tibberApiClient;
         _logger = logger;
@@ -31,10 +29,8 @@ public class TibberService
             );
     }
 
-    public async Task<Subscription?> GetCurrentSubscription()
-    {
-        if (_homeId == null)
-        {
+    public async Task<Subscription?> GetCurrentSubscription() {
+        if(_homeId == null) {
             _logger.LogError("HomeId is null");
             return null;
         }
@@ -52,10 +48,8 @@ public class TibberService
         return result.Data.Viewer.Home.CurrentSubscription;
     }
 
-    public async Task<Price?> GetCurrentPriceAsync()
-    {
-        if (_homeId == null)
-        {
+    public async Task<Price?> GetCurrentPriceAsync() {
+        if(_homeId == null) {
             _logger.LogError("HomeId is null");
             return null;
         }
@@ -69,12 +63,10 @@ public class TibberService
         return current;
     }
 
-    private async Task<Guid?> GetHomeId()
-    {
+    private async Task<Guid?> GetHomeId() {
         var basicData = await _tibberApiClient.GetBasicData();
         var homeId = basicData?.Data?.Viewer?.Homes?.FirstOrDefault()?.Id;
-        if (homeId == null)
-        {
+        if(homeId == null) {
             _logger.LogError("Couldent get homeId and basic data");
             return null;
         }

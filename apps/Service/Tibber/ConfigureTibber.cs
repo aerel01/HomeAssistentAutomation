@@ -1,16 +1,14 @@
-﻿using System.Net.Http.Headers;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NetDaemonApps.apps.Service.Tibber.Automations;
+using System.Net.Http.Headers;
 using Tibber.Sdk;
 
 namespace NetDaemonApps.apps.Service.Tibber;
 
-internal static class ConfigureTibber
-{
-    public static IServiceCollection UseTibber(this IServiceCollection service, HostBuilderContext context)
-    {
+internal static class ConfigureTibber {
+    public static IServiceCollection UseTibber(this IServiceCollection service, HostBuilderContext context) {
         var tibberSettings = new TibberSettings();
         context.Configuration.GetSection(TibberSettings.Name).Bind(tibberSettings);
         var carSettings = new CarSettings();

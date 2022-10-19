@@ -1,11 +1,10 @@
+using NetDaemon.HassModel.Entities;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
-using NetDaemon.HassModel.Entities;
 
 namespace HomeAssistantGenerated;
 
-public interface IEntities
-{
+public interface IEntities {
     AutomationEntities Automation { get; }
 
     BinarySensorEntities BinarySensor { get; }
@@ -43,12 +42,10 @@ public interface IEntities
     ZoneEntities Zone { get; }
 }
 
-public class Entities : IEntities
-{
+public class Entities : IEntities {
     private readonly IHaContext _haContext;
 
-    public Entities(IHaContext haContext)
-    {
+    public Entities(IHaContext haContext) {
         _haContext = haContext;
     }
 
@@ -72,12 +69,10 @@ public class Entities : IEntities
     public ZoneEntities Zone => new(_haContext);
 }
 
-public class AutomationEntities
-{
+public class AutomationEntities {
     private readonly IHaContext _haContext;
 
-    public AutomationEntities(IHaContext haContext)
-    {
+    public AutomationEntities(IHaContext haContext) {
         _haContext = haContext;
     }
 
@@ -176,12 +171,10 @@ public class AutomationEntities
     public AutomationEntity WasteCollection => new(_haContext, "automation.waste_collection");
 }
 
-public class BinarySensorEntities
-{
+public class BinarySensorEntities {
     private readonly IHaContext _haContext;
 
-    public BinarySensorEntities(IHaContext haContext)
-    {
+    public BinarySensorEntities(IHaContext haContext) {
         _haContext = haContext;
     }
 
@@ -205,12 +198,10 @@ public class BinarySensorEntities
     public BinarySensorEntity Updater => new(_haContext, "binary_sensor.updater");
 }
 
-public class ButtonEntities
-{
+public class ButtonEntities {
     private readonly IHaContext _haContext;
 
-    public ButtonEntities(IHaContext haContext)
-    {
+    public ButtonEntities(IHaContext haContext) {
         _haContext = haContext;
     }
 
@@ -251,12 +242,10 @@ public class ButtonEntities
     public ButtonEntity TerassmarkisMyPosition => new(_haContext, "button.terassmarkis_my_position");
 }
 
-public class CoverEntities
-{
+public class CoverEntities {
     private readonly IHaContext _haContext;
 
-    public CoverEntities(IHaContext haContext)
-    {
+    public CoverEntities(IHaContext haContext) {
         _haContext = haContext;
     }
 
@@ -276,12 +265,10 @@ public class CoverEntities
     public CoverEntity Terassmarkis => new(_haContext, "cover.terassmarkis");
 }
 
-public class DeviceTrackerEntities
-{
+public class DeviceTrackerEntities {
     private readonly IHaContext _haContext;
 
-    public DeviceTrackerEntities(IHaContext haContext)
-    {
+    public DeviceTrackerEntities(IHaContext haContext) {
         _haContext = haContext;
     }
 
@@ -292,12 +279,10 @@ public class DeviceTrackerEntities
     public DeviceTrackerEntity Le2123 => new(_haContext, "device_tracker.le2123");
 }
 
-public class InputBooleanEntities
-{
+public class InputBooleanEntities {
     private readonly IHaContext _haContext;
 
-    public InputBooleanEntities(IHaContext haContext)
-    {
+    public InputBooleanEntities(IHaContext haContext) {
         _haContext = haContext;
     }
 
@@ -327,12 +312,10 @@ public class InputBooleanEntities
     public InputBooleanEntity LaundryDisplay => new(_haContext, "input_boolean.laundry_display");
 }
 
-public class InputNumberEntities
-{
+public class InputNumberEntities {
     private readonly IHaContext _haContext;
 
-    public InputNumberEntities(IHaContext haContext)
-    {
+    public InputNumberEntities(IHaContext haContext) {
         _haContext = haContext;
     }
 
@@ -343,12 +326,10 @@ public class InputNumberEntities
     public InputNumberEntity MonitorsVolume => new(_haContext, "input_number.monitors_volume");
 }
 
-public class LightEntities
-{
+public class LightEntities {
     private readonly IHaContext _haContext;
 
-    public LightEntities(IHaContext haContext)
-    {
+    public LightEntities(IHaContext haContext) {
         _haContext = haContext;
     }
 
@@ -401,12 +382,10 @@ public class LightEntities
     public LightEntity Tak2 => new(_haContext, "light.tak2");
 }
 
-public class NumberEntities
-{
+public class NumberEntities {
     private readonly IHaContext _haContext;
 
-    public NumberEntities(IHaContext haContext)
-    {
+    public NumberEntities(IHaContext haContext) {
         _haContext = haContext;
     }
 
@@ -420,12 +399,10 @@ public class NumberEntities
     public NumberEntity TerassmarkisMyPosition => new(_haContext, "number.terassmarkis_my_position");
 }
 
-public class PersistentNotificationEntities
-{
+public class PersistentNotificationEntities {
     private readonly IHaContext _haContext;
 
-    public PersistentNotificationEntities(IHaContext haContext)
-    {
+    public PersistentNotificationEntities(IHaContext haContext) {
         _haContext = haContext;
     }
 
@@ -466,12 +443,10 @@ public class PersistentNotificationEntities
     public PersistentNotificationEntity Notification9 => new(_haContext, "persistent_notification.notification_9");
 }
 
-public class PersonEntities
-{
+public class PersonEntities {
     private readonly IHaContext _haContext;
 
-    public PersonEntities(IHaContext haContext)
-    {
+    public PersonEntities(IHaContext haContext) {
         _haContext = haContext;
     }
 
@@ -482,12 +457,10 @@ public class PersonEntities
     public PersonEntity OliverEkeroth => new(_haContext, "person.oliver_ekeroth");
 }
 
-public class SceneEntities
-{
+public class SceneEntities {
     private readonly IHaContext _haContext;
 
-    public SceneEntities(IHaContext haContext)
-    {
+    public SceneEntities(IHaContext haContext) {
         _haContext = haContext;
     }
 
@@ -495,12 +468,10 @@ public class SceneEntities
     public SceneEntity SlackSovrum => new(_haContext, "scene.slack_sovrum");
 }
 
-public class SensorEntities
-{
+public class SensorEntities {
     private readonly IHaContext _haContext;
 
-    public SensorEntities(IHaContext haContext)
-    {
+    public SensorEntities(IHaContext haContext) {
         _haContext = haContext;
     }
 
@@ -733,12 +704,10 @@ public class SensorEntities
     public SensorEntity Utomhusplug => new(_haContext, "sensor.utomhusplug");
 }
 
-public class SunEntities
-{
+public class SunEntities {
     private readonly IHaContext _haContext;
 
-    public SunEntities(IHaContext haContext)
-    {
+    public SunEntities(IHaContext haContext) {
         _haContext = haContext;
     }
 
@@ -746,12 +715,10 @@ public class SunEntities
     public SunEntity Sun => new(_haContext, "sun.sun");
 }
 
-public class SwitchEntities
-{
+public class SwitchEntities {
     private readonly IHaContext _haContext;
 
-    public SwitchEntities(IHaContext haContext)
-    {
+    public SwitchEntities(IHaContext haContext) {
         _haContext = haContext;
     }
 
@@ -909,12 +876,10 @@ public class SwitchEntities
     public SwitchEntity UteTerass => new(_haContext, "switch.ute_terass");
 }
 
-public class UpdateEntities
-{
+public class UpdateEntities {
     private readonly IHaContext _haContext;
 
-    public UpdateEntities(IHaContext haContext)
-    {
+    public UpdateEntities(IHaContext haContext) {
         _haContext = haContext;
     }
 
@@ -938,12 +903,10 @@ public class UpdateEntities
     public UpdateEntity TerminalSshUpdate => new(_haContext, "update.terminal_ssh_update");
 }
 
-public class WeatherEntities
-{
+public class WeatherEntities {
     private readonly IHaContext _haContext;
 
-    public WeatherEntities(IHaContext haContext)
-    {
+    public WeatherEntities(IHaContext haContext) {
         _haContext = haContext;
     }
 
@@ -954,12 +917,10 @@ public class WeatherEntities
     public WeatherEntity SmhiHome => new(_haContext, "weather.smhi_home");
 }
 
-public class ZoneEntities
-{
+public class ZoneEntities {
     private readonly IHaContext _haContext;
 
-    public ZoneEntities(IHaContext haContext)
-    {
+    public ZoneEntities(IHaContext haContext) {
         _haContext = haContext;
     }
 
@@ -967,19 +928,15 @@ public class ZoneEntities
     public ZoneEntity Home => new(_haContext, "zone.home");
 }
 
-public record AutomationEntity : Entity<AutomationEntity, EntityState<AutomationAttributes>, AutomationAttributes>
-{
-    public AutomationEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-    {
+public record AutomationEntity : Entity<AutomationEntity, EntityState<AutomationAttributes>, AutomationAttributes> {
+    public AutomationEntity(IHaContext haContext, string entityId) : base(haContext, entityId) {
     }
 
-    public AutomationEntity(Entity entity) : base(entity)
-    {
+    public AutomationEntity(Entity entity) : base(entity) {
     }
 }
 
-public record AutomationAttributes
-{
+public record AutomationAttributes {
     [JsonPropertyName("current")]
     public double? Current { get; init; }
 
@@ -1000,19 +957,15 @@ public record AutomationAttributes
 }
 
 public record
-    BinarySensorEntity : Entity<BinarySensorEntity, EntityState<BinarySensorAttributes>, BinarySensorAttributes>
-{
-    public BinarySensorEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-    {
+    BinarySensorEntity : Entity<BinarySensorEntity, EntityState<BinarySensorAttributes>, BinarySensorAttributes> {
+    public BinarySensorEntity(IHaContext haContext, string entityId) : base(haContext, entityId) {
     }
 
-    public BinarySensorEntity(Entity entity) : base(entity)
-    {
+    public BinarySensorEntity(Entity entity) : base(entity) {
     }
 }
 
-public record BinarySensorAttributes
-{
+public record BinarySensorAttributes {
     [JsonPropertyName("device_class")]
     public string? DeviceClass { get; init; }
 
@@ -1029,19 +982,15 @@ public record BinarySensorAttributes
     public double? SupportedFeatures { get; init; }
 }
 
-public record ButtonEntity : Entity<ButtonEntity, EntityState<ButtonAttributes>, ButtonAttributes>
-{
-    public ButtonEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-    {
+public record ButtonEntity : Entity<ButtonEntity, EntityState<ButtonAttributes>, ButtonAttributes> {
+    public ButtonEntity(IHaContext haContext, string entityId) : base(haContext, entityId) {
     }
 
-    public ButtonEntity(Entity entity) : base(entity)
-    {
+    public ButtonEntity(Entity entity) : base(entity) {
     }
 }
 
-public record ButtonAttributes
-{
+public record ButtonAttributes {
     [JsonPropertyName("device_class")]
     public string? DeviceClass { get; init; }
 
@@ -1052,19 +1001,15 @@ public record ButtonAttributes
     public string? Icon { get; init; }
 }
 
-public record CoverEntity : Entity<CoverEntity, EntityState<CoverAttributes>, CoverAttributes>
-{
-    public CoverEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-    {
+public record CoverEntity : Entity<CoverEntity, EntityState<CoverAttributes>, CoverAttributes> {
+    public CoverEntity(IHaContext haContext, string entityId) : base(haContext, entityId) {
     }
 
-    public CoverEntity(Entity entity) : base(entity)
-    {
+    public CoverEntity(Entity entity) : base(entity) {
     }
 }
 
-public record CoverAttributes
-{
+public record CoverAttributes {
     [JsonPropertyName("current_position")]
     public double? CurrentPosition { get; init; }
 
@@ -1082,19 +1027,15 @@ public record CoverAttributes
 }
 
 public record
-    DeviceTrackerEntity : Entity<DeviceTrackerEntity, EntityState<DeviceTrackerAttributes>, DeviceTrackerAttributes>
-{
-    public DeviceTrackerEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-    {
+    DeviceTrackerEntity : Entity<DeviceTrackerEntity, EntityState<DeviceTrackerAttributes>, DeviceTrackerAttributes> {
+    public DeviceTrackerEntity(IHaContext haContext, string entityId) : base(haContext, entityId) {
     }
 
-    public DeviceTrackerEntity(Entity entity) : base(entity)
-    {
+    public DeviceTrackerEntity(Entity entity) : base(entity) {
     }
 }
 
-public record DeviceTrackerAttributes
-{
+public record DeviceTrackerAttributes {
     [JsonPropertyName("friendly_name")]
     public string? FriendlyName { get; init; }
 
@@ -1103,19 +1044,15 @@ public record DeviceTrackerAttributes
 }
 
 public record
-    InputBooleanEntity : Entity<InputBooleanEntity, EntityState<InputBooleanAttributes>, InputBooleanAttributes>
-{
-    public InputBooleanEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-    {
+    InputBooleanEntity : Entity<InputBooleanEntity, EntityState<InputBooleanAttributes>, InputBooleanAttributes> {
+    public InputBooleanEntity(IHaContext haContext, string entityId) : base(haContext, entityId) {
     }
 
-    public InputBooleanEntity(Entity entity) : base(entity)
-    {
+    public InputBooleanEntity(Entity entity) : base(entity) {
     }
 }
 
-public record InputBooleanAttributes
-{
+public record InputBooleanAttributes {
     [JsonPropertyName("editable")]
     public bool? Editable { get; init; }
 
@@ -1133,19 +1070,15 @@ public record InputBooleanAttributes
 }
 
 public record InputNumberEntity : NumericEntity<InputNumberEntity, NumericEntityState<InputNumberAttributes>,
-    InputNumberAttributes>
-{
-    public InputNumberEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-    {
+    InputNumberAttributes> {
+    public InputNumberEntity(IHaContext haContext, string entityId) : base(haContext, entityId) {
     }
 
-    public InputNumberEntity(Entity entity) : base(entity)
-    {
+    public InputNumberEntity(Entity entity) : base(entity) {
     }
 }
 
-public record InputNumberAttributes
-{
+public record InputNumberAttributes {
     [JsonPropertyName("friendly_name")]
     public string? FriendlyName { get; init; }
 
@@ -1162,19 +1095,15 @@ public record InputNumberAttributes
     public string? UnitOfMeasurement { get; init; }
 }
 
-public record LightEntity : Entity<LightEntity, EntityState<LightAttributes>, LightAttributes>
-{
-    public LightEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-    {
+public record LightEntity : Entity<LightEntity, EntityState<LightAttributes>, LightAttributes> {
+    public LightEntity(IHaContext haContext, string entityId) : base(haContext, entityId) {
     }
 
-    public LightEntity(Entity entity) : base(entity)
-    {
+    public LightEntity(Entity entity) : base(entity) {
     }
 }
 
-public record LightAttributes
-{
+public record LightAttributes {
     [JsonPropertyName("assumed_state")]
     public bool? AssumedState { get; init; }
 
@@ -1194,19 +1123,15 @@ public record LightAttributes
     public double? SupportedFeatures { get; init; }
 }
 
-public record NumberEntity : NumericEntity<NumberEntity, NumericEntityState<NumberAttributes>, NumberAttributes>
-{
-    public NumberEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-    {
+public record NumberEntity : NumericEntity<NumberEntity, NumericEntityState<NumberAttributes>, NumberAttributes> {
+    public NumberEntity(IHaContext haContext, string entityId) : base(haContext, entityId) {
     }
 
-    public NumberEntity(Entity entity) : base(entity)
-    {
+    public NumberEntity(Entity entity) : base(entity) {
     }
 }
 
-public record NumberAttributes
-{
+public record NumberAttributes {
     [JsonPropertyName("friendly_name")]
     public string? FriendlyName { get; init; }
 
@@ -1227,19 +1152,15 @@ public record NumberAttributes
 }
 
 public record PersistentNotificationEntity : Entity<PersistentNotificationEntity,
-    EntityState<PersistentNotificationAttributes>, PersistentNotificationAttributes>
-{
-    public PersistentNotificationEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-    {
+    EntityState<PersistentNotificationAttributes>, PersistentNotificationAttributes> {
+    public PersistentNotificationEntity(IHaContext haContext, string entityId) : base(haContext, entityId) {
     }
 
-    public PersistentNotificationEntity(Entity entity) : base(entity)
-    {
+    public PersistentNotificationEntity(Entity entity) : base(entity) {
     }
 }
 
-public record PersistentNotificationAttributes
-{
+public record PersistentNotificationAttributes {
     [JsonPropertyName("friendly_name")]
     public string? FriendlyName { get; init; }
 
@@ -1250,19 +1171,15 @@ public record PersistentNotificationAttributes
     public string? Title { get; init; }
 }
 
-public record PersonEntity : Entity<PersonEntity, EntityState<PersonAttributes>, PersonAttributes>
-{
-    public PersonEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-    {
+public record PersonEntity : Entity<PersonEntity, EntityState<PersonAttributes>, PersonAttributes> {
+    public PersonEntity(IHaContext haContext, string entityId) : base(haContext, entityId) {
     }
 
-    public PersonEntity(Entity entity) : base(entity)
-    {
+    public PersonEntity(Entity entity) : base(entity) {
     }
 }
 
-public record PersonAttributes
-{
+public record PersonAttributes {
     [JsonPropertyName("editable")]
     public bool? Editable { get; init; }
 
@@ -1276,19 +1193,15 @@ public record PersonAttributes
     public string? UserId { get; init; }
 }
 
-public record SceneEntity : Entity<SceneEntity, EntityState<SceneAttributes>, SceneAttributes>
-{
-    public SceneEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-    {
+public record SceneEntity : Entity<SceneEntity, EntityState<SceneAttributes>, SceneAttributes> {
+    public SceneEntity(IHaContext haContext, string entityId) : base(haContext, entityId) {
     }
 
-    public SceneEntity(Entity entity) : base(entity)
-    {
+    public SceneEntity(Entity entity) : base(entity) {
     }
 }
 
-public record SceneAttributes
-{
+public record SceneAttributes {
     [JsonPropertyName("entity_id")]
     public IReadOnlyList<string>? EntityId { get; init; }
 
@@ -1303,19 +1216,15 @@ public record SceneAttributes
 }
 
 public record NumericSensorEntity : NumericEntity<NumericSensorEntity, NumericEntityState<NumericSensorAttributes>,
-    NumericSensorAttributes>
-{
-    public NumericSensorEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-    {
+    NumericSensorAttributes> {
+    public NumericSensorEntity(IHaContext haContext, string entityId) : base(haContext, entityId) {
     }
 
-    public NumericSensorEntity(Entity entity) : base(entity)
-    {
+    public NumericSensorEntity(Entity entity) : base(entity) {
     }
 }
 
-public record NumericSensorAttributes
-{
+public record NumericSensorAttributes {
     [JsonPropertyName("app_nickname")]
     public object? AppNickname { get; init; }
 
@@ -1389,19 +1298,15 @@ public record NumericSensorAttributes
     public string? UnitOfMeasurement { get; init; }
 }
 
-public record SensorEntity : Entity<SensorEntity, EntityState<SensorAttributes>, SensorAttributes>
-{
-    public SensorEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-    {
+public record SensorEntity : Entity<SensorEntity, EntityState<SensorAttributes>, SensorAttributes> {
+    public SensorEntity(IHaContext haContext, string entityId) : base(haContext, entityId) {
     }
 
-    public SensorEntity(Entity entity) : base(entity)
-    {
+    public SensorEntity(Entity entity) : base(entity) {
     }
 }
 
-public record SensorAttributes
-{
+public record SensorAttributes {
     [JsonPropertyName("assumed_state")]
     public bool? AssumedState { get; init; }
 
@@ -1424,19 +1329,15 @@ public record SensorAttributes
     public string? TimeLastUpdated { get; init; }
 }
 
-public record SunEntity : Entity<SunEntity, EntityState<SunAttributes>, SunAttributes>
-{
-    public SunEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-    {
+public record SunEntity : Entity<SunEntity, EntityState<SunAttributes>, SunAttributes> {
+    public SunEntity(IHaContext haContext, string entityId) : base(haContext, entityId) {
     }
 
-    public SunEntity(Entity entity) : base(entity)
-    {
+    public SunEntity(Entity entity) : base(entity) {
     }
 }
 
-public record SunAttributes
-{
+public record SunAttributes {
     [JsonPropertyName("azimuth")]
     public double? Azimuth { get; init; }
 
@@ -1468,19 +1369,15 @@ public record SunAttributes
     public bool? Rising { get; init; }
 }
 
-public record SwitchEntity : Entity<SwitchEntity, EntityState<SwitchAttributes>, SwitchAttributes>
-{
-    public SwitchEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-    {
+public record SwitchEntity : Entity<SwitchEntity, EntityState<SwitchAttributes>, SwitchAttributes> {
+    public SwitchEntity(IHaContext haContext, string entityId) : base(haContext, entityId) {
     }
 
-    public SwitchEntity(Entity entity) : base(entity)
-    {
+    public SwitchEntity(Entity entity) : base(entity) {
     }
 }
 
-public record SwitchAttributes
-{
+public record SwitchAttributes {
     [JsonPropertyName("assumed_state")]
     public bool? AssumedState { get; init; }
 
@@ -1488,19 +1385,15 @@ public record SwitchAttributes
     public string? FriendlyName { get; init; }
 }
 
-public record UpdateEntity : Entity<UpdateEntity, EntityState<UpdateAttributes>, UpdateAttributes>
-{
-    public UpdateEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-    {
+public record UpdateEntity : Entity<UpdateEntity, EntityState<UpdateAttributes>, UpdateAttributes> {
+    public UpdateEntity(IHaContext haContext, string entityId) : base(haContext, entityId) {
     }
 
-    public UpdateEntity(Entity entity) : base(entity)
-    {
+    public UpdateEntity(Entity entity) : base(entity) {
     }
 }
 
-public record UpdateAttributes
-{
+public record UpdateAttributes {
     [JsonPropertyName("auto_update")]
     public bool? AutoUpdate { get; init; }
 
@@ -1535,19 +1428,15 @@ public record UpdateAttributes
     public string? Title { get; init; }
 }
 
-public record WeatherEntity : Entity<WeatherEntity, EntityState<WeatherAttributes>, WeatherAttributes>
-{
-    public WeatherEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-    {
+public record WeatherEntity : Entity<WeatherEntity, EntityState<WeatherAttributes>, WeatherAttributes> {
+    public WeatherEntity(IHaContext haContext, string entityId) : base(haContext, entityId) {
     }
 
-    public WeatherEntity(Entity entity) : base(entity)
-    {
+    public WeatherEntity(Entity entity) : base(entity) {
     }
 }
 
-public record WeatherAttributes
-{
+public record WeatherAttributes {
     [JsonPropertyName("attribution")]
     public string? Attribution { get; init; }
 
@@ -1600,19 +1489,15 @@ public record WeatherAttributes
     public string? WindSpeedUnit { get; init; }
 }
 
-public record ZoneEntity : Entity<ZoneEntity, EntityState<ZoneAttributes>, ZoneAttributes>
-{
-    public ZoneEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-    {
+public record ZoneEntity : Entity<ZoneEntity, EntityState<ZoneAttributes>, ZoneAttributes> {
+    public ZoneEntity(IHaContext haContext, string entityId) : base(haContext, entityId) {
     }
 
-    public ZoneEntity(Entity entity) : base(entity)
-    {
+    public ZoneEntity(Entity entity) : base(entity) {
     }
 }
 
-public record ZoneAttributes
-{
+public record ZoneAttributes {
     [JsonPropertyName("editable")]
     public bool? Editable { get; init; }
 
@@ -1638,8 +1523,7 @@ public record ZoneAttributes
     public double? Radius { get; init; }
 }
 
-public interface IServices
-{
+public interface IServices {
     AlarmControlPanelServices AlarmControlPanel { get; }
 
     AutomationServices Automation { get; }
@@ -1723,12 +1607,10 @@ public interface IServices
     ZoneServices Zone { get; }
 }
 
-public class Services : IServices
-{
+public class Services : IServices {
     private readonly IHaContext _haContext;
 
-    public Services(IHaContext haContext)
-    {
+    public Services(IHaContext haContext) {
         _haContext = haContext;
     }
 
@@ -1775,377 +1657,325 @@ public class Services : IServices
     public ZoneServices Zone => new(_haContext);
 }
 
-public class AlarmControlPanelServices
-{
+public class AlarmControlPanelServices {
     private readonly IHaContext _haContext;
 
-    public AlarmControlPanelServices(IHaContext haContext)
-    {
+    public AlarmControlPanelServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Send the alarm the command for arm away.</summary>
     ///<param name="target">The target for this service call</param>
-    public void AlarmArmAway(ServiceTarget target, AlarmControlPanelAlarmArmAwayParameters data)
-    {
+    public void AlarmArmAway(ServiceTarget target, AlarmControlPanelAlarmArmAwayParameters data) {
         _haContext.CallService("alarm_control_panel", "alarm_arm_away", target, data);
     }
 
     ///<summary>Send the alarm the command for arm away.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="code">An optional code to arm away the alarm control panel with. eg: 1234</param>
-    public void AlarmArmAway(ServiceTarget target, string? code = null)
-    {
+    public void AlarmArmAway(ServiceTarget target, string? code = null) {
         _haContext.CallService("alarm_control_panel", "alarm_arm_away", target,
-            new AlarmControlPanelAlarmArmAwayParameters {Code = code});
+            new AlarmControlPanelAlarmArmAwayParameters { Code = code });
     }
 
     ///<summary>Send arm custom bypass command.</summary>
     ///<param name="target">The target for this service call</param>
-    public void AlarmArmCustomBypass(ServiceTarget target, AlarmControlPanelAlarmArmCustomBypassParameters data)
-    {
+    public void AlarmArmCustomBypass(ServiceTarget target, AlarmControlPanelAlarmArmCustomBypassParameters data) {
         _haContext.CallService("alarm_control_panel", "alarm_arm_custom_bypass", target, data);
     }
 
     ///<summary>Send arm custom bypass command.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="code">An optional code to arm custom bypass the alarm control panel with. eg: 1234</param>
-    public void AlarmArmCustomBypass(ServiceTarget target, string? code = null)
-    {
+    public void AlarmArmCustomBypass(ServiceTarget target, string? code = null) {
         _haContext.CallService("alarm_control_panel", "alarm_arm_custom_bypass", target,
-            new AlarmControlPanelAlarmArmCustomBypassParameters {Code = code});
+            new AlarmControlPanelAlarmArmCustomBypassParameters { Code = code });
     }
 
     ///<summary>Send the alarm the command for arm home.</summary>
     ///<param name="target">The target for this service call</param>
-    public void AlarmArmHome(ServiceTarget target, AlarmControlPanelAlarmArmHomeParameters data)
-    {
+    public void AlarmArmHome(ServiceTarget target, AlarmControlPanelAlarmArmHomeParameters data) {
         _haContext.CallService("alarm_control_panel", "alarm_arm_home", target, data);
     }
 
     ///<summary>Send the alarm the command for arm home.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="code">An optional code to arm home the alarm control panel with. eg: 1234</param>
-    public void AlarmArmHome(ServiceTarget target, string? code = null)
-    {
+    public void AlarmArmHome(ServiceTarget target, string? code = null) {
         _haContext.CallService("alarm_control_panel", "alarm_arm_home", target,
-            new AlarmControlPanelAlarmArmHomeParameters {Code = code});
+            new AlarmControlPanelAlarmArmHomeParameters { Code = code });
     }
 
     ///<summary>Send the alarm the command for arm night.</summary>
     ///<param name="target">The target for this service call</param>
-    public void AlarmArmNight(ServiceTarget target, AlarmControlPanelAlarmArmNightParameters data)
-    {
+    public void AlarmArmNight(ServiceTarget target, AlarmControlPanelAlarmArmNightParameters data) {
         _haContext.CallService("alarm_control_panel", "alarm_arm_night", target, data);
     }
 
     ///<summary>Send the alarm the command for arm night.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="code">An optional code to arm night the alarm control panel with. eg: 1234</param>
-    public void AlarmArmNight(ServiceTarget target, string? code = null)
-    {
+    public void AlarmArmNight(ServiceTarget target, string? code = null) {
         _haContext.CallService("alarm_control_panel", "alarm_arm_night", target,
-            new AlarmControlPanelAlarmArmNightParameters {Code = code});
+            new AlarmControlPanelAlarmArmNightParameters { Code = code });
     }
 
     ///<summary>Send the alarm the command for arm vacation.</summary>
     ///<param name="target">The target for this service call</param>
-    public void AlarmArmVacation(ServiceTarget target, AlarmControlPanelAlarmArmVacationParameters data)
-    {
+    public void AlarmArmVacation(ServiceTarget target, AlarmControlPanelAlarmArmVacationParameters data) {
         _haContext.CallService("alarm_control_panel", "alarm_arm_vacation", target, data);
     }
 
     ///<summary>Send the alarm the command for arm vacation.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="code">An optional code to arm vacation the alarm control panel with. eg: 1234</param>
-    public void AlarmArmVacation(ServiceTarget target, string? code = null)
-    {
+    public void AlarmArmVacation(ServiceTarget target, string? code = null) {
         _haContext.CallService("alarm_control_panel", "alarm_arm_vacation", target,
-            new AlarmControlPanelAlarmArmVacationParameters {Code = code});
+            new AlarmControlPanelAlarmArmVacationParameters { Code = code });
     }
 
     ///<summary>Send the alarm the command for disarm.</summary>
     ///<param name="target">The target for this service call</param>
-    public void AlarmDisarm(ServiceTarget target, AlarmControlPanelAlarmDisarmParameters data)
-    {
+    public void AlarmDisarm(ServiceTarget target, AlarmControlPanelAlarmDisarmParameters data) {
         _haContext.CallService("alarm_control_panel", "alarm_disarm", target, data);
     }
 
     ///<summary>Send the alarm the command for disarm.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="code">An optional code to disarm the alarm control panel with. eg: 1234</param>
-    public void AlarmDisarm(ServiceTarget target, string? code = null)
-    {
+    public void AlarmDisarm(ServiceTarget target, string? code = null) {
         _haContext.CallService("alarm_control_panel", "alarm_disarm", target,
-            new AlarmControlPanelAlarmDisarmParameters {Code = code});
+            new AlarmControlPanelAlarmDisarmParameters { Code = code });
     }
 
     ///<summary>Send the alarm the command for trigger.</summary>
     ///<param name="target">The target for this service call</param>
-    public void AlarmTrigger(ServiceTarget target, AlarmControlPanelAlarmTriggerParameters data)
-    {
+    public void AlarmTrigger(ServiceTarget target, AlarmControlPanelAlarmTriggerParameters data) {
         _haContext.CallService("alarm_control_panel", "alarm_trigger", target, data);
     }
 
     ///<summary>Send the alarm the command for trigger.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="code">An optional code to trigger the alarm control panel with. eg: 1234</param>
-    public void AlarmTrigger(ServiceTarget target, string? code = null)
-    {
+    public void AlarmTrigger(ServiceTarget target, string? code = null) {
         _haContext.CallService("alarm_control_panel", "alarm_trigger", target,
-            new AlarmControlPanelAlarmTriggerParameters {Code = code});
+            new AlarmControlPanelAlarmTriggerParameters { Code = code });
     }
 }
 
-public record AlarmControlPanelAlarmArmAwayParameters
-{
+public record AlarmControlPanelAlarmArmAwayParameters {
     ///<summary>An optional code to arm away the alarm control panel with. eg: 1234</summary>
     [JsonPropertyName("code")]
     public string? Code { get; init; }
 }
 
-public record AlarmControlPanelAlarmArmCustomBypassParameters
-{
+public record AlarmControlPanelAlarmArmCustomBypassParameters {
     ///<summary>An optional code to arm custom bypass the alarm control panel with. eg: 1234</summary>
     [JsonPropertyName("code")]
     public string? Code { get; init; }
 }
 
-public record AlarmControlPanelAlarmArmHomeParameters
-{
+public record AlarmControlPanelAlarmArmHomeParameters {
     ///<summary>An optional code to arm home the alarm control panel with. eg: 1234</summary>
     [JsonPropertyName("code")]
     public string? Code { get; init; }
 }
 
-public record AlarmControlPanelAlarmArmNightParameters
-{
+public record AlarmControlPanelAlarmArmNightParameters {
     ///<summary>An optional code to arm night the alarm control panel with. eg: 1234</summary>
     [JsonPropertyName("code")]
     public string? Code { get; init; }
 }
 
-public record AlarmControlPanelAlarmArmVacationParameters
-{
+public record AlarmControlPanelAlarmArmVacationParameters {
     ///<summary>An optional code to arm vacation the alarm control panel with. eg: 1234</summary>
     [JsonPropertyName("code")]
     public string? Code { get; init; }
 }
 
-public record AlarmControlPanelAlarmDisarmParameters
-{
+public record AlarmControlPanelAlarmDisarmParameters {
     ///<summary>An optional code to disarm the alarm control panel with. eg: 1234</summary>
     [JsonPropertyName("code")]
     public string? Code { get; init; }
 }
 
-public record AlarmControlPanelAlarmTriggerParameters
-{
+public record AlarmControlPanelAlarmTriggerParameters {
     ///<summary>An optional code to trigger the alarm control panel with. eg: 1234</summary>
     [JsonPropertyName("code")]
     public string? Code { get; init; }
 }
 
-public class AutomationServices
-{
+public class AutomationServices {
     private readonly IHaContext _haContext;
 
-    public AutomationServices(IHaContext haContext)
-    {
+    public AutomationServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Reload the automation configuration.</summary>
-    public void Reload()
-    {
+    public void Reload() {
         _haContext.CallService("automation", "reload");
     }
 
     ///<summary>Toggle (enable / disable) an automation.</summary>
     ///<param name="target">The target for this service call</param>
-    public void Toggle(ServiceTarget target)
-    {
+    public void Toggle(ServiceTarget target) {
         _haContext.CallService("automation", "toggle", target);
     }
 
     ///<summary>Trigger the actions of an automation.</summary>
     ///<param name="target">The target for this service call</param>
-    public void Trigger(ServiceTarget target, AutomationTriggerParameters data)
-    {
+    public void Trigger(ServiceTarget target, AutomationTriggerParameters data) {
         _haContext.CallService("automation", "trigger", target, data);
     }
 
     ///<summary>Trigger the actions of an automation.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="skipCondition">Whether or not the conditions will be skipped.</param>
-    public void Trigger(ServiceTarget target, bool? skipCondition = null)
-    {
+    public void Trigger(ServiceTarget target, bool? skipCondition = null) {
         _haContext.CallService("automation", "trigger", target,
-            new AutomationTriggerParameters {SkipCondition = skipCondition});
+            new AutomationTriggerParameters { SkipCondition = skipCondition });
     }
 
     ///<summary>Disable an automation.</summary>
     ///<param name="target">The target for this service call</param>
-    public void TurnOff(ServiceTarget target, AutomationTurnOffParameters data)
-    {
+    public void TurnOff(ServiceTarget target, AutomationTurnOffParameters data) {
         _haContext.CallService("automation", "turn_off", target, data);
     }
 
     ///<summary>Disable an automation.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="stopActions">Stop currently running actions.</param>
-    public void TurnOff(ServiceTarget target, bool? stopActions = null)
-    {
+    public void TurnOff(ServiceTarget target, bool? stopActions = null) {
         _haContext.CallService("automation", "turn_off", target,
-            new AutomationTurnOffParameters {StopActions = stopActions});
+            new AutomationTurnOffParameters { StopActions = stopActions });
     }
 
     ///<summary>Enable an automation.</summary>
     ///<param name="target">The target for this service call</param>
-    public void TurnOn(ServiceTarget target)
-    {
+    public void TurnOn(ServiceTarget target) {
         _haContext.CallService("automation", "turn_on", target);
     }
 }
 
-public record AutomationTriggerParameters
-{
+public record AutomationTriggerParameters {
     ///<summary>Whether or not the conditions will be skipped.</summary>
     [JsonPropertyName("skip_condition")]
     public bool? SkipCondition { get; init; }
 }
 
-public record AutomationTurnOffParameters
-{
+public record AutomationTurnOffParameters {
     ///<summary>Stop currently running actions.</summary>
     [JsonPropertyName("stop_actions")]
     public bool? StopActions { get; init; }
 }
 
-public class ButtonServices
-{
+public class ButtonServices {
     private readonly IHaContext _haContext;
 
-    public ButtonServices(IHaContext haContext)
-    {
+    public ButtonServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Press the button entity.</summary>
     ///<param name="target">The target for this service call</param>
-    public void Press(ServiceTarget target)
-    {
+    public void Press(ServiceTarget target) {
         _haContext.CallService("button", "press", target);
     }
 }
 
-public class ClimateServices
-{
+public class ClimateServices {
     private readonly IHaContext _haContext;
 
-    public ClimateServices(IHaContext haContext)
-    {
+    public ClimateServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Turn auxiliary heater on/off for climate device.</summary>
     ///<param name="target">The target for this service call</param>
-    public void SetAuxHeat(ServiceTarget target, ClimateSetAuxHeatParameters data)
-    {
+    public void SetAuxHeat(ServiceTarget target, ClimateSetAuxHeatParameters data) {
         _haContext.CallService("climate", "set_aux_heat", target, data);
     }
 
     ///<summary>Turn auxiliary heater on/off for climate device.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="auxHeat">New value of auxiliary heater.</param>
-    public void SetAuxHeat(ServiceTarget target, bool auxHeat)
-    {
-        _haContext.CallService("climate", "set_aux_heat", target, new ClimateSetAuxHeatParameters {AuxHeat = auxHeat});
+    public void SetAuxHeat(ServiceTarget target, bool auxHeat) {
+        _haContext.CallService("climate", "set_aux_heat", target, new ClimateSetAuxHeatParameters { AuxHeat = auxHeat });
     }
 
     ///<summary>Set fan operation for climate device.</summary>
     ///<param name="target">The target for this service call</param>
-    public void SetFanMode(ServiceTarget target, ClimateSetFanModeParameters data)
-    {
+    public void SetFanMode(ServiceTarget target, ClimateSetFanModeParameters data) {
         _haContext.CallService("climate", "set_fan_mode", target, data);
     }
 
     ///<summary>Set fan operation for climate device.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="fanMode">New value of fan mode. eg: low</param>
-    public void SetFanMode(ServiceTarget target, string fanMode)
-    {
-        _haContext.CallService("climate", "set_fan_mode", target, new ClimateSetFanModeParameters {FanMode = fanMode});
+    public void SetFanMode(ServiceTarget target, string fanMode) {
+        _haContext.CallService("climate", "set_fan_mode", target, new ClimateSetFanModeParameters { FanMode = fanMode });
     }
 
     ///<summary>Set target humidity of climate device.</summary>
     ///<param name="target">The target for this service call</param>
-    public void SetHumidity(ServiceTarget target, ClimateSetHumidityParameters data)
-    {
+    public void SetHumidity(ServiceTarget target, ClimateSetHumidityParameters data) {
         _haContext.CallService("climate", "set_humidity", target, data);
     }
 
     ///<summary>Set target humidity of climate device.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="humidity">New target humidity for climate device.</param>
-    public void SetHumidity(ServiceTarget target, long humidity)
-    {
+    public void SetHumidity(ServiceTarget target, long humidity) {
         _haContext.CallService("climate", "set_humidity", target,
-            new ClimateSetHumidityParameters {Humidity = humidity});
+            new ClimateSetHumidityParameters { Humidity = humidity });
     }
 
     ///<summary>Set HVAC operation mode for climate device.</summary>
     ///<param name="target">The target for this service call</param>
-    public void SetHvacMode(ServiceTarget target, ClimateSetHvacModeParameters data)
-    {
+    public void SetHvacMode(ServiceTarget target, ClimateSetHvacModeParameters data) {
         _haContext.CallService("climate", "set_hvac_mode", target, data);
     }
 
     ///<summary>Set HVAC operation mode for climate device.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="hvacMode">New value of operation mode.</param>
-    public void SetHvacMode(ServiceTarget target, object? hvacMode = null)
-    {
+    public void SetHvacMode(ServiceTarget target, object? hvacMode = null) {
         _haContext.CallService("climate", "set_hvac_mode", target,
-            new ClimateSetHvacModeParameters {HvacMode = hvacMode});
+            new ClimateSetHvacModeParameters { HvacMode = hvacMode });
     }
 
     ///<summary>Set preset mode for climate device.</summary>
     ///<param name="target">The target for this service call</param>
-    public void SetPresetMode(ServiceTarget target, ClimateSetPresetModeParameters data)
-    {
+    public void SetPresetMode(ServiceTarget target, ClimateSetPresetModeParameters data) {
         _haContext.CallService("climate", "set_preset_mode", target, data);
     }
 
     ///<summary>Set preset mode for climate device.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="presetMode">New value of preset mode. eg: away</param>
-    public void SetPresetMode(ServiceTarget target, string presetMode)
-    {
+    public void SetPresetMode(ServiceTarget target, string presetMode) {
         _haContext.CallService("climate", "set_preset_mode", target,
-            new ClimateSetPresetModeParameters {PresetMode = presetMode});
+            new ClimateSetPresetModeParameters { PresetMode = presetMode });
     }
 
     ///<summary>Set swing operation for climate device.</summary>
     ///<param name="target">The target for this service call</param>
-    public void SetSwingMode(ServiceTarget target, ClimateSetSwingModeParameters data)
-    {
+    public void SetSwingMode(ServiceTarget target, ClimateSetSwingModeParameters data) {
         _haContext.CallService("climate", "set_swing_mode", target, data);
     }
 
     ///<summary>Set swing operation for climate device.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="swingMode">New value of swing mode. eg: horizontal</param>
-    public void SetSwingMode(ServiceTarget target, string swingMode)
-    {
+    public void SetSwingMode(ServiceTarget target, string swingMode) {
         _haContext.CallService("climate", "set_swing_mode", target,
-            new ClimateSetSwingModeParameters {SwingMode = swingMode});
+            new ClimateSetSwingModeParameters { SwingMode = swingMode });
     }
 
     ///<summary>Set target temperature of climate device.</summary>
     ///<param name="target">The target for this service call</param>
-    public void SetTemperature(ServiceTarget target, ClimateSetTemperatureParameters data)
-    {
+    public void SetTemperature(ServiceTarget target, ClimateSetTemperatureParameters data) {
         _haContext.CallService("climate", "set_temperature", target, data);
     }
 
@@ -2160,11 +1990,9 @@ public class ClimateServices
         double? temperature = null,
         double? targetTempHigh = null,
         double? targetTempLow = null,
-        object? hvacMode = null)
-    {
+        object? hvacMode = null) {
         _haContext.CallService("climate", "set_temperature", target,
-            new ClimateSetTemperatureParameters
-            {
+            new ClimateSetTemperatureParameters {
                 Temperature = temperature, TargetTempHigh = targetTempHigh, TargetTempLow = targetTempLow,
                 HvacMode = hvacMode,
             });
@@ -2172,63 +2000,54 @@ public class ClimateServices
 
     ///<summary>Turn climate device off.</summary>
     ///<param name="target">The target for this service call</param>
-    public void TurnOff(ServiceTarget target)
-    {
+    public void TurnOff(ServiceTarget target) {
         _haContext.CallService("climate", "turn_off", target);
     }
 
     ///<summary>Turn climate device on.</summary>
     ///<param name="target">The target for this service call</param>
-    public void TurnOn(ServiceTarget target)
-    {
+    public void TurnOn(ServiceTarget target) {
         _haContext.CallService("climate", "turn_on", target);
     }
 }
 
-public record ClimateSetAuxHeatParameters
-{
+public record ClimateSetAuxHeatParameters {
     ///<summary>New value of auxiliary heater.</summary>
     [JsonPropertyName("aux_heat")]
     public bool? AuxHeat { get; init; }
 }
 
-public record ClimateSetFanModeParameters
-{
+public record ClimateSetFanModeParameters {
     ///<summary>New value of fan mode. eg: low</summary>
     [JsonPropertyName("fan_mode")]
     public string? FanMode { get; init; }
 }
 
-public record ClimateSetHumidityParameters
-{
+public record ClimateSetHumidityParameters {
     ///<summary>New target humidity for climate device.</summary>
     [JsonPropertyName("humidity")]
     public long? Humidity { get; init; }
 }
 
-public record ClimateSetHvacModeParameters
-{
+public record ClimateSetHvacModeParameters {
     ///<summary>New value of operation mode.</summary>
     [JsonPropertyName("hvac_mode")]
     public object? HvacMode { get; init; }
 }
 
-public record ClimateSetPresetModeParameters
-{
+public record ClimateSetPresetModeParameters {
     ///<summary>New value of preset mode. eg: away</summary>
     [JsonPropertyName("preset_mode")]
     public string? PresetMode { get; init; }
 }
 
-public record ClimateSetSwingModeParameters
-{
+public record ClimateSetSwingModeParameters {
     ///<summary>New value of swing mode. eg: horizontal</summary>
     [JsonPropertyName("swing_mode")]
     public string? SwingMode { get; init; }
 }
 
-public record ClimateSetTemperatureParameters
-{
+public record ClimateSetTemperatureParameters {
     ///<summary>New target temperature for HVAC.</summary>
     [JsonPropertyName("temperature")]
     public double? Temperature { get; init; }
@@ -2246,41 +2065,34 @@ public record ClimateSetTemperatureParameters
     public object? HvacMode { get; init; }
 }
 
-public class CloudServices
-{
+public class CloudServices {
     private readonly IHaContext _haContext;
 
-    public CloudServices(IHaContext haContext)
-    {
+    public CloudServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Make instance UI available outside over NabuCasa cloud</summary>
-    public void RemoteConnect()
-    {
+    public void RemoteConnect() {
         _haContext.CallService("cloud", "remote_connect");
     }
 
     ///<summary>Disconnect UI from NabuCasa cloud</summary>
-    public void RemoteDisconnect()
-    {
+    public void RemoteDisconnect() {
         _haContext.CallService("cloud", "remote_disconnect");
     }
 }
 
-public class CounterServices
-{
+public class CounterServices {
     private readonly IHaContext _haContext;
 
-    public CounterServices(IHaContext haContext)
-    {
+    public CounterServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Change counter parameters.</summary>
     ///<param name="target">The target for this service call</param>
-    public void Configure(ServiceTarget target, CounterConfigureParameters data)
-    {
+    public void Configure(ServiceTarget target, CounterConfigureParameters data) {
         _haContext.CallService("counter", "configure", target, data);
     }
 
@@ -2297,37 +2109,31 @@ public class CounterServices
         long? maximum = null,
         long? step = null,
         long? initial = null,
-        long? value = null)
-    {
+        long? value = null) {
         _haContext.CallService("counter", "configure", target,
-            new CounterConfigureParameters
-                {Minimum = minimum, Maximum = maximum, Step = step, Initial = initial, Value = value});
+            new CounterConfigureParameters { Minimum = minimum, Maximum = maximum, Step = step, Initial = initial, Value = value });
     }
 
     ///<summary>Decrement a counter.</summary>
     ///<param name="target">The target for this service call</param>
-    public void Decrement(ServiceTarget target)
-    {
+    public void Decrement(ServiceTarget target) {
         _haContext.CallService("counter", "decrement", target);
     }
 
     ///<summary>Increment a counter.</summary>
     ///<param name="target">The target for this service call</param>
-    public void Increment(ServiceTarget target)
-    {
+    public void Increment(ServiceTarget target) {
         _haContext.CallService("counter", "increment", target);
     }
 
     ///<summary>Reset a counter.</summary>
     ///<param name="target">The target for this service call</param>
-    public void Reset(ServiceTarget target)
-    {
+    public void Reset(ServiceTarget target) {
         _haContext.CallService("counter", "reset", target);
     }
 }
 
-public record CounterConfigureParameters
-{
+public record CounterConfigureParameters {
     ///<summary>New minimum value for the counter or None to remove minimum.</summary>
     [JsonPropertyName("minimum")]
     public long? Minimum { get; init; }
@@ -2349,130 +2155,111 @@ public record CounterConfigureParameters
     public long? Value { get; init; }
 }
 
-public class CoverServices
-{
+public class CoverServices {
     private readonly IHaContext _haContext;
 
-    public CoverServices(IHaContext haContext)
-    {
+    public CoverServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Close all or specified cover.</summary>
     ///<param name="target">The target for this service call</param>
-    public void CloseCover(ServiceTarget target)
-    {
+    public void CloseCover(ServiceTarget target) {
         _haContext.CallService("cover", "close_cover", target);
     }
 
     ///<summary>Close all or specified cover tilt.</summary>
     ///<param name="target">The target for this service call</param>
-    public void CloseCoverTilt(ServiceTarget target)
-    {
+    public void CloseCoverTilt(ServiceTarget target) {
         _haContext.CallService("cover", "close_cover_tilt", target);
     }
 
     ///<summary>Open all or specified cover.</summary>
     ///<param name="target">The target for this service call</param>
-    public void OpenCover(ServiceTarget target)
-    {
+    public void OpenCover(ServiceTarget target) {
         _haContext.CallService("cover", "open_cover", target);
     }
 
     ///<summary>Open all or specified cover tilt.</summary>
     ///<param name="target">The target for this service call</param>
-    public void OpenCoverTilt(ServiceTarget target)
-    {
+    public void OpenCoverTilt(ServiceTarget target) {
         _haContext.CallService("cover", "open_cover_tilt", target);
     }
 
     ///<summary>Move to specific position all or specified cover.</summary>
     ///<param name="target">The target for this service call</param>
-    public void SetCoverPosition(ServiceTarget target, CoverSetCoverPositionParameters data)
-    {
+    public void SetCoverPosition(ServiceTarget target, CoverSetCoverPositionParameters data) {
         _haContext.CallService("cover", "set_cover_position", target, data);
     }
 
     ///<summary>Move to specific position all or specified cover.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="position">Position of the cover</param>
-    public void SetCoverPosition(ServiceTarget target, long position)
-    {
+    public void SetCoverPosition(ServiceTarget target, long position) {
         _haContext.CallService("cover", "set_cover_position", target,
-            new CoverSetCoverPositionParameters {Position = position});
+            new CoverSetCoverPositionParameters { Position = position });
     }
 
     ///<summary>Move to specific position all or specified cover tilt.</summary>
     ///<param name="target">The target for this service call</param>
-    public void SetCoverTiltPosition(ServiceTarget target, CoverSetCoverTiltPositionParameters data)
-    {
+    public void SetCoverTiltPosition(ServiceTarget target, CoverSetCoverTiltPositionParameters data) {
         _haContext.CallService("cover", "set_cover_tilt_position", target, data);
     }
 
     ///<summary>Move to specific position all or specified cover tilt.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="tiltPosition">Tilt position of the cover.</param>
-    public void SetCoverTiltPosition(ServiceTarget target, long tiltPosition)
-    {
+    public void SetCoverTiltPosition(ServiceTarget target, long tiltPosition) {
         _haContext.CallService("cover", "set_cover_tilt_position", target,
-            new CoverSetCoverTiltPositionParameters {TiltPosition = tiltPosition});
+            new CoverSetCoverTiltPositionParameters { TiltPosition = tiltPosition });
     }
 
     ///<summary>Stop all or specified cover.</summary>
     ///<param name="target">The target for this service call</param>
-    public void StopCover(ServiceTarget target)
-    {
+    public void StopCover(ServiceTarget target) {
         _haContext.CallService("cover", "stop_cover", target);
     }
 
     ///<summary>Stop all or specified cover.</summary>
     ///<param name="target">The target for this service call</param>
-    public void StopCoverTilt(ServiceTarget target)
-    {
+    public void StopCoverTilt(ServiceTarget target) {
         _haContext.CallService("cover", "stop_cover_tilt", target);
     }
 
     ///<summary>Toggle a cover open/closed.</summary>
     ///<param name="target">The target for this service call</param>
-    public void Toggle(ServiceTarget target)
-    {
+    public void Toggle(ServiceTarget target) {
         _haContext.CallService("cover", "toggle", target);
     }
 
     ///<summary>Toggle a cover tilt open/closed.</summary>
     ///<param name="target">The target for this service call</param>
-    public void ToggleCoverTilt(ServiceTarget target)
-    {
+    public void ToggleCoverTilt(ServiceTarget target) {
         _haContext.CallService("cover", "toggle_cover_tilt", target);
     }
 }
 
-public record CoverSetCoverPositionParameters
-{
+public record CoverSetCoverPositionParameters {
     ///<summary>Position of the cover</summary>
     [JsonPropertyName("position")]
     public long? Position { get; init; }
 }
 
-public record CoverSetCoverTiltPositionParameters
-{
+public record CoverSetCoverTiltPositionParameters {
     ///<summary>Tilt position of the cover.</summary>
     [JsonPropertyName("tilt_position")]
     public long? TiltPosition { get; init; }
 }
 
-public class DeviceTrackerServices
-{
+public class DeviceTrackerServices {
     private readonly IHaContext _haContext;
 
-    public DeviceTrackerServices(IHaContext haContext)
-    {
+    public DeviceTrackerServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Control tracked device.</summary>
-    public void See(DeviceTrackerSeeParameters data)
-    {
+    public void See(DeviceTrackerSeeParameters data) {
         _haContext.CallService("device_tracker", "see", target: null, data);
     }
 
@@ -2491,19 +2278,16 @@ public class DeviceTrackerServices
         string? locationName = null,
         object? gps = null,
         long? gpsAccuracy = null,
-        long? battery = null)
-    {
+        long? battery = null) {
         _haContext.CallService("device_tracker", "see", target: null,
-            new DeviceTrackerSeeParameters
-            {
+            new DeviceTrackerSeeParameters {
                 Mac = mac, DevId = devId, HostName = hostName, LocationName = locationName, Gps = gps,
                 GpsAccuracy = gpsAccuracy, Battery = battery,
             });
     }
 }
 
-public record DeviceTrackerSeeParameters
-{
+public record DeviceTrackerSeeParameters {
     ///<summary>MAC address of device eg: FF:FF:FF:FF:FF:FF</summary>
     [JsonPropertyName("mac")]
     public string? Mac { get; init; }
@@ -2533,109 +2317,92 @@ public record DeviceTrackerSeeParameters
     public long? Battery { get; init; }
 }
 
-public class FfmpegServices
-{
+public class FfmpegServices {
     private readonly IHaContext _haContext;
 
-    public FfmpegServices(IHaContext haContext)
-    {
+    public FfmpegServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Send a restart command to a ffmpeg based sensor.</summary>
-    public void Restart(FfmpegRestartParameters data)
-    {
+    public void Restart(FfmpegRestartParameters data) {
         _haContext.CallService("ffmpeg", "restart", target: null, data);
     }
 
     ///<summary>Send a restart command to a ffmpeg based sensor.</summary>
     ///<param name="entityId">Name of entity that will restart. Platform dependent.</param>
-    public void Restart(string? entityId = null)
-    {
-        _haContext.CallService("ffmpeg", "restart", target: null, new FfmpegRestartParameters {EntityId = entityId});
+    public void Restart(string? entityId = null) {
+        _haContext.CallService("ffmpeg", "restart", target: null, new FfmpegRestartParameters { EntityId = entityId });
     }
 
     ///<summary>Send a start command to a ffmpeg based sensor.</summary>
-    public void Start(FfmpegStartParameters data)
-    {
+    public void Start(FfmpegStartParameters data) {
         _haContext.CallService("ffmpeg", "start", target: null, data);
     }
 
     ///<summary>Send a start command to a ffmpeg based sensor.</summary>
     ///<param name="entityId">Name of entity that will start. Platform dependent.</param>
-    public void Start(string? entityId = null)
-    {
-        _haContext.CallService("ffmpeg", "start", target: null, new FfmpegStartParameters {EntityId = entityId});
+    public void Start(string? entityId = null) {
+        _haContext.CallService("ffmpeg", "start", target: null, new FfmpegStartParameters { EntityId = entityId });
     }
 
     ///<summary>Send a stop command to a ffmpeg based sensor.</summary>
-    public void Stop(FfmpegStopParameters data)
-    {
+    public void Stop(FfmpegStopParameters data) {
         _haContext.CallService("ffmpeg", "stop", target: null, data);
     }
 
     ///<summary>Send a stop command to a ffmpeg based sensor.</summary>
     ///<param name="entityId">Name of entity that will stop. Platform dependent.</param>
-    public void Stop(string? entityId = null)
-    {
-        _haContext.CallService("ffmpeg", "stop", target: null, new FfmpegStopParameters {EntityId = entityId});
+    public void Stop(string? entityId = null) {
+        _haContext.CallService("ffmpeg", "stop", target: null, new FfmpegStopParameters { EntityId = entityId });
     }
 }
 
-public record FfmpegRestartParameters
-{
+public record FfmpegRestartParameters {
     ///<summary>Name of entity that will restart. Platform dependent.</summary>
     [JsonPropertyName("entity_id")]
     public string? EntityId { get; init; }
 }
 
-public record FfmpegStartParameters
-{
+public record FfmpegStartParameters {
     ///<summary>Name of entity that will start. Platform dependent.</summary>
     [JsonPropertyName("entity_id")]
     public string? EntityId { get; init; }
 }
 
-public record FfmpegStopParameters
-{
+public record FfmpegStopParameters {
     ///<summary>Name of entity that will stop. Platform dependent.</summary>
     [JsonPropertyName("entity_id")]
     public string? EntityId { get; init; }
 }
 
-public class FrontendServices
-{
+public class FrontendServices {
     private readonly IHaContext _haContext;
 
-    public FrontendServices(IHaContext haContext)
-    {
+    public FrontendServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Reload themes from YAML configuration.</summary>
-    public void ReloadThemes()
-    {
+    public void ReloadThemes() {
         _haContext.CallService("frontend", "reload_themes");
     }
 
     ///<summary>Set a theme unless the client selected per-device theme.</summary>
-    public void SetTheme(FrontendSetThemeParameters data)
-    {
+    public void SetTheme(FrontendSetThemeParameters data) {
         _haContext.CallService("frontend", "set_theme", target: null, data);
     }
 
     ///<summary>Set a theme unless the client selected per-device theme.</summary>
     ///<param name="name">Name of a predefined theme eg: default</param>
     ///<param name="mode">The mode the theme is for.</param>
-    public void SetTheme(object name, object? mode = null)
-    {
+    public void SetTheme(object name, object? mode = null) {
         _haContext.CallService("frontend", "set_theme", target: null,
-            new FrontendSetThemeParameters {Name = name, Mode = mode});
+            new FrontendSetThemeParameters { Name = name, Mode = mode });
     }
 }
 
-public record FrontendSetThemeParameters
-{
+public record FrontendSetThemeParameters {
     ///<summary>Name of a predefined theme eg: default</summary>
     [JsonPropertyName("name")]
     public object? Name { get; init; }
@@ -2645,37 +2412,31 @@ public record FrontendSetThemeParameters
     public object? Mode { get; init; }
 }
 
-public class GroupServices
-{
+public class GroupServices {
     private readonly IHaContext _haContext;
 
-    public GroupServices(IHaContext haContext)
-    {
+    public GroupServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Reload group configuration, entities, and notify services.</summary>
-    public void Reload()
-    {
+    public void Reload() {
         _haContext.CallService("group", "reload");
     }
 
     ///<summary>Remove a user group.</summary>
-    public void Remove(GroupRemoveParameters data)
-    {
+    public void Remove(GroupRemoveParameters data) {
         _haContext.CallService("group", "remove", target: null, data);
     }
 
     ///<summary>Remove a user group.</summary>
     ///<param name="objectId">Group id and part of entity id. eg: test_group</param>
-    public void Remove(object objectId)
-    {
-        _haContext.CallService("group", "remove", target: null, new GroupRemoveParameters {ObjectId = objectId});
+    public void Remove(object objectId) {
+        _haContext.CallService("group", "remove", target: null, new GroupRemoveParameters { ObjectId = objectId });
     }
 
     ///<summary>Create/Update a user group.</summary>
-    public void Set(GroupSetParameters data)
-    {
+    public void Set(GroupSetParameters data) {
         _haContext.CallService("group", "set", target: null, data);
     }
 
@@ -2695,25 +2456,21 @@ public class GroupServices
         object? icon = null,
         object? entities = null,
         object? addEntities = null,
-        bool? all = null)
-    {
+        bool? all = null) {
         _haContext.CallService("group", "set", target: null,
-            new GroupSetParameters
-            {
+            new GroupSetParameters {
                 ObjectId = objectId, Name = name, Icon = icon, Entities = entities, AddEntities = addEntities, All = all,
             });
     }
 }
 
-public record GroupRemoveParameters
-{
+public record GroupRemoveParameters {
     ///<summary>Group id and part of entity id. eg: test_group</summary>
     [JsonPropertyName("object_id")]
     public object? ObjectId { get; init; }
 }
 
-public record GroupSetParameters
-{
+public record GroupSetParameters {
     ///<summary>Group id and part of entity id. eg: test_group</summary>
     [JsonPropertyName("object_id")]
     public string? ObjectId { get; init; }
@@ -2739,74 +2496,63 @@ public record GroupSetParameters
     public bool? All { get; init; }
 }
 
-public class HassioServices
-{
+public class HassioServices {
     private readonly IHaContext _haContext;
 
-    public HassioServices(IHaContext haContext)
-    {
+    public HassioServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Restart add-on.</summary>
-    public void AddonRestart(HassioAddonRestartParameters data)
-    {
+    public void AddonRestart(HassioAddonRestartParameters data) {
         _haContext.CallService("hassio", "addon_restart", target: null, data);
     }
 
     ///<summary>Restart add-on.</summary>
     ///<param name="addon">The add-on slug. eg: core_ssh</param>
-    public void AddonRestart(string addon)
-    {
+    public void AddonRestart(string addon) {
         _haContext.CallService("hassio", "addon_restart", target: null,
-            new HassioAddonRestartParameters {Addon = addon});
+            new HassioAddonRestartParameters { Addon = addon });
     }
 
     ///<summary>Start add-on.</summary>
-    public void AddonStart(HassioAddonStartParameters data)
-    {
+    public void AddonStart(HassioAddonStartParameters data) {
         _haContext.CallService("hassio", "addon_start", target: null, data);
     }
 
     ///<summary>Start add-on.</summary>
     ///<param name="addon">The add-on slug. eg: core_ssh</param>
-    public void AddonStart(string addon)
-    {
-        _haContext.CallService("hassio", "addon_start", target: null, new HassioAddonStartParameters {Addon = addon});
+    public void AddonStart(string addon) {
+        _haContext.CallService("hassio", "addon_start", target: null, new HassioAddonStartParameters { Addon = addon });
     }
 
     ///<summary>Write data to add-on stdin.</summary>
-    public void AddonStdin(HassioAddonStdinParameters data)
-    {
+    public void AddonStdin(HassioAddonStdinParameters data) {
         _haContext.CallService("hassio", "addon_stdin", target: null, data);
     }
 
     ///<summary>Write data to add-on stdin.</summary>
     ///<param name="addon">The add-on slug. eg: core_ssh</param>
-    public void AddonStdin(string addon)
-    {
-        _haContext.CallService("hassio", "addon_stdin", target: null, new HassioAddonStdinParameters {Addon = addon});
+    public void AddonStdin(string addon) {
+        _haContext.CallService("hassio", "addon_stdin", target: null, new HassioAddonStdinParameters { Addon = addon });
     }
 
     ///<summary>Stop add-on.</summary>
-    public void AddonStop(HassioAddonStopParameters data)
-    {
+    public void AddonStop(HassioAddonStopParameters data) {
         _haContext.CallService("hassio", "addon_stop", target: null, data);
     }
 
     ///<summary>Stop add-on.</summary>
     ///<param name="addon">The add-on slug. eg: core_ssh</param>
-    public void AddonStop(string addon)
-    {
-        _haContext.CallService("hassio", "addon_stop", target: null, new HassioAddonStopParameters {Addon = addon});
+    public void AddonStop(string addon) {
+        _haContext.CallService("hassio", "addon_stop", target: null, new HassioAddonStopParameters { Addon = addon });
     }
 
     /// <summary>
     ///     Update add-on. This service should be used with caution since add-on updates can contain breaking changes. It
     ///     is highly recommended that you review release notes/change logs before updating an add-on.
     /// </summary>
-    public void AddonUpdate(HassioAddonUpdateParameters data)
-    {
+    public void AddonUpdate(HassioAddonUpdateParameters data) {
         _haContext.CallService("hassio", "addon_update", target: null, data);
     }
 
@@ -2815,14 +2561,12 @@ public class HassioServices
     ///     is highly recommended that you review release notes/change logs before updating an add-on.
     /// </summary>
     /// <param name="addon">The add-on slug. eg: core_ssh</param>
-    public void AddonUpdate(string addon)
-    {
-        _haContext.CallService("hassio", "addon_update", target: null, new HassioAddonUpdateParameters {Addon = addon});
+    public void AddonUpdate(string addon) {
+        _haContext.CallService("hassio", "addon_update", target: null, new HassioAddonUpdateParameters { Addon = addon });
     }
 
     ///<summary>Create a full backup.</summary>
-    public void BackupFull(HassioBackupFullParameters data)
-    {
+    public void BackupFull(HassioBackupFullParameters data) {
         _haContext.CallService("hassio", "backup_full", target: null, data);
     }
 
@@ -2830,15 +2574,13 @@ public class HassioServices
     ///<param name="name">Optional (default = current date and time). eg: Backup 1</param>
     ///<param name="password">Optional password. eg: password</param>
     ///<param name="compressed">Use compressed archives</param>
-    public void BackupFull(string? name = null, string? password = null, bool? compressed = null)
-    {
+    public void BackupFull(string? name = null, string? password = null, bool? compressed = null) {
         _haContext.CallService("hassio", "backup_full", target: null,
-            new HassioBackupFullParameters {Name = name, Password = password, Compressed = compressed});
+            new HassioBackupFullParameters { Name = name, Password = password, Compressed = compressed });
     }
 
     ///<summary>Create a partial backup.</summary>
-    public void BackupPartial(HassioBackupPartialParameters data)
-    {
+    public void BackupPartial(HassioBackupPartialParameters data) {
         _haContext.CallService("hassio", "backup_partial", target: null, data);
     }
 
@@ -2855,46 +2597,39 @@ public class HassioServices
         object? folders = null,
         string? name = null,
         string? password = null,
-        bool? compressed = null)
-    {
+        bool? compressed = null) {
         _haContext.CallService("hassio", "backup_partial", target: null,
-            new HassioBackupPartialParameters
-            {
+            new HassioBackupPartialParameters {
                 Homeassistant = homeassistant, Addons = addons, Folders = folders, Name = name, Password = password,
                 Compressed = compressed,
             });
     }
 
     ///<summary>Reboot the host system.</summary>
-    public void HostReboot()
-    {
+    public void HostReboot() {
         _haContext.CallService("hassio", "host_reboot");
     }
 
     ///<summary>Poweroff the host system.</summary>
-    public void HostShutdown()
-    {
+    public void HostShutdown() {
         _haContext.CallService("hassio", "host_shutdown");
     }
 
     ///<summary>Restore from full backup.</summary>
-    public void RestoreFull(HassioRestoreFullParameters data)
-    {
+    public void RestoreFull(HassioRestoreFullParameters data) {
         _haContext.CallService("hassio", "restore_full", target: null, data);
     }
 
     ///<summary>Restore from full backup.</summary>
     ///<param name="slug">Slug of backup to restore from.</param>
     ///<param name="password">Optional password. eg: password</param>
-    public void RestoreFull(string slug, string? password = null)
-    {
+    public void RestoreFull(string slug, string? password = null) {
         _haContext.CallService("hassio", "restore_full", target: null,
-            new HassioRestoreFullParameters {Slug = slug, Password = password});
+            new HassioRestoreFullParameters { Slug = slug, Password = password });
     }
 
     ///<summary>Restore from partial backup.</summary>
-    public void RestorePartial(HassioRestorePartialParameters data)
-    {
+    public void RestorePartial(HassioRestorePartialParameters data) {
         _haContext.CallService("hassio", "restore_partial", target: null, data);
     }
 
@@ -2909,51 +2644,43 @@ public class HassioServices
         bool? homeassistant = null,
         object? folders = null,
         object? addons = null,
-        string? password = null)
-    {
+        string? password = null) {
         _haContext.CallService("hassio", "restore_partial", target: null,
-            new HassioRestorePartialParameters
-                {Slug = slug, Homeassistant = homeassistant, Folders = folders, Addons = addons, Password = password});
+            new HassioRestorePartialParameters { Slug = slug, Homeassistant = homeassistant, Folders = folders, Addons = addons, Password = password });
     }
 }
 
-public record HassioAddonRestartParameters
-{
+public record HassioAddonRestartParameters {
     ///<summary>The add-on slug. eg: core_ssh</summary>
     [JsonPropertyName("addon")]
     public string? Addon { get; init; }
 }
 
-public record HassioAddonStartParameters
-{
+public record HassioAddonStartParameters {
     ///<summary>The add-on slug. eg: core_ssh</summary>
     [JsonPropertyName("addon")]
     public string? Addon { get; init; }
 }
 
-public record HassioAddonStdinParameters
-{
+public record HassioAddonStdinParameters {
     ///<summary>The add-on slug. eg: core_ssh</summary>
     [JsonPropertyName("addon")]
     public string? Addon { get; init; }
 }
 
-public record HassioAddonStopParameters
-{
+public record HassioAddonStopParameters {
     ///<summary>The add-on slug. eg: core_ssh</summary>
     [JsonPropertyName("addon")]
     public string? Addon { get; init; }
 }
 
-public record HassioAddonUpdateParameters
-{
+public record HassioAddonUpdateParameters {
     ///<summary>The add-on slug. eg: core_ssh</summary>
     [JsonPropertyName("addon")]
     public string? Addon { get; init; }
 }
 
-public record HassioBackupFullParameters
-{
+public record HassioBackupFullParameters {
     ///<summary>Optional (default = current date and time). eg: Backup 1</summary>
     [JsonPropertyName("name")]
     public string? Name { get; init; }
@@ -2967,8 +2694,7 @@ public record HassioBackupFullParameters
     public bool? Compressed { get; init; }
 }
 
-public record HassioBackupPartialParameters
-{
+public record HassioBackupPartialParameters {
     ///<summary>Backup Home Assistant settings</summary>
     [JsonPropertyName("homeassistant")]
     public bool? Homeassistant { get; init; }
@@ -2994,8 +2720,7 @@ public record HassioBackupPartialParameters
     public bool? Compressed { get; init; }
 }
 
-public record HassioRestoreFullParameters
-{
+public record HassioRestoreFullParameters {
     ///<summary>Slug of backup to restore from.</summary>
     [JsonPropertyName("slug")]
     public string? Slug { get; init; }
@@ -3005,8 +2730,7 @@ public record HassioRestoreFullParameters
     public string? Password { get; init; }
 }
 
-public record HassioRestorePartialParameters
-{
+public record HassioRestorePartialParameters {
     ///<summary>Slug of backup to restore from.</summary>
     [JsonPropertyName("slug")]
     public string? Slug { get; init; }
@@ -3028,46 +2752,39 @@ public record HassioRestorePartialParameters
     public string? Password { get; init; }
 }
 
-public class HomeassistantServices
-{
+public class HomeassistantServices {
     private readonly IHaContext _haContext;
 
-    public HomeassistantServices(IHaContext haContext)
-    {
+    public HomeassistantServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Check the Home Assistant configuration files for errors. Errors will be displayed in the Home Assistant log.</summary>
-    public void CheckConfig()
-    {
+    public void CheckConfig() {
         _haContext.CallService("homeassistant", "check_config");
     }
 
     ///<summary>Reload a config entry that matches a target.</summary>
     ///<param name="target">The target for this service call</param>
-    public void ReloadConfigEntry(ServiceTarget target, HomeassistantReloadConfigEntryParameters data)
-    {
+    public void ReloadConfigEntry(ServiceTarget target, HomeassistantReloadConfigEntryParameters data) {
         _haContext.CallService("homeassistant", "reload_config_entry", target, data);
     }
 
     ///<summary>Reload a config entry that matches a target.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="entryId">A configuration entry id eg: 8955375327824e14ba89e4b29cc3ec9a</param>
-    public void ReloadConfigEntry(ServiceTarget target, string? entryId = null)
-    {
+    public void ReloadConfigEntry(ServiceTarget target, string? entryId = null) {
         _haContext.CallService("homeassistant", "reload_config_entry", target,
-            new HomeassistantReloadConfigEntryParameters {EntryId = entryId});
+            new HomeassistantReloadConfigEntryParameters { EntryId = entryId });
     }
 
     ///<summary>Reload the core configuration.</summary>
-    public void ReloadCoreConfig()
-    {
+    public void ReloadCoreConfig() {
         _haContext.CallService("homeassistant", "reload_core_config");
     }
 
     ///<summary>Restart the Home Assistant service.</summary>
-    public void Restart()
-    {
+    public void Restart() {
         _haContext.CallService("homeassistant", "restart");
     }
 
@@ -3075,70 +2792,60 @@ public class HomeassistantServices
     ///     Save the persistent states (for entities derived from RestoreEntity) immediately. Maintain the normal periodic
     ///     saving interval.
     /// </summary>
-    public void SavePersistentStates()
-    {
+    public void SavePersistentStates() {
         _haContext.CallService("homeassistant", "save_persistent_states");
     }
 
     ///<summary>Update the Home Assistant location.</summary>
-    public void SetLocation(HomeassistantSetLocationParameters data)
-    {
+    public void SetLocation(HomeassistantSetLocationParameters data) {
         _haContext.CallService("homeassistant", "set_location", target: null, data);
     }
 
     ///<summary>Update the Home Assistant location.</summary>
     ///<param name="latitude">Latitude of your location. eg: 32,87336</param>
     ///<param name="longitude">Longitude of your location. eg: 117,22743</param>
-    public void SetLocation(string latitude, string longitude)
-    {
+    public void SetLocation(string latitude, string longitude) {
         _haContext.CallService("homeassistant", "set_location", target: null,
-            new HomeassistantSetLocationParameters {Latitude = latitude, Longitude = longitude});
+            new HomeassistantSetLocationParameters { Latitude = latitude, Longitude = longitude });
     }
 
     ///<summary>Stop the Home Assistant service.</summary>
-    public void Stop()
-    {
+    public void Stop() {
         _haContext.CallService("homeassistant", "stop");
     }
 
     ///<summary>Generic service to toggle devices on/off under any domain</summary>
     ///<param name="target">The target for this service call</param>
-    public void Toggle(ServiceTarget target)
-    {
+    public void Toggle(ServiceTarget target) {
         _haContext.CallService("homeassistant", "toggle", target);
     }
 
     ///<summary>Generic service to turn devices off under any domain.</summary>
     ///<param name="target">The target for this service call</param>
-    public void TurnOff(ServiceTarget target)
-    {
+    public void TurnOff(ServiceTarget target) {
         _haContext.CallService("homeassistant", "turn_off", target);
     }
 
     ///<summary>Generic service to turn devices on under any domain.</summary>
     ///<param name="target">The target for this service call</param>
-    public void TurnOn(ServiceTarget target)
-    {
+    public void TurnOn(ServiceTarget target) {
         _haContext.CallService("homeassistant", "turn_on", target);
     }
 
     ///<summary>Force one or more entities to update its data</summary>
     ///<param name="target">The target for this service call</param>
-    public void UpdateEntity(ServiceTarget target)
-    {
+    public void UpdateEntity(ServiceTarget target) {
         _haContext.CallService("homeassistant", "update_entity", target);
     }
 }
 
-public record HomeassistantReloadConfigEntryParameters
-{
+public record HomeassistantReloadConfigEntryParameters {
     ///<summary>A configuration entry id eg: 8955375327824e14ba89e4b29cc3ec9a</summary>
     [JsonPropertyName("entry_id")]
     public string? EntryId { get; init; }
 }
 
-public record HomeassistantSetLocationParameters
-{
+public record HomeassistantSetLocationParameters {
     ///<summary>Latitude of your location. eg: 32,87336</summary>
     [JsonPropertyName("latitude")]
     public string? Latitude { get; init; }
@@ -3148,84 +2855,70 @@ public record HomeassistantSetLocationParameters
     public string? Longitude { get; init; }
 }
 
-public class InputBooleanServices
-{
+public class InputBooleanServices {
     private readonly IHaContext _haContext;
 
-    public InputBooleanServices(IHaContext haContext)
-    {
+    public InputBooleanServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Reload the input_boolean configuration</summary>
-    public void Reload()
-    {
+    public void Reload() {
         _haContext.CallService("input_boolean", "reload");
     }
 
     ///<summary>Toggle an input boolean</summary>
     ///<param name="target">The target for this service call</param>
-    public void Toggle(ServiceTarget target)
-    {
+    public void Toggle(ServiceTarget target) {
         _haContext.CallService("input_boolean", "toggle", target);
     }
 
     ///<summary>Turn off an input boolean</summary>
     ///<param name="target">The target for this service call</param>
-    public void TurnOff(ServiceTarget target)
-    {
+    public void TurnOff(ServiceTarget target) {
         _haContext.CallService("input_boolean", "turn_off", target);
     }
 
     ///<summary>Turn on an input boolean</summary>
     ///<param name="target">The target for this service call</param>
-    public void TurnOn(ServiceTarget target)
-    {
+    public void TurnOn(ServiceTarget target) {
         _haContext.CallService("input_boolean", "turn_on", target);
     }
 }
 
-public class InputButtonServices
-{
+public class InputButtonServices {
     private readonly IHaContext _haContext;
 
-    public InputButtonServices(IHaContext haContext)
-    {
+    public InputButtonServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Press the input button entity.</summary>
     ///<param name="target">The target for this service call</param>
-    public void Press(ServiceTarget target)
-    {
+    public void Press(ServiceTarget target) {
         _haContext.CallService("input_button", "press", target);
     }
 
-    public void Reload()
-    {
+    public void Reload() {
         _haContext.CallService("input_button", "reload");
     }
 }
 
-public class InputDatetimeServices
-{
+public class InputDatetimeServices {
     private readonly IHaContext _haContext;
 
-    public InputDatetimeServices(IHaContext haContext)
-    {
+    public InputDatetimeServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Reload the input_datetime configuration.</summary>
-    public void Reload()
-    {
+    public void Reload() {
         _haContext.CallService("input_datetime", "reload");
     }
 
     ///<summary>This can be used to dynamically set the date and/or time.</summary>
     ///<param name="target">The target for this service call</param>
-    public void SetDatetime(ServiceTarget target, InputDatetimeSetDatetimeParameters data)
-    {
+    public void SetDatetime(ServiceTarget target, InputDatetimeSetDatetimeParameters data) {
         _haContext.CallService("input_datetime", "set_datetime", target, data);
     }
 
@@ -3240,16 +2933,13 @@ public class InputDatetimeServices
         string? date = null,
         DateTime? time = null,
         string? datetime = null,
-        long? timestamp = null)
-    {
+        long? timestamp = null) {
         _haContext.CallService("input_datetime", "set_datetime", target,
-            new InputDatetimeSetDatetimeParameters
-                {Date = date, Time = time, Datetime = datetime, Timestamp = timestamp});
+            new InputDatetimeSetDatetimeParameters { Date = date, Time = time, Datetime = datetime, Timestamp = timestamp });
     }
 }
 
-public record InputDatetimeSetDatetimeParameters
-{
+public record InputDatetimeSetDatetimeParameters {
     ///<summary>The target date the entity should be set to. eg: "2019-04-20"</summary>
     [JsonPropertyName("date")]
     public string? Date { get; init; }
@@ -3267,231 +2957,197 @@ public record InputDatetimeSetDatetimeParameters
     public long? Timestamp { get; init; }
 }
 
-public class InputNumberServices
-{
+public class InputNumberServices {
     private readonly IHaContext _haContext;
 
-    public InputNumberServices(IHaContext haContext)
-    {
+    public InputNumberServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Decrement the value of an input number entity by its stepping.</summary>
     ///<param name="target">The target for this service call</param>
-    public void Decrement(ServiceTarget target)
-    {
+    public void Decrement(ServiceTarget target) {
         _haContext.CallService("input_number", "decrement", target);
     }
 
     ///<summary>Increment the value of an input number entity by its stepping.</summary>
     ///<param name="target">The target for this service call</param>
-    public void Increment(ServiceTarget target)
-    {
+    public void Increment(ServiceTarget target) {
         _haContext.CallService("input_number", "increment", target);
     }
 
     ///<summary>Reload the input_number configuration.</summary>
-    public void Reload()
-    {
+    public void Reload() {
         _haContext.CallService("input_number", "reload");
     }
 
     ///<summary>Set the value of an input number entity.</summary>
     ///<param name="target">The target for this service call</param>
-    public void SetValue(ServiceTarget target, InputNumberSetValueParameters data)
-    {
+    public void SetValue(ServiceTarget target, InputNumberSetValueParameters data) {
         _haContext.CallService("input_number", "set_value", target, data);
     }
 
     ///<summary>Set the value of an input number entity.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="value">The target value the entity should be set to.</param>
-    public void SetValue(ServiceTarget target, double value)
-    {
-        _haContext.CallService("input_number", "set_value", target, new InputNumberSetValueParameters {Value = value});
+    public void SetValue(ServiceTarget target, double value) {
+        _haContext.CallService("input_number", "set_value", target, new InputNumberSetValueParameters { Value = value });
     }
 }
 
-public record InputNumberSetValueParameters
-{
+public record InputNumberSetValueParameters {
     ///<summary>The target value the entity should be set to.</summary>
     [JsonPropertyName("value")]
     public double? Value { get; init; }
 }
 
-public class InputSelectServices
-{
+public class InputSelectServices {
     private readonly IHaContext _haContext;
 
-    public InputSelectServices(IHaContext haContext)
-    {
+    public InputSelectServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Reload the input_select configuration.</summary>
-    public void Reload()
-    {
+    public void Reload() {
         _haContext.CallService("input_select", "reload");
     }
 
     ///<summary>Select the first option of an input select entity.</summary>
     ///<param name="target">The target for this service call</param>
-    public void SelectFirst(ServiceTarget target)
-    {
+    public void SelectFirst(ServiceTarget target) {
         _haContext.CallService("input_select", "select_first", target);
     }
 
     ///<summary>Select the last option of an input select entity.</summary>
     ///<param name="target">The target for this service call</param>
-    public void SelectLast(ServiceTarget target)
-    {
+    public void SelectLast(ServiceTarget target) {
         _haContext.CallService("input_select", "select_last", target);
     }
 
     ///<summary>Select the next options of an input select entity.</summary>
     ///<param name="target">The target for this service call</param>
-    public void SelectNext(ServiceTarget target, InputSelectSelectNextParameters data)
-    {
+    public void SelectNext(ServiceTarget target, InputSelectSelectNextParameters data) {
         _haContext.CallService("input_select", "select_next", target, data);
     }
 
     ///<summary>Select the next options of an input select entity.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="cycle">If the option should cycle from the last to the first.</param>
-    public void SelectNext(ServiceTarget target, bool? cycle = null)
-    {
+    public void SelectNext(ServiceTarget target, bool? cycle = null) {
         _haContext.CallService("input_select", "select_next", target,
-            new InputSelectSelectNextParameters {Cycle = cycle});
+            new InputSelectSelectNextParameters { Cycle = cycle });
     }
 
     ///<summary>Select an option of an input select entity.</summary>
     ///<param name="target">The target for this service call</param>
-    public void SelectOption(ServiceTarget target, InputSelectSelectOptionParameters data)
-    {
+    public void SelectOption(ServiceTarget target, InputSelectSelectOptionParameters data) {
         _haContext.CallService("input_select", "select_option", target, data);
     }
 
     ///<summary>Select an option of an input select entity.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="option">Option to be selected. eg: "Item A"</param>
-    public void SelectOption(ServiceTarget target, string option)
-    {
+    public void SelectOption(ServiceTarget target, string option) {
         _haContext.CallService("input_select", "select_option", target,
-            new InputSelectSelectOptionParameters {Option = option});
+            new InputSelectSelectOptionParameters { Option = option });
     }
 
     ///<summary>Select the previous options of an input select entity.</summary>
     ///<param name="target">The target for this service call</param>
-    public void SelectPrevious(ServiceTarget target, InputSelectSelectPreviousParameters data)
-    {
+    public void SelectPrevious(ServiceTarget target, InputSelectSelectPreviousParameters data) {
         _haContext.CallService("input_select", "select_previous", target, data);
     }
 
     ///<summary>Select the previous options of an input select entity.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="cycle">If the option should cycle from the first to the last.</param>
-    public void SelectPrevious(ServiceTarget target, bool? cycle = null)
-    {
+    public void SelectPrevious(ServiceTarget target, bool? cycle = null) {
         _haContext.CallService("input_select", "select_previous", target,
-            new InputSelectSelectPreviousParameters {Cycle = cycle});
+            new InputSelectSelectPreviousParameters { Cycle = cycle });
     }
 
     ///<summary>Set the options of an input select entity.</summary>
     ///<param name="target">The target for this service call</param>
-    public void SetOptions(ServiceTarget target, InputSelectSetOptionsParameters data)
-    {
+    public void SetOptions(ServiceTarget target, InputSelectSetOptionsParameters data) {
         _haContext.CallService("input_select", "set_options", target, data);
     }
 
     ///<summary>Set the options of an input select entity.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="options">Options for the input select entity. eg: ["Item A", "Item B", "Item C"]</param>
-    public void SetOptions(ServiceTarget target, object options)
-    {
+    public void SetOptions(ServiceTarget target, object options) {
         _haContext.CallService("input_select", "set_options", target,
-            new InputSelectSetOptionsParameters {Options = options});
+            new InputSelectSetOptionsParameters { Options = options });
     }
 }
 
-public record InputSelectSelectNextParameters
-{
+public record InputSelectSelectNextParameters {
     ///<summary>If the option should cycle from the last to the first.</summary>
     [JsonPropertyName("cycle")]
     public bool? Cycle { get; init; }
 }
 
-public record InputSelectSelectOptionParameters
-{
+public record InputSelectSelectOptionParameters {
     ///<summary>Option to be selected. eg: "Item A"</summary>
     [JsonPropertyName("option")]
     public string? Option { get; init; }
 }
 
-public record InputSelectSelectPreviousParameters
-{
+public record InputSelectSelectPreviousParameters {
     ///<summary>If the option should cycle from the first to the last.</summary>
     [JsonPropertyName("cycle")]
     public bool? Cycle { get; init; }
 }
 
-public record InputSelectSetOptionsParameters
-{
+public record InputSelectSetOptionsParameters {
     ///<summary>Options for the input select entity. eg: ["Item A", "Item B", "Item C"]</summary>
     [JsonPropertyName("options")]
     public object? Options { get; init; }
 }
 
-public class InputTextServices
-{
+public class InputTextServices {
     private readonly IHaContext _haContext;
 
-    public InputTextServices(IHaContext haContext)
-    {
+    public InputTextServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Reload the input_text configuration.</summary>
-    public void Reload()
-    {
+    public void Reload() {
         _haContext.CallService("input_text", "reload");
     }
 
     ///<summary>Set the value of an input text entity.</summary>
     ///<param name="target">The target for this service call</param>
-    public void SetValue(ServiceTarget target, InputTextSetValueParameters data)
-    {
+    public void SetValue(ServiceTarget target, InputTextSetValueParameters data) {
         _haContext.CallService("input_text", "set_value", target, data);
     }
 
     ///<summary>Set the value of an input text entity.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="value">The target value the entity should be set to. eg: This is an example text</param>
-    public void SetValue(ServiceTarget target, string value)
-    {
-        _haContext.CallService("input_text", "set_value", target, new InputTextSetValueParameters {Value = value});
+    public void SetValue(ServiceTarget target, string value) {
+        _haContext.CallService("input_text", "set_value", target, new InputTextSetValueParameters { Value = value });
     }
 }
 
-public record InputTextSetValueParameters
-{
+public record InputTextSetValueParameters {
     ///<summary>The target value the entity should be set to. eg: This is an example text</summary>
     [JsonPropertyName("value")]
     public string? Value { get; init; }
 }
 
-public class LightServices
-{
+public class LightServices {
     private readonly IHaContext _haContext;
 
-    public LightServices(IHaContext haContext)
-    {
+    public LightServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Toggles one or more lights, from on to off, or, off to on, based on their current state. </summary>
     ///<param name="target">The target for this service call</param>
-    public void Toggle(ServiceTarget target, LightToggleParameters data)
-    {
+    public void Toggle(ServiceTarget target, LightToggleParameters data) {
         _haContext.CallService("light", "toggle", target, data);
     }
 
@@ -3530,11 +3186,9 @@ public class LightServices
         long? brightnessPct = null,
         string? profile = null,
         object? flash = null,
-        string? effect = null)
-    {
+        string? effect = null) {
         _haContext.CallService("light", "toggle", target,
-            new LightToggleParameters
-            {
+            new LightToggleParameters {
                 Transition = transition, RgbColor = rgbColor, ColorName = colorName, HsColor = hsColor,
                 XyColor = xyColor, ColorTemp = colorTemp, Kelvin = kelvin, WhiteValue = whiteValue,
                 Brightness = brightness, BrightnessPct = brightnessPct, Profile = profile, Flash = flash,
@@ -3544,8 +3198,7 @@ public class LightServices
 
     ///<summary>Turns off one or more lights.</summary>
     ///<param name="target">The target for this service call</param>
-    public void TurnOff(ServiceTarget target, LightTurnOffParameters data)
-    {
+    public void TurnOff(ServiceTarget target, LightTurnOffParameters data) {
         _haContext.CallService("light", "turn_off", target, data);
     }
 
@@ -3553,16 +3206,14 @@ public class LightServices
     ///<param name="target">The target for this service call</param>
     ///<param name="transition">Duration it takes to get to next state.</param>
     ///<param name="flash">If the light should flash.</param>
-    public void TurnOff(ServiceTarget target, long? transition = null, object? flash = null)
-    {
+    public void TurnOff(ServiceTarget target, long? transition = null, object? flash = null) {
         _haContext.CallService("light", "turn_off", target,
-            new LightTurnOffParameters {Transition = transition, Flash = flash});
+            new LightTurnOffParameters { Transition = transition, Flash = flash });
     }
 
     ///<summary>Turn on one or more lights and adjust properties of the light, even when they are turned on already. </summary>
     ///<param name="target">The target for this service call</param>
-    public void TurnOn(ServiceTarget target, LightTurnOnParameters data)
-    {
+    public void TurnOn(ServiceTarget target, LightTurnOnParameters data) {
         _haContext.CallService("light", "turn_on", target, data);
     }
 
@@ -3618,11 +3269,9 @@ public class LightServices
         long? white = null,
         string? profile = null,
         object? flash = null,
-        string? effect = null)
-    {
+        string? effect = null) {
         _haContext.CallService("light", "turn_on", target,
-            new LightTurnOnParameters
-            {
+            new LightTurnOnParameters {
                 Transition = transition, RgbColor = rgbColor, RgbwColor = rgbwColor, RgbwwColor = rgbwwColor,
                 ColorName = colorName, HsColor = hsColor, XyColor = xyColor, ColorTemp = colorTemp, Kelvin = kelvin,
                 Brightness = brightness, BrightnessPct = brightnessPct, BrightnessStep = brightnessStep,
@@ -3631,8 +3280,7 @@ public class LightServices
     }
 }
 
-public record LightToggleParameters
-{
+public record LightToggleParameters {
     ///<summary>Duration it takes to get to next state.</summary>
     [JsonPropertyName("transition")]
     public long? Transition { get; init; }
@@ -3692,8 +3340,7 @@ public record LightToggleParameters
     public string? Effect { get; init; }
 }
 
-public record LightTurnOffParameters
-{
+public record LightTurnOffParameters {
     ///<summary>Duration it takes to get to next state.</summary>
     [JsonPropertyName("transition")]
     public long? Transition { get; init; }
@@ -3703,8 +3350,7 @@ public record LightTurnOffParameters
     public object? Flash { get; init; }
 }
 
-public record LightTurnOnParameters
-{
+public record LightTurnOnParameters {
     ///<summary>Duration it takes to get to next state.</summary>
     [JsonPropertyName("transition")]
     public long? Transition { get; init; }
@@ -3789,94 +3435,80 @@ public record LightTurnOnParameters
     public string? Effect { get; init; }
 }
 
-public class LockServices
-{
+public class LockServices {
     private readonly IHaContext _haContext;
 
-    public LockServices(IHaContext haContext)
-    {
+    public LockServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Lock all or specified locks.</summary>
     ///<param name="target">The target for this service call</param>
-    public void Lock(ServiceTarget target, LockLockParameters data)
-    {
+    public void Lock(ServiceTarget target, LockLockParameters data) {
         _haContext.CallService("lock", "lock", target, data);
     }
 
     ///<summary>Lock all or specified locks.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="code">An optional code to lock the lock with. eg: 1234</param>
-    public void Lock(ServiceTarget target, string? code = null)
-    {
-        _haContext.CallService("lock", "lock", target, new LockLockParameters {Code = code});
+    public void Lock(ServiceTarget target, string? code = null) {
+        _haContext.CallService("lock", "lock", target, new LockLockParameters { Code = code });
     }
 
     ///<summary>Open all or specified locks.</summary>
     ///<param name="target">The target for this service call</param>
-    public void Open(ServiceTarget target, LockOpenParameters data)
-    {
+    public void Open(ServiceTarget target, LockOpenParameters data) {
         _haContext.CallService("lock", "open", target, data);
     }
 
     ///<summary>Open all or specified locks.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="code">An optional code to open the lock with. eg: 1234</param>
-    public void Open(ServiceTarget target, string? code = null)
-    {
-        _haContext.CallService("lock", "open", target, new LockOpenParameters {Code = code});
+    public void Open(ServiceTarget target, string? code = null) {
+        _haContext.CallService("lock", "open", target, new LockOpenParameters { Code = code });
     }
 
     ///<summary>Unlock all or specified locks.</summary>
     ///<param name="target">The target for this service call</param>
-    public void Unlock(ServiceTarget target, LockUnlockParameters data)
-    {
+    public void Unlock(ServiceTarget target, LockUnlockParameters data) {
         _haContext.CallService("lock", "unlock", target, data);
     }
 
     ///<summary>Unlock all or specified locks.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="code">An optional code to unlock the lock with. eg: 1234</param>
-    public void Unlock(ServiceTarget target, string? code = null)
-    {
-        _haContext.CallService("lock", "unlock", target, new LockUnlockParameters {Code = code});
+    public void Unlock(ServiceTarget target, string? code = null) {
+        _haContext.CallService("lock", "unlock", target, new LockUnlockParameters { Code = code });
     }
 }
 
-public record LockLockParameters
-{
+public record LockLockParameters {
     ///<summary>An optional code to lock the lock with. eg: 1234</summary>
     [JsonPropertyName("code")]
     public string? Code { get; init; }
 }
 
-public record LockOpenParameters
-{
+public record LockOpenParameters {
     ///<summary>An optional code to open the lock with. eg: 1234</summary>
     [JsonPropertyName("code")]
     public string? Code { get; init; }
 }
 
-public record LockUnlockParameters
-{
+public record LockUnlockParameters {
     ///<summary>An optional code to unlock the lock with. eg: 1234</summary>
     [JsonPropertyName("code")]
     public string? Code { get; init; }
 }
 
-public class LogbookServices
-{
+public class LogbookServices {
     private readonly IHaContext _haContext;
 
-    public LogbookServices(IHaContext haContext)
-    {
+    public LogbookServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Create a custom entry in your logbook.</summary>
-    public void Log(LogbookLogParameters data)
-    {
+    public void Log(LogbookLogParameters data) {
         _haContext.CallService("logbook", "log", target: null, data);
     }
 
@@ -3885,15 +3517,13 @@ public class LogbookServices
     ///<param name="message">Message of the custom logbook entry. eg: is being used</param>
     ///<param name="entityId">Entity to reference in custom logbook entry.</param>
     ///<param name="domain">Icon of domain to display in custom logbook entry. eg: light</param>
-    public void Log(string name, string message, string? entityId = null, string? domain = null)
-    {
+    public void Log(string name, string message, string? entityId = null, string? domain = null) {
         _haContext.CallService("logbook", "log", target: null,
-            new LogbookLogParameters {Name = name, Message = message, EntityId = entityId, Domain = domain});
+            new LogbookLogParameters { Name = name, Message = message, EntityId = entityId, Domain = domain });
     }
 }
 
-public record LogbookLogParameters
-{
+public record LogbookLogParameters {
     ///<summary>Custom name for an entity, can be referenced with entity_id. eg: Kitchen</summary>
     [JsonPropertyName("name")]
     public string? Name { get; init; }
@@ -3911,34 +3541,28 @@ public record LogbookLogParameters
     public string? Domain { get; init; }
 }
 
-public class LovelaceServices
-{
+public class LovelaceServices {
     private readonly IHaContext _haContext;
 
-    public LovelaceServices(IHaContext haContext)
-    {
+    public LovelaceServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Reload Lovelace resources from YAML configuration</summary>
-    public void ReloadResources()
-    {
+    public void ReloadResources() {
         _haContext.CallService("lovelace", "reload_resources");
     }
 }
 
-public class NotifyServices
-{
+public class NotifyServices {
     private readonly IHaContext _haContext;
 
-    public NotifyServices(IHaContext haContext)
-    {
+    public NotifyServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Sends a notification message using the mobile_app_dn2103 integration.</summary>
-    public void MobileAppDn2103(NotifyMobileAppDn2103Parameters data)
-    {
+    public void MobileAppDn2103(NotifyMobileAppDn2103Parameters data) {
         _haContext.CallService("notify", "mobile_app_dn2103", target: null, data);
     }
 
@@ -3950,15 +3574,13 @@ public class NotifyServices
     ///     specific
     /// </param>
     /// <param name="data">Extended information for notification. Optional depending on the platform. eg: platform specific</param>
-    public void MobileAppDn2103(string message, string? title = null, object? target = null, object? data = null)
-    {
+    public void MobileAppDn2103(string message, string? title = null, object? target = null, object? data = null) {
         _haContext.CallService("notify", "mobile_app_dn2103", target: null,
-            new NotifyMobileAppDn2103Parameters {Message = message, Title = title, Target = target, Data = data});
+            new NotifyMobileAppDn2103Parameters { Message = message, Title = title, Target = target, Data = data });
     }
 
     ///<summary>Sends a notification message using the mobile_app_le2123 integration.</summary>
-    public void MobileAppLe2123(NotifyMobileAppLe2123Parameters data)
-    {
+    public void MobileAppLe2123(NotifyMobileAppLe2123Parameters data) {
         _haContext.CallService("notify", "mobile_app_le2123", target: null, data);
     }
 
@@ -3970,15 +3592,13 @@ public class NotifyServices
     ///     specific
     /// </param>
     /// <param name="data">Extended information for notification. Optional depending on the platform. eg: platform specific</param>
-    public void MobileAppLe2123(string message, string? title = null, object? target = null, object? data = null)
-    {
+    public void MobileAppLe2123(string message, string? title = null, object? target = null, object? data = null) {
         _haContext.CallService("notify", "mobile_app_le2123", target: null,
-            new NotifyMobileAppLe2123Parameters {Message = message, Title = title, Target = target, Data = data});
+            new NotifyMobileAppLe2123Parameters { Message = message, Title = title, Target = target, Data = data });
     }
 
     ///<summary>Sends a notification message using the notify service.</summary>
-    public void Notify(NotifyNotifyParameters data)
-    {
+    public void Notify(NotifyNotifyParameters data) {
         _haContext.CallService("notify", "notify", target: null, data);
     }
 
@@ -3990,30 +3610,26 @@ public class NotifyServices
     ///     specific
     /// </param>
     /// <param name="data">Extended information for notification. Optional depending on the platform. eg: platform specific</param>
-    public void Notify(string message, string? title = null, object? target = null, object? data = null)
-    {
+    public void Notify(string message, string? title = null, object? target = null, object? data = null) {
         _haContext.CallService("notify", "notify", target: null,
-            new NotifyNotifyParameters {Message = message, Title = title, Target = target, Data = data});
+            new NotifyNotifyParameters { Message = message, Title = title, Target = target, Data = data });
     }
 
     ///<summary>Sends a notification that is visible in the front-end.</summary>
-    public void PersistentNotification(NotifyPersistentNotificationParameters data)
-    {
+    public void PersistentNotification(NotifyPersistentNotificationParameters data) {
         _haContext.CallService("notify", "persistent_notification", target: null, data);
     }
 
     ///<summary>Sends a notification that is visible in the front-end.</summary>
     ///<param name="message">Message body of the notification. eg: The garage door has been open for 10 minutes.</param>
     ///<param name="title">Title for your notification. eg: Your Garage Door Friend</param>
-    public void PersistentNotification(string message, string? title = null)
-    {
+    public void PersistentNotification(string message, string? title = null) {
         _haContext.CallService("notify", "persistent_notification", target: null,
-            new NotifyPersistentNotificationParameters {Message = message, Title = title});
+            new NotifyPersistentNotificationParameters { Message = message, Title = title });
     }
 
     ///<summary>Sends a notification message using the tibber service.</summary>
-    public void Tibber(NotifyTibberParameters data)
-    {
+    public void Tibber(NotifyTibberParameters data) {
         _haContext.CallService("notify", "tibber", target: null, data);
     }
 
@@ -4025,15 +3641,13 @@ public class NotifyServices
     ///     specific
     /// </param>
     /// <param name="data">Extended information for notification. Optional depending on the platform. eg: platform specific</param>
-    public void Tibber(string message, string? title = null, object? target = null, object? data = null)
-    {
+    public void Tibber(string message, string? title = null, object? target = null, object? data = null) {
         _haContext.CallService("notify", "tibber", target: null,
-            new NotifyTibberParameters {Message = message, Title = title, Target = target, Data = data});
+            new NotifyTibberParameters { Message = message, Title = title, Target = target, Data = data });
     }
 }
 
-public record NotifyMobileAppDn2103Parameters
-{
+public record NotifyMobileAppDn2103Parameters {
     ///<summary>Message body of the notification. eg: The garage door has been open for 10 minutes.</summary>
     [JsonPropertyName("message")]
     public string? Message { get; init; }
@@ -4051,8 +3665,7 @@ public record NotifyMobileAppDn2103Parameters
     public object? Data { get; init; }
 }
 
-public record NotifyMobileAppLe2123Parameters
-{
+public record NotifyMobileAppLe2123Parameters {
     ///<summary>Message body of the notification. eg: The garage door has been open for 10 minutes.</summary>
     [JsonPropertyName("message")]
     public string? Message { get; init; }
@@ -4070,8 +3683,7 @@ public record NotifyMobileAppLe2123Parameters
     public object? Data { get; init; }
 }
 
-public record NotifyNotifyParameters
-{
+public record NotifyNotifyParameters {
     ///<summary>Message body of the notification. eg: The garage door has been open for 10 minutes.</summary>
     [JsonPropertyName("message")]
     public string? Message { get; init; }
@@ -4089,8 +3701,7 @@ public record NotifyNotifyParameters
     public object? Data { get; init; }
 }
 
-public record NotifyPersistentNotificationParameters
-{
+public record NotifyPersistentNotificationParameters {
     ///<summary>Message body of the notification. eg: The garage door has been open for 10 minutes.</summary>
     [JsonPropertyName("message")]
     public string? Message { get; init; }
@@ -4100,8 +3711,7 @@ public record NotifyPersistentNotificationParameters
     public string? Title { get; init; }
 }
 
-public record NotifyTibberParameters
-{
+public record NotifyTibberParameters {
     ///<summary>Message body of the notification. eg: The garage door has been open for 10 minutes.</summary>
     [JsonPropertyName("message")]
     public string? Message { get; init; }
@@ -4119,50 +3729,42 @@ public record NotifyTibberParameters
     public object? Data { get; init; }
 }
 
-public class NumberServices
-{
+public class NumberServices {
     private readonly IHaContext _haContext;
 
-    public NumberServices(IHaContext haContext)
-    {
+    public NumberServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Set the value of a Number entity.</summary>
     ///<param name="target">The target for this service call</param>
-    public void SetValue(ServiceTarget target, NumberSetValueParameters data)
-    {
+    public void SetValue(ServiceTarget target, NumberSetValueParameters data) {
         _haContext.CallService("number", "set_value", target, data);
     }
 
     ///<summary>Set the value of a Number entity.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="value">The target value the entity should be set to. eg: 42</param>
-    public void SetValue(ServiceTarget target, string? value = null)
-    {
-        _haContext.CallService("number", "set_value", target, new NumberSetValueParameters {Value = value});
+    public void SetValue(ServiceTarget target, string? value = null) {
+        _haContext.CallService("number", "set_value", target, new NumberSetValueParameters { Value = value });
     }
 }
 
-public record NumberSetValueParameters
-{
+public record NumberSetValueParameters {
     ///<summary>The target value the entity should be set to. eg: 42</summary>
     [JsonPropertyName("value")]
     public string? Value { get; init; }
 }
 
-public class PersistentNotificationServices
-{
+public class PersistentNotificationServices {
     private readonly IHaContext _haContext;
 
-    public PersistentNotificationServices(IHaContext haContext)
-    {
+    public PersistentNotificationServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Show a notification in the frontend.</summary>
-    public void Create(PersistentNotificationCreateParameters data)
-    {
+    public void Create(PersistentNotificationCreateParameters data) {
         _haContext.CallService("persistent_notification", "create", target: null, data);
     }
 
@@ -4170,44 +3772,37 @@ public class PersistentNotificationServices
     ///<param name="message">Message body of the notification. [Templates accepted] eg: Please check your configuration.yaml.</param>
     ///<param name="title">Optional title for your notification. [Templates accepted] eg: Test notification</param>
     ///<param name="notificationId">Target ID of the notification, will replace a notification with the same ID. eg: 1234</param>
-    public void Create(string message, string? title = null, string? notificationId = null)
-    {
+    public void Create(string message, string? title = null, string? notificationId = null) {
         _haContext.CallService("persistent_notification", "create", target: null,
-            new PersistentNotificationCreateParameters
-                {Message = message, Title = title, NotificationId = notificationId});
+            new PersistentNotificationCreateParameters { Message = message, Title = title, NotificationId = notificationId });
     }
 
     ///<summary>Remove a notification from the frontend.</summary>
-    public void Dismiss(PersistentNotificationDismissParameters data)
-    {
+    public void Dismiss(PersistentNotificationDismissParameters data) {
         _haContext.CallService("persistent_notification", "dismiss", target: null, data);
     }
 
     ///<summary>Remove a notification from the frontend.</summary>
     ///<param name="notificationId">Target ID of the notification, which should be removed. eg: 1234</param>
-    public void Dismiss(string notificationId)
-    {
+    public void Dismiss(string notificationId) {
         _haContext.CallService("persistent_notification", "dismiss", target: null,
-            new PersistentNotificationDismissParameters {NotificationId = notificationId});
+            new PersistentNotificationDismissParameters { NotificationId = notificationId });
     }
 
     ///<summary>Mark a notification read.</summary>
-    public void MarkRead(PersistentNotificationMarkReadParameters data)
-    {
+    public void MarkRead(PersistentNotificationMarkReadParameters data) {
         _haContext.CallService("persistent_notification", "mark_read", target: null, data);
     }
 
     ///<summary>Mark a notification read.</summary>
     ///<param name="notificationId">Target ID of the notification, which should be mark read. eg: 1234</param>
-    public void MarkRead(string notificationId)
-    {
+    public void MarkRead(string notificationId) {
         _haContext.CallService("persistent_notification", "mark_read", target: null,
-            new PersistentNotificationMarkReadParameters {NotificationId = notificationId});
+            new PersistentNotificationMarkReadParameters { NotificationId = notificationId });
     }
 }
 
-public record PersistentNotificationCreateParameters
-{
+public record PersistentNotificationCreateParameters {
     ///<summary>Message body of the notification. [Templates accepted] eg: Please check your configuration.yaml.</summary>
     [JsonPropertyName("message")]
     public string? Message { get; init; }
@@ -4221,81 +3816,67 @@ public record PersistentNotificationCreateParameters
     public string? NotificationId { get; init; }
 }
 
-public record PersistentNotificationDismissParameters
-{
+public record PersistentNotificationDismissParameters {
     ///<summary>Target ID of the notification, which should be removed. eg: 1234</summary>
     [JsonPropertyName("notification_id")]
     public string? NotificationId { get; init; }
 }
 
-public record PersistentNotificationMarkReadParameters
-{
+public record PersistentNotificationMarkReadParameters {
     ///<summary>Target ID of the notification, which should be mark read. eg: 1234</summary>
     [JsonPropertyName("notification_id")]
     public string? NotificationId { get; init; }
 }
 
-public class PersonServices
-{
+public class PersonServices {
     private readonly IHaContext _haContext;
 
-    public PersonServices(IHaContext haContext)
-    {
+    public PersonServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Reload the person configuration.</summary>
-    public void Reload()
-    {
+    public void Reload() {
         _haContext.CallService("person", "reload");
     }
 }
 
-public class PythonScriptServices
-{
+public class PythonScriptServices {
     private readonly IHaContext _haContext;
 
-    public PythonScriptServices(IHaContext haContext)
-    {
+    public PythonScriptServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
-    public void HelloWorld()
-    {
+    public void HelloWorld() {
         _haContext.CallService("python_script", "hello_world");
     }
 
     ///<summary>Reload all available python_scripts</summary>
-    public void Reload()
-    {
+    public void Reload() {
         _haContext.CallService("python_script", "reload");
     }
 }
 
-public class RecorderServices
-{
+public class RecorderServices {
     private readonly IHaContext _haContext;
 
-    public RecorderServices(IHaContext haContext)
-    {
+    public RecorderServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Stop the recording of events and state changes</summary>
-    public void Disable()
-    {
+    public void Disable() {
         _haContext.CallService("recorder", "disable");
     }
 
     ///<summary>Start the recording of events and state changes</summary>
-    public void Enable()
-    {
+    public void Enable() {
         _haContext.CallService("recorder", "enable");
     }
 
     ///<summary>Start purge task - to clean up old data from your database.</summary>
-    public void Purge(RecorderPurgeParameters data)
-    {
+    public void Purge(RecorderPurgeParameters data) {
         _haContext.CallService("recorder", "purge", target: null, data);
     }
 
@@ -4303,16 +3884,14 @@ public class RecorderServices
     ///<param name="keepDays">Number of history days to keep in database after purge.</param>
     ///<param name="repack">Attempt to save disk space by rewriting the entire database file.</param>
     ///<param name="applyFilter">Apply entity_id and event_type filter in addition to time based purge.</param>
-    public void Purge(long? keepDays = null, bool? repack = null, bool? applyFilter = null)
-    {
+    public void Purge(long? keepDays = null, bool? repack = null, bool? applyFilter = null) {
         _haContext.CallService("recorder", "purge", target: null,
-            new RecorderPurgeParameters {KeepDays = keepDays, Repack = repack, ApplyFilter = applyFilter});
+            new RecorderPurgeParameters { KeepDays = keepDays, Repack = repack, ApplyFilter = applyFilter });
     }
 
     ///<summary>Start purge task to remove specific entities from your database.</summary>
     ///<param name="target">The target for this service call</param>
-    public void PurgeEntities(ServiceTarget target, RecorderPurgeEntitiesParameters data)
-    {
+    public void PurgeEntities(ServiceTarget target, RecorderPurgeEntitiesParameters data) {
         _haContext.CallService("recorder", "purge_entities", target, data);
     }
 
@@ -4323,15 +3902,13 @@ public class RecorderServices
     ///     List the glob patterns to select entities for removal from the recorder database. eg:
     ///     domain*.object_id*
     /// </param>
-    public void PurgeEntities(ServiceTarget target, object? domains = null, object? entityGlobs = null)
-    {
+    public void PurgeEntities(ServiceTarget target, object? domains = null, object? entityGlobs = null) {
         _haContext.CallService("recorder", "purge_entities", target,
-            new RecorderPurgeEntitiesParameters {Domains = domains, EntityGlobs = entityGlobs});
+            new RecorderPurgeEntitiesParameters { Domains = domains, EntityGlobs = entityGlobs });
     }
 }
 
-public record RecorderPurgeParameters
-{
+public record RecorderPurgeParameters {
     ///<summary>Number of history days to keep in database after purge.</summary>
     [JsonPropertyName("keep_days")]
     public long? KeepDays { get; init; }
@@ -4345,8 +3922,7 @@ public record RecorderPurgeParameters
     public bool? ApplyFilter { get; init; }
 }
 
-public record RecorderPurgeEntitiesParameters
-{
+public record RecorderPurgeEntitiesParameters {
     ///<summary>List the domains that need to be removed from the recorder database. eg: sun</summary>
     [JsonPropertyName("domains")]
     public object? Domains { get; init; }
@@ -4356,18 +3932,15 @@ public record RecorderPurgeEntitiesParameters
     public object? EntityGlobs { get; init; }
 }
 
-public class SceneServices
-{
+public class SceneServices {
     private readonly IHaContext _haContext;
 
-    public SceneServices(IHaContext haContext)
-    {
+    public SceneServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Activate a scene with configuration.</summary>
-    public void Apply(SceneApplyParameters data)
-    {
+    public void Apply(SceneApplyParameters data) {
         _haContext.CallService("scene", "apply", target: null, data);
     }
 
@@ -4377,15 +3950,13 @@ public class SceneServices
     ///     {"light.kitchen":"on","light.ceiling":{"state":"on","brightness":80}}
     /// </param>
     /// <param name="transition">Transition duration it takes to bring devices to the state defined in the scene.</param>
-    public void Apply(object entities, long? transition = null)
-    {
+    public void Apply(object entities, long? transition = null) {
         _haContext.CallService("scene", "apply", target: null,
-            new SceneApplyParameters {Entities = entities, Transition = transition});
+            new SceneApplyParameters { Entities = entities, Transition = transition });
     }
 
     ///<summary>Creates a new scene.</summary>
-    public void Create(SceneCreateParameters data)
-    {
+    public void Create(SceneCreateParameters data) {
         _haContext.CallService("scene", "create", target: null, data);
     }
 
@@ -4396,36 +3967,31 @@ public class SceneServices
     ///     {"light.tv_back_light":"on","light.ceiling":{"state":"on","brightness":200}}
     /// </param>
     /// <param name="snapshotEntities">The entities of which a snapshot is to be taken eg: ["light.ceiling","light.kitchen"]</param>
-    public void Create(string sceneId, object? entities = null, object? snapshotEntities = null)
-    {
+    public void Create(string sceneId, object? entities = null, object? snapshotEntities = null) {
         _haContext.CallService("scene", "create", target: null,
-            new SceneCreateParameters {SceneId = sceneId, Entities = entities, SnapshotEntities = snapshotEntities});
+            new SceneCreateParameters { SceneId = sceneId, Entities = entities, SnapshotEntities = snapshotEntities });
     }
 
     ///<summary>Reload the scene configuration.</summary>
-    public void Reload()
-    {
+    public void Reload() {
         _haContext.CallService("scene", "reload");
     }
 
     ///<summary>Activate a scene.</summary>
     ///<param name="target">The target for this service call</param>
-    public void TurnOn(ServiceTarget target, SceneTurnOnParameters data)
-    {
+    public void TurnOn(ServiceTarget target, SceneTurnOnParameters data) {
         _haContext.CallService("scene", "turn_on", target, data);
     }
 
     ///<summary>Activate a scene.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="transition">Transition duration it takes to bring devices to the state defined in the scene.</param>
-    public void TurnOn(ServiceTarget target, long? transition = null)
-    {
-        _haContext.CallService("scene", "turn_on", target, new SceneTurnOnParameters {Transition = transition});
+    public void TurnOn(ServiceTarget target, long? transition = null) {
+        _haContext.CallService("scene", "turn_on", target, new SceneTurnOnParameters { Transition = transition });
     }
 }
 
-public record SceneApplyParameters
-{
+public record SceneApplyParameters {
     /// <summary>
     ///     The entities and the state that they need to be. eg:
     ///     {"light.kitchen":"on","light.ceiling":{"state":"on","brightness":80}}
@@ -4438,8 +4004,7 @@ public record SceneApplyParameters
     public long? Transition { get; init; }
 }
 
-public record SceneCreateParameters
-{
+public record SceneCreateParameters {
     ///<summary>The entity_id of the new scene. eg: all_lights</summary>
     [JsonPropertyName("scene_id")]
     public string? SceneId { get; init; }
@@ -4456,109 +4021,92 @@ public record SceneCreateParameters
     public object? SnapshotEntities { get; init; }
 }
 
-public record SceneTurnOnParameters
-{
+public record SceneTurnOnParameters {
     ///<summary>Transition duration it takes to bring devices to the state defined in the scene.</summary>
     [JsonPropertyName("transition")]
     public long? Transition { get; init; }
 }
 
-public class ScriptServices
-{
+public class ScriptServices {
     private readonly IHaContext _haContext;
 
-    public ScriptServices(IHaContext haContext)
-    {
+    public ScriptServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Reload all the available scripts</summary>
-    public void Reload()
-    {
+    public void Reload() {
         _haContext.CallService("script", "reload");
     }
 
     ///<summary>Toggle script</summary>
     ///<param name="target">The target for this service call</param>
-    public void Toggle(ServiceTarget target)
-    {
+    public void Toggle(ServiceTarget target) {
         _haContext.CallService("script", "toggle", target);
     }
 
     ///<summary>Turn off script</summary>
     ///<param name="target">The target for this service call</param>
-    public void TurnOff(ServiceTarget target)
-    {
+    public void TurnOff(ServiceTarget target) {
         _haContext.CallService("script", "turn_off", target);
     }
 
     ///<summary>Turn on script</summary>
     ///<param name="target">The target for this service call</param>
-    public void TurnOn(ServiceTarget target)
-    {
+    public void TurnOn(ServiceTarget target) {
         _haContext.CallService("script", "turn_on", target);
     }
 }
 
-public class SelectServices
-{
+public class SelectServices {
     private readonly IHaContext _haContext;
 
-    public SelectServices(IHaContext haContext)
-    {
+    public SelectServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Select an option of an select entity.</summary>
     ///<param name="target">The target for this service call</param>
-    public void SelectOption(ServiceTarget target, SelectSelectOptionParameters data)
-    {
+    public void SelectOption(ServiceTarget target, SelectSelectOptionParameters data) {
         _haContext.CallService("select", "select_option", target, data);
     }
 
     ///<summary>Select an option of an select entity.</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="option">Option to be selected. eg: "Item A"</param>
-    public void SelectOption(ServiceTarget target, string option)
-    {
-        _haContext.CallService("select", "select_option", target, new SelectSelectOptionParameters {Option = option});
+    public void SelectOption(ServiceTarget target, string option) {
+        _haContext.CallService("select", "select_option", target, new SelectSelectOptionParameters { Option = option });
     }
 }
 
-public record SelectSelectOptionParameters
-{
+public record SelectSelectOptionParameters {
     ///<summary>Option to be selected. eg: "Item A"</summary>
     [JsonPropertyName("option")]
     public string? Option { get; init; }
 }
 
-public class SirenServices
-{
+public class SirenServices {
     private readonly IHaContext _haContext;
 
-    public SirenServices(IHaContext haContext)
-    {
+    public SirenServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Toggles a siren.</summary>
     ///<param name="target">The target for this service call</param>
-    public void Toggle(ServiceTarget target)
-    {
+    public void Toggle(ServiceTarget target) {
         _haContext.CallService("siren", "toggle", target);
     }
 
     ///<summary>Turn siren off.</summary>
     ///<param name="target">The target for this service call</param>
-    public void TurnOff(ServiceTarget target)
-    {
+    public void TurnOff(ServiceTarget target) {
         _haContext.CallService("siren", "turn_off", target);
     }
 
     ///<summary>Turn siren on.</summary>
     ///<param name="target">The target for this service call</param>
-    public void TurnOn(ServiceTarget target, SirenTurnOnParameters data)
-    {
+    public void TurnOn(ServiceTarget target, SirenTurnOnParameters data) {
         _haContext.CallService("siren", "turn_on", target, data);
     }
 
@@ -4576,15 +4124,13 @@ public class SirenServices
     ///     The duration in seconds of the noise to emit when turning the siren on. Must be supported by the
     ///     integration. eg: 15
     /// </param>
-    public void TurnOn(ServiceTarget target, string? tone = null, double? volumeLevel = null, string? duration = null)
-    {
+    public void TurnOn(ServiceTarget target, string? tone = null, double? volumeLevel = null, string? duration = null) {
         _haContext.CallService("siren", "turn_on", target,
-            new SirenTurnOnParameters {Tone = tone, VolumeLevel = volumeLevel, Duration = duration});
+            new SirenTurnOnParameters { Tone = tone, VolumeLevel = volumeLevel, Duration = duration });
     }
 }
 
-public record SirenTurnOnParameters
-{
+public record SirenTurnOnParameters {
     /// <summary>
     ///     The tone to emit when turning the siren on. When `available_tones` property is a map, either the key or the
     ///     value can be used. Must be supported by the integration. eg: fire
@@ -4604,71 +4150,59 @@ public record SirenTurnOnParameters
     public string? Duration { get; init; }
 }
 
-public class SpeedtestdotnetServices
-{
+public class SpeedtestdotnetServices {
     private readonly IHaContext _haContext;
 
-    public SpeedtestdotnetServices(IHaContext haContext)
-    {
+    public SpeedtestdotnetServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Immediately execute a speed test with Speedtest.net</summary>
-    public void Speedtest()
-    {
+    public void Speedtest() {
         _haContext.CallService("speedtestdotnet", "speedtest");
     }
 }
 
-public class SwitchServices
-{
+public class SwitchServices {
     private readonly IHaContext _haContext;
 
-    public SwitchServices(IHaContext haContext)
-    {
+    public SwitchServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Toggles a switch state</summary>
     ///<param name="target">The target for this service call</param>
-    public void Toggle(ServiceTarget target)
-    {
+    public void Toggle(ServiceTarget target) {
         _haContext.CallService("switch", "toggle", target);
     }
 
     ///<summary>Turn a switch off</summary>
     ///<param name="target">The target for this service call</param>
-    public void TurnOff(ServiceTarget target)
-    {
+    public void TurnOff(ServiceTarget target) {
         _haContext.CallService("switch", "turn_off", target);
     }
 
     ///<summary>Turn a switch on</summary>
     ///<param name="target">The target for this service call</param>
-    public void TurnOn(ServiceTarget target)
-    {
+    public void TurnOn(ServiceTarget target) {
         _haContext.CallService("switch", "turn_on", target);
     }
 }
 
-public class SystemLogServices
-{
+public class SystemLogServices {
     private readonly IHaContext _haContext;
 
-    public SystemLogServices(IHaContext haContext)
-    {
+    public SystemLogServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Clear all log entries.</summary>
-    public void Clear()
-    {
+    public void Clear() {
         _haContext.CallService("system_log", "clear");
     }
 
     ///<summary>Write log entry.</summary>
-    public void Write(SystemLogWriteParameters data)
-    {
+    public void Write(SystemLogWriteParameters data) {
         _haContext.CallService("system_log", "write", target: null, data);
     }
 
@@ -4679,15 +4213,13 @@ public class SystemLogServices
     ///     Logger name under which to log the message. Defaults to 'system_log.external'. eg:
     ///     mycomponent.myplatform
     /// </param>
-    public void Write(string message, object? level = null, string? logger = null)
-    {
+    public void Write(string message, object? level = null, string? logger = null) {
         _haContext.CallService("system_log", "write", target: null,
-            new SystemLogWriteParameters {Message = message, Level = level, Logger = logger});
+            new SystemLogWriteParameters { Message = message, Level = level, Logger = logger });
     }
 }
 
-public record SystemLogWriteParameters
-{
+public record SystemLogWriteParameters {
     ///<summary>Message to log. eg: Something went wrong</summary>
     [JsonPropertyName("message")]
     public string? Message { get; init; }
@@ -4701,98 +4233,82 @@ public record SystemLogWriteParameters
     public string? Logger { get; init; }
 }
 
-public class TemplateServices
-{
+public class TemplateServices {
     private readonly IHaContext _haContext;
 
-    public TemplateServices(IHaContext haContext)
-    {
+    public TemplateServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Reload all template entities.</summary>
-    public void Reload()
-    {
+    public void Reload() {
         _haContext.CallService("template", "reload");
     }
 }
 
-public class TimerServices
-{
+public class TimerServices {
     private readonly IHaContext _haContext;
 
-    public TimerServices(IHaContext haContext)
-    {
+    public TimerServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Cancel a timer.</summary>
     ///<param name="target">The target for this service call</param>
-    public void Cancel(ServiceTarget target)
-    {
+    public void Cancel(ServiceTarget target) {
         _haContext.CallService("timer", "cancel", target);
     }
 
     ///<summary>Finish a timer.</summary>
     ///<param name="target">The target for this service call</param>
-    public void Finish(ServiceTarget target)
-    {
+    public void Finish(ServiceTarget target) {
         _haContext.CallService("timer", "finish", target);
     }
 
     ///<summary>Pause a timer.</summary>
     ///<param name="target">The target for this service call</param>
-    public void Pause(ServiceTarget target)
-    {
+    public void Pause(ServiceTarget target) {
         _haContext.CallService("timer", "pause", target);
     }
 
-    public void Reload()
-    {
+    public void Reload() {
         _haContext.CallService("timer", "reload");
     }
 
     ///<summary>Start a timer</summary>
     ///<param name="target">The target for this service call</param>
-    public void Start(ServiceTarget target, TimerStartParameters data)
-    {
+    public void Start(ServiceTarget target, TimerStartParameters data) {
         _haContext.CallService("timer", "start", target, data);
     }
 
     ///<summary>Start a timer</summary>
     ///<param name="target">The target for this service call</param>
     ///<param name="duration">Duration the timer requires to finish. [optional] eg: 00:01:00 or 60</param>
-    public void Start(ServiceTarget target, string? duration = null)
-    {
-        _haContext.CallService("timer", "start", target, new TimerStartParameters {Duration = duration});
+    public void Start(ServiceTarget target, string? duration = null) {
+        _haContext.CallService("timer", "start", target, new TimerStartParameters { Duration = duration });
     }
 }
 
-public record TimerStartParameters
-{
+public record TimerStartParameters {
     ///<summary>Duration the timer requires to finish. [optional] eg: 00:01:00 or 60</summary>
     [JsonPropertyName("duration")]
     public string? Duration { get; init; }
 }
 
-public class TtsServices
-{
+public class TtsServices {
     private readonly IHaContext _haContext;
 
-    public TtsServices(IHaContext haContext)
-    {
+    public TtsServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Remove all text-to-speech cache files and RAM cache.</summary>
-    public void ClearCache()
-    {
+    public void ClearCache() {
         _haContext.CallService("tts", "clear_cache");
     }
 
     ///<summary>Say something using text-to-speech on a media player with google_translate.</summary>
-    public void GoogleTranslateSay(TtsGoogleTranslateSayParameters data)
-    {
+    public void GoogleTranslateSay(TtsGoogleTranslateSayParameters data) {
         _haContext.CallService("tts", "google_translate_say", target: null, data);
     }
 
@@ -4810,16 +4326,13 @@ public class TtsServices
         string message,
         bool? cache = null,
         string? language = null,
-        object? options = null)
-    {
+        object? options = null) {
         _haContext.CallService("tts", "google_translate_say", target: null,
-            new TtsGoogleTranslateSayParameters
-                {EntityId = entityId, Message = message, Cache = cache, Language = language, Options = options});
+            new TtsGoogleTranslateSayParameters { EntityId = entityId, Message = message, Cache = cache, Language = language, Options = options });
     }
 }
 
-public record TtsGoogleTranslateSayParameters
-{
+public record TtsGoogleTranslateSayParameters {
     ///<summary>Name(s) of media player entities.</summary>
     [JsonPropertyName("entity_id")]
     public string? EntityId { get; init; }
@@ -4841,26 +4354,22 @@ public record TtsGoogleTranslateSayParameters
     public object? Options { get; init; }
 }
 
-public class UpdateServices
-{
+public class UpdateServices {
     private readonly IHaContext _haContext;
 
-    public UpdateServices(IHaContext haContext)
-    {
+    public UpdateServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Removes the skipped version marker from an update.</summary>
     ///<param name="target">The target for this service call</param>
-    public void ClearSkipped(ServiceTarget target)
-    {
+    public void ClearSkipped(ServiceTarget target) {
         _haContext.CallService("update", "clear_skipped", target);
     }
 
     ///<summary>Install an update for this device or service</summary>
     ///<param name="target">The target for this service call</param>
-    public void Install(ServiceTarget target, UpdateInstallParameters data)
-    {
+    public void Install(ServiceTarget target, UpdateInstallParameters data) {
         _haContext.CallService("update", "install", target, data);
     }
 
@@ -4868,22 +4377,19 @@ public class UpdateServices
     ///<param name="target">The target for this service call</param>
     ///<param name="version">Version to install, if omitted, the latest version will be installed. eg: 1.0.0</param>
     ///<param name="backup">Backup before installing the update, if supported by the integration.</param>
-    public void Install(ServiceTarget target, string? version = null, bool? backup = null)
-    {
+    public void Install(ServiceTarget target, string? version = null, bool? backup = null) {
         _haContext.CallService("update", "install", target,
-            new UpdateInstallParameters {Version = version, Backup = backup});
+            new UpdateInstallParameters { Version = version, Backup = backup });
     }
 
     ///<summary>Mark currently available update as skipped.</summary>
     ///<param name="target">The target for this service call</param>
-    public void Skip(ServiceTarget target)
-    {
+    public void Skip(ServiceTarget target) {
         _haContext.CallService("update", "skip", target);
     }
 }
 
-public record UpdateInstallParameters
-{
+public record UpdateInstallParameters {
     ///<summary>Version to install, if omitted, the latest version will be installed. eg: 1.0.0</summary>
     [JsonPropertyName("version")]
     public string? Version { get; init; }
@@ -4893,384 +4399,321 @@ public record UpdateInstallParameters
     public bool? Backup { get; init; }
 }
 
-public class ZoneServices
-{
+public class ZoneServices {
     private readonly IHaContext _haContext;
 
-    public ZoneServices(IHaContext haContext)
-    {
+    public ZoneServices(IHaContext haContext) {
         _haContext = haContext;
     }
 
     ///<summary>Reload the YAML-based zone configuration.</summary>
-    public void Reload()
-    {
+    public void Reload() {
         _haContext.CallService("zone", "reload");
     }
 }
 
-public static class AutomationEntityExtensionMethods
-{
+public static class AutomationEntityExtensionMethods {
     ///<summary>Toggle (enable / disable) an automation.</summary>
-    public static void Toggle(this AutomationEntity target)
-    {
+    public static void Toggle(this AutomationEntity target) {
         target.CallService("toggle");
     }
 
     ///<summary>Toggle (enable / disable) an automation.</summary>
-    public static void Toggle(this IEnumerable<AutomationEntity> target)
-    {
+    public static void Toggle(this IEnumerable<AutomationEntity> target) {
         target.CallService("toggle");
     }
 
     ///<summary>Trigger the actions of an automation.</summary>
-    public static void Trigger(this AutomationEntity target, AutomationTriggerParameters data)
-    {
+    public static void Trigger(this AutomationEntity target, AutomationTriggerParameters data) {
         target.CallService("trigger", data);
     }
 
     ///<summary>Trigger the actions of an automation.</summary>
-    public static void Trigger(this IEnumerable<AutomationEntity> target, AutomationTriggerParameters data)
-    {
+    public static void Trigger(this IEnumerable<AutomationEntity> target, AutomationTriggerParameters data) {
         target.CallService("trigger", data);
     }
 
     ///<summary>Trigger the actions of an automation.</summary>
     ///<param name="target">The AutomationEntity to call this service for</param>
     ///<param name="skipCondition">Whether or not the conditions will be skipped.</param>
-    public static void Trigger(this AutomationEntity target, bool? skipCondition = null)
-    {
-        target.CallService("trigger", new AutomationTriggerParameters {SkipCondition = skipCondition});
+    public static void Trigger(this AutomationEntity target, bool? skipCondition = null) {
+        target.CallService("trigger", new AutomationTriggerParameters { SkipCondition = skipCondition });
     }
 
     ///<summary>Trigger the actions of an automation.</summary>
     ///<param name="target">The IEnumerable<AutomationEntity> to call this service for</param>
     ///<param name="skipCondition">Whether or not the conditions will be skipped.</param>
-    public static void Trigger(this IEnumerable<AutomationEntity> target, bool? skipCondition = null)
-    {
-        target.CallService("trigger", new AutomationTriggerParameters {SkipCondition = skipCondition});
+    public static void Trigger(this IEnumerable<AutomationEntity> target, bool? skipCondition = null) {
+        target.CallService("trigger", new AutomationTriggerParameters { SkipCondition = skipCondition });
     }
 
     ///<summary>Disable an automation.</summary>
-    public static void TurnOff(this AutomationEntity target, AutomationTurnOffParameters data)
-    {
+    public static void TurnOff(this AutomationEntity target, AutomationTurnOffParameters data) {
         target.CallService("turn_off", data);
     }
 
     ///<summary>Disable an automation.</summary>
-    public static void TurnOff(this IEnumerable<AutomationEntity> target, AutomationTurnOffParameters data)
-    {
+    public static void TurnOff(this IEnumerable<AutomationEntity> target, AutomationTurnOffParameters data) {
         target.CallService("turn_off", data);
     }
 
     ///<summary>Disable an automation.</summary>
     ///<param name="target">The AutomationEntity to call this service for</param>
     ///<param name="stopActions">Stop currently running actions.</param>
-    public static void TurnOff(this AutomationEntity target, bool? stopActions = null)
-    {
-        target.CallService("turn_off", new AutomationTurnOffParameters {StopActions = stopActions});
+    public static void TurnOff(this AutomationEntity target, bool? stopActions = null) {
+        target.CallService("turn_off", new AutomationTurnOffParameters { StopActions = stopActions });
     }
 
     ///<summary>Disable an automation.</summary>
     ///<param name="target">The IEnumerable<AutomationEntity> to call this service for</param>
     ///<param name="stopActions">Stop currently running actions.</param>
-    public static void TurnOff(this IEnumerable<AutomationEntity> target, bool? stopActions = null)
-    {
-        target.CallService("turn_off", new AutomationTurnOffParameters {StopActions = stopActions});
+    public static void TurnOff(this IEnumerable<AutomationEntity> target, bool? stopActions = null) {
+        target.CallService("turn_off", new AutomationTurnOffParameters { StopActions = stopActions });
     }
 
     ///<summary>Enable an automation.</summary>
-    public static void TurnOn(this AutomationEntity target)
-    {
+    public static void TurnOn(this AutomationEntity target) {
         target.CallService("turn_on");
     }
 
     ///<summary>Enable an automation.</summary>
-    public static void TurnOn(this IEnumerable<AutomationEntity> target)
-    {
+    public static void TurnOn(this IEnumerable<AutomationEntity> target) {
         target.CallService("turn_on");
     }
 }
 
-public static class ButtonEntityExtensionMethods
-{
+public static class ButtonEntityExtensionMethods {
     ///<summary>Press the button entity.</summary>
-    public static void Press(this ButtonEntity target)
-    {
+    public static void Press(this ButtonEntity target) {
         target.CallService("press");
     }
 
     ///<summary>Press the button entity.</summary>
-    public static void Press(this IEnumerable<ButtonEntity> target)
-    {
+    public static void Press(this IEnumerable<ButtonEntity> target) {
         target.CallService("press");
     }
 }
 
-public static class CoverEntityExtensionMethods
-{
+public static class CoverEntityExtensionMethods {
     ///<summary>Close all or specified cover.</summary>
-    public static void CloseCover(this CoverEntity target)
-    {
+    public static void CloseCover(this CoverEntity target) {
         target.CallService("close_cover");
     }
 
     ///<summary>Close all or specified cover.</summary>
-    public static void CloseCover(this IEnumerable<CoverEntity> target)
-    {
+    public static void CloseCover(this IEnumerable<CoverEntity> target) {
         target.CallService("close_cover");
     }
 
     ///<summary>Close all or specified cover tilt.</summary>
-    public static void CloseCoverTilt(this CoverEntity target)
-    {
+    public static void CloseCoverTilt(this CoverEntity target) {
         target.CallService("close_cover_tilt");
     }
 
     ///<summary>Close all or specified cover tilt.</summary>
-    public static void CloseCoverTilt(this IEnumerable<CoverEntity> target)
-    {
+    public static void CloseCoverTilt(this IEnumerable<CoverEntity> target) {
         target.CallService("close_cover_tilt");
     }
 
     ///<summary>Open all or specified cover.</summary>
-    public static void OpenCover(this CoverEntity target)
-    {
+    public static void OpenCover(this CoverEntity target) {
         target.CallService("open_cover");
     }
 
     ///<summary>Open all or specified cover.</summary>
-    public static void OpenCover(this IEnumerable<CoverEntity> target)
-    {
+    public static void OpenCover(this IEnumerable<CoverEntity> target) {
         target.CallService("open_cover");
     }
 
     ///<summary>Open all or specified cover tilt.</summary>
-    public static void OpenCoverTilt(this CoverEntity target)
-    {
+    public static void OpenCoverTilt(this CoverEntity target) {
         target.CallService("open_cover_tilt");
     }
 
     ///<summary>Open all or specified cover tilt.</summary>
-    public static void OpenCoverTilt(this IEnumerable<CoverEntity> target)
-    {
+    public static void OpenCoverTilt(this IEnumerable<CoverEntity> target) {
         target.CallService("open_cover_tilt");
     }
 
     ///<summary>Move to specific position all or specified cover.</summary>
-    public static void SetCoverPosition(this CoverEntity target, CoverSetCoverPositionParameters data)
-    {
+    public static void SetCoverPosition(this CoverEntity target, CoverSetCoverPositionParameters data) {
         target.CallService("set_cover_position", data);
     }
 
     ///<summary>Move to specific position all or specified cover.</summary>
-    public static void SetCoverPosition(this IEnumerable<CoverEntity> target, CoverSetCoverPositionParameters data)
-    {
+    public static void SetCoverPosition(this IEnumerable<CoverEntity> target, CoverSetCoverPositionParameters data) {
         target.CallService("set_cover_position", data);
     }
 
     ///<summary>Move to specific position all or specified cover.</summary>
     ///<param name="target">The CoverEntity to call this service for</param>
     ///<param name="position">Position of the cover</param>
-    public static void SetCoverPosition(this CoverEntity target, long position)
-    {
-        target.CallService("set_cover_position", new CoverSetCoverPositionParameters {Position = position});
+    public static void SetCoverPosition(this CoverEntity target, long position) {
+        target.CallService("set_cover_position", new CoverSetCoverPositionParameters { Position = position });
     }
 
     ///<summary>Move to specific position all or specified cover.</summary>
     ///<param name="target">The IEnumerable<CoverEntity> to call this service for</param>
     ///<param name="position">Position of the cover</param>
-    public static void SetCoverPosition(this IEnumerable<CoverEntity> target, long position)
-    {
-        target.CallService("set_cover_position", new CoverSetCoverPositionParameters {Position = position});
+    public static void SetCoverPosition(this IEnumerable<CoverEntity> target, long position) {
+        target.CallService("set_cover_position", new CoverSetCoverPositionParameters { Position = position });
     }
 
     ///<summary>Move to specific position all or specified cover tilt.</summary>
-    public static void SetCoverTiltPosition(this CoverEntity target, CoverSetCoverTiltPositionParameters data)
-    {
+    public static void SetCoverTiltPosition(this CoverEntity target, CoverSetCoverTiltPositionParameters data) {
         target.CallService("set_cover_tilt_position", data);
     }
 
     ///<summary>Move to specific position all or specified cover tilt.</summary>
     public static void SetCoverTiltPosition(
         this IEnumerable<CoverEntity> target,
-        CoverSetCoverTiltPositionParameters data)
-    {
+        CoverSetCoverTiltPositionParameters data) {
         target.CallService("set_cover_tilt_position", data);
     }
 
     ///<summary>Move to specific position all or specified cover tilt.</summary>
     ///<param name="target">The CoverEntity to call this service for</param>
     ///<param name="tiltPosition">Tilt position of the cover.</param>
-    public static void SetCoverTiltPosition(this CoverEntity target, long tiltPosition)
-    {
+    public static void SetCoverTiltPosition(this CoverEntity target, long tiltPosition) {
         target.CallService("set_cover_tilt_position",
-            new CoverSetCoverTiltPositionParameters {TiltPosition = tiltPosition});
+            new CoverSetCoverTiltPositionParameters { TiltPosition = tiltPosition });
     }
 
     ///<summary>Move to specific position all or specified cover tilt.</summary>
     ///<param name="target">The IEnumerable<CoverEntity> to call this service for</param>
     ///<param name="tiltPosition">Tilt position of the cover.</param>
-    public static void SetCoverTiltPosition(this IEnumerable<CoverEntity> target, long tiltPosition)
-    {
+    public static void SetCoverTiltPosition(this IEnumerable<CoverEntity> target, long tiltPosition) {
         target.CallService("set_cover_tilt_position",
-            new CoverSetCoverTiltPositionParameters {TiltPosition = tiltPosition});
+            new CoverSetCoverTiltPositionParameters { TiltPosition = tiltPosition });
     }
 
     ///<summary>Stop all or specified cover.</summary>
-    public static void StopCover(this CoverEntity target)
-    {
+    public static void StopCover(this CoverEntity target) {
         target.CallService("stop_cover");
     }
 
     ///<summary>Stop all or specified cover.</summary>
-    public static void StopCover(this IEnumerable<CoverEntity> target)
-    {
+    public static void StopCover(this IEnumerable<CoverEntity> target) {
         target.CallService("stop_cover");
     }
 
     ///<summary>Stop all or specified cover.</summary>
-    public static void StopCoverTilt(this CoverEntity target)
-    {
+    public static void StopCoverTilt(this CoverEntity target) {
         target.CallService("stop_cover_tilt");
     }
 
     ///<summary>Stop all or specified cover.</summary>
-    public static void StopCoverTilt(this IEnumerable<CoverEntity> target)
-    {
+    public static void StopCoverTilt(this IEnumerable<CoverEntity> target) {
         target.CallService("stop_cover_tilt");
     }
 
     ///<summary>Toggle a cover open/closed.</summary>
-    public static void Toggle(this CoverEntity target)
-    {
+    public static void Toggle(this CoverEntity target) {
         target.CallService("toggle");
     }
 
     ///<summary>Toggle a cover open/closed.</summary>
-    public static void Toggle(this IEnumerable<CoverEntity> target)
-    {
+    public static void Toggle(this IEnumerable<CoverEntity> target) {
         target.CallService("toggle");
     }
 
     ///<summary>Toggle a cover tilt open/closed.</summary>
-    public static void ToggleCoverTilt(this CoverEntity target)
-    {
+    public static void ToggleCoverTilt(this CoverEntity target) {
         target.CallService("toggle_cover_tilt");
     }
 
     ///<summary>Toggle a cover tilt open/closed.</summary>
-    public static void ToggleCoverTilt(this IEnumerable<CoverEntity> target)
-    {
+    public static void ToggleCoverTilt(this IEnumerable<CoverEntity> target) {
         target.CallService("toggle_cover_tilt");
     }
 }
 
-public static class InputBooleanEntityExtensionMethods
-{
+public static class InputBooleanEntityExtensionMethods {
     ///<summary>Toggle an input boolean</summary>
-    public static void Toggle(this InputBooleanEntity target)
-    {
+    public static void Toggle(this InputBooleanEntity target) {
         target.CallService("toggle");
     }
 
     ///<summary>Toggle an input boolean</summary>
-    public static void Toggle(this IEnumerable<InputBooleanEntity> target)
-    {
+    public static void Toggle(this IEnumerable<InputBooleanEntity> target) {
         target.CallService("toggle");
     }
 
     ///<summary>Turn off an input boolean</summary>
-    public static void TurnOff(this InputBooleanEntity target)
-    {
+    public static void TurnOff(this InputBooleanEntity target) {
         target.CallService("turn_off");
     }
 
     ///<summary>Turn off an input boolean</summary>
-    public static void TurnOff(this IEnumerable<InputBooleanEntity> target)
-    {
+    public static void TurnOff(this IEnumerable<InputBooleanEntity> target) {
         target.CallService("turn_off");
     }
 
     ///<summary>Turn on an input boolean</summary>
-    public static void TurnOn(this InputBooleanEntity target)
-    {
+    public static void TurnOn(this InputBooleanEntity target) {
         target.CallService("turn_on");
     }
 
     ///<summary>Turn on an input boolean</summary>
-    public static void TurnOn(this IEnumerable<InputBooleanEntity> target)
-    {
+    public static void TurnOn(this IEnumerable<InputBooleanEntity> target) {
         target.CallService("turn_on");
     }
 }
 
-public static class InputNumberEntityExtensionMethods
-{
+public static class InputNumberEntityExtensionMethods {
     ///<summary>Decrement the value of an input number entity by its stepping.</summary>
-    public static void Decrement(this InputNumberEntity target)
-    {
+    public static void Decrement(this InputNumberEntity target) {
         target.CallService("decrement");
     }
 
     ///<summary>Decrement the value of an input number entity by its stepping.</summary>
-    public static void Decrement(this IEnumerable<InputNumberEntity> target)
-    {
+    public static void Decrement(this IEnumerable<InputNumberEntity> target) {
         target.CallService("decrement");
     }
 
     ///<summary>Increment the value of an input number entity by its stepping.</summary>
-    public static void Increment(this InputNumberEntity target)
-    {
+    public static void Increment(this InputNumberEntity target) {
         target.CallService("increment");
     }
 
     ///<summary>Increment the value of an input number entity by its stepping.</summary>
-    public static void Increment(this IEnumerable<InputNumberEntity> target)
-    {
+    public static void Increment(this IEnumerable<InputNumberEntity> target) {
         target.CallService("increment");
     }
 
     ///<summary>Set the value of an input number entity.</summary>
-    public static void SetValue(this InputNumberEntity target, InputNumberSetValueParameters data)
-    {
+    public static void SetValue(this InputNumberEntity target, InputNumberSetValueParameters data) {
         target.CallService("set_value", data);
     }
 
     ///<summary>Set the value of an input number entity.</summary>
-    public static void SetValue(this IEnumerable<InputNumberEntity> target, InputNumberSetValueParameters data)
-    {
+    public static void SetValue(this IEnumerable<InputNumberEntity> target, InputNumberSetValueParameters data) {
         target.CallService("set_value", data);
     }
 
     ///<summary>Set the value of an input number entity.</summary>
     ///<param name="target">The InputNumberEntity to call this service for</param>
     ///<param name="value">The target value the entity should be set to.</param>
-    public static void SetValue(this InputNumberEntity target, double value)
-    {
-        target.CallService("set_value", new InputNumberSetValueParameters {Value = value});
+    public static void SetValue(this InputNumberEntity target, double value) {
+        target.CallService("set_value", new InputNumberSetValueParameters { Value = value });
     }
 
     ///<summary>Set the value of an input number entity.</summary>
     ///<param name="target">The IEnumerable<InputNumberEntity> to call this service for</param>
     ///<param name="value">The target value the entity should be set to.</param>
-    public static void SetValue(this IEnumerable<InputNumberEntity> target, double value)
-    {
-        target.CallService("set_value", new InputNumberSetValueParameters {Value = value});
+    public static void SetValue(this IEnumerable<InputNumberEntity> target, double value) {
+        target.CallService("set_value", new InputNumberSetValueParameters { Value = value });
     }
 }
 
-public static class LightEntityExtensionMethods
-{
+public static class LightEntityExtensionMethods {
     ///<summary>Toggles one or more lights, from on to off, or, off to on, based on their current state. </summary>
-    public static void Toggle(this LightEntity target, LightToggleParameters data)
-    {
+    public static void Toggle(this LightEntity target, LightToggleParameters data) {
         target.CallService("toggle", data);
     }
 
     ///<summary>Toggles one or more lights, from on to off, or, off to on, based on their current state. </summary>
-    public static void Toggle(this IEnumerable<LightEntity> target, LightToggleParameters data)
-    {
+    public static void Toggle(this IEnumerable<LightEntity> target, LightToggleParameters data) {
         target.CallService("toggle", data);
     }
 
@@ -5309,11 +4752,9 @@ public static class LightEntityExtensionMethods
         long? brightnessPct = null,
         string? profile = null,
         object? flash = null,
-        string? effect = null)
-    {
+        string? effect = null) {
         target.CallService("toggle",
-            new LightToggleParameters
-            {
+            new LightToggleParameters {
                 Transition = transition, RgbColor = rgbColor, ColorName = colorName, HsColor = hsColor,
                 XyColor = xyColor, ColorTemp = colorTemp, Kelvin = kelvin, WhiteValue = whiteValue,
                 Brightness = brightness, BrightnessPct = brightnessPct, Profile = profile, Flash = flash,
@@ -5356,11 +4797,9 @@ public static class LightEntityExtensionMethods
         long? brightnessPct = null,
         string? profile = null,
         object? flash = null,
-        string? effect = null)
-    {
+        string? effect = null) {
         target.CallService("toggle",
-            new LightToggleParameters
-            {
+            new LightToggleParameters {
                 Transition = transition, RgbColor = rgbColor, ColorName = colorName, HsColor = hsColor,
                 XyColor = xyColor, ColorTemp = colorTemp, Kelvin = kelvin, WhiteValue = whiteValue,
                 Brightness = brightness, BrightnessPct = brightnessPct, Profile = profile, Flash = flash,
@@ -5369,14 +4808,12 @@ public static class LightEntityExtensionMethods
     }
 
     ///<summary>Turns off one or more lights.</summary>
-    public static void TurnOff(this LightEntity target, LightTurnOffParameters data)
-    {
+    public static void TurnOff(this LightEntity target, LightTurnOffParameters data) {
         target.CallService("turn_off", data);
     }
 
     ///<summary>Turns off one or more lights.</summary>
-    public static void TurnOff(this IEnumerable<LightEntity> target, LightTurnOffParameters data)
-    {
+    public static void TurnOff(this IEnumerable<LightEntity> target, LightTurnOffParameters data) {
         target.CallService("turn_off", data);
     }
 
@@ -5384,29 +4821,25 @@ public static class LightEntityExtensionMethods
     ///<param name="target">The LightEntity to call this service for</param>
     ///<param name="transition">Duration it takes to get to next state.</param>
     ///<param name="flash">If the light should flash.</param>
-    public static void TurnOff(this LightEntity target, long? transition = null, object? flash = null)
-    {
-        target.CallService("turn_off", new LightTurnOffParameters {Transition = transition, Flash = flash});
+    public static void TurnOff(this LightEntity target, long? transition = null, object? flash = null) {
+        target.CallService("turn_off", new LightTurnOffParameters { Transition = transition, Flash = flash });
     }
 
     ///<summary>Turns off one or more lights.</summary>
     ///<param name="target">The IEnumerable<LightEntity> to call this service for</param>
     ///<param name="transition">Duration it takes to get to next state.</param>
     ///<param name="flash">If the light should flash.</param>
-    public static void TurnOff(this IEnumerable<LightEntity> target, long? transition = null, object? flash = null)
-    {
-        target.CallService("turn_off", new LightTurnOffParameters {Transition = transition, Flash = flash});
+    public static void TurnOff(this IEnumerable<LightEntity> target, long? transition = null, object? flash = null) {
+        target.CallService("turn_off", new LightTurnOffParameters { Transition = transition, Flash = flash });
     }
 
     ///<summary>Turn on one or more lights and adjust properties of the light, even when they are turned on already. </summary>
-    public static void TurnOn(this LightEntity target, LightTurnOnParameters data)
-    {
+    public static void TurnOn(this LightEntity target, LightTurnOnParameters data) {
         target.CallService("turn_on", data);
     }
 
     ///<summary>Turn on one or more lights and adjust properties of the light, even when they are turned on already. </summary>
-    public static void TurnOn(this IEnumerable<LightEntity> target, LightTurnOnParameters data)
-    {
+    public static void TurnOn(this IEnumerable<LightEntity> target, LightTurnOnParameters data) {
         target.CallService("turn_on", data);
     }
 
@@ -5462,11 +4895,9 @@ public static class LightEntityExtensionMethods
         long? white = null,
         string? profile = null,
         object? flash = null,
-        string? effect = null)
-    {
+        string? effect = null) {
         target.CallService("turn_on",
-            new LightTurnOnParameters
-            {
+            new LightTurnOnParameters {
                 Transition = transition, RgbColor = rgbColor, RgbwColor = rgbwColor, RgbwwColor = rgbwwColor,
                 ColorName = colorName, HsColor = hsColor, XyColor = xyColor, ColorTemp = colorTemp, Kelvin = kelvin,
                 Brightness = brightness, BrightnessPct = brightnessPct, BrightnessStep = brightnessStep,
@@ -5526,11 +4957,9 @@ public static class LightEntityExtensionMethods
         long? white = null,
         string? profile = null,
         object? flash = null,
-        string? effect = null)
-    {
+        string? effect = null) {
         target.CallService("turn_on",
-            new LightTurnOnParameters
-            {
+            new LightTurnOnParameters {
                 Transition = transition, RgbColor = rgbColor, RgbwColor = rgbwColor, RgbwwColor = rgbwwColor,
                 ColorName = colorName, HsColor = hsColor, XyColor = xyColor, ColorTemp = colorTemp, Kelvin = kelvin,
                 Brightness = brightness, BrightnessPct = brightnessPct, BrightnessStep = brightnessStep,
@@ -5539,130 +4968,108 @@ public static class LightEntityExtensionMethods
     }
 }
 
-public static class NumberEntityExtensionMethods
-{
+public static class NumberEntityExtensionMethods {
     ///<summary>Set the value of a Number entity.</summary>
-    public static void SetValue(this NumberEntity target, NumberSetValueParameters data)
-    {
+    public static void SetValue(this NumberEntity target, NumberSetValueParameters data) {
         target.CallService("set_value", data);
     }
 
     ///<summary>Set the value of a Number entity.</summary>
-    public static void SetValue(this IEnumerable<NumberEntity> target, NumberSetValueParameters data)
-    {
+    public static void SetValue(this IEnumerable<NumberEntity> target, NumberSetValueParameters data) {
         target.CallService("set_value", data);
     }
 
     ///<summary>Set the value of a Number entity.</summary>
     ///<param name="target">The NumberEntity to call this service for</param>
     ///<param name="value">The target value the entity should be set to. eg: 42</param>
-    public static void SetValue(this NumberEntity target, string? value = null)
-    {
-        target.CallService("set_value", new NumberSetValueParameters {Value = value});
+    public static void SetValue(this NumberEntity target, string? value = null) {
+        target.CallService("set_value", new NumberSetValueParameters { Value = value });
     }
 
     ///<summary>Set the value of a Number entity.</summary>
     ///<param name="target">The IEnumerable<NumberEntity> to call this service for</param>
     ///<param name="value">The target value the entity should be set to. eg: 42</param>
-    public static void SetValue(this IEnumerable<NumberEntity> target, string? value = null)
-    {
-        target.CallService("set_value", new NumberSetValueParameters {Value = value});
+    public static void SetValue(this IEnumerable<NumberEntity> target, string? value = null) {
+        target.CallService("set_value", new NumberSetValueParameters { Value = value });
     }
 }
 
-public static class SceneEntityExtensionMethods
-{
+public static class SceneEntityExtensionMethods {
     ///<summary>Activate a scene.</summary>
-    public static void TurnOn(this SceneEntity target, SceneTurnOnParameters data)
-    {
+    public static void TurnOn(this SceneEntity target, SceneTurnOnParameters data) {
         target.CallService("turn_on", data);
     }
 
     ///<summary>Activate a scene.</summary>
-    public static void TurnOn(this IEnumerable<SceneEntity> target, SceneTurnOnParameters data)
-    {
+    public static void TurnOn(this IEnumerable<SceneEntity> target, SceneTurnOnParameters data) {
         target.CallService("turn_on", data);
     }
 
     ///<summary>Activate a scene.</summary>
     ///<param name="target">The SceneEntity to call this service for</param>
     ///<param name="transition">Transition duration it takes to bring devices to the state defined in the scene.</param>
-    public static void TurnOn(this SceneEntity target, long? transition = null)
-    {
-        target.CallService("turn_on", new SceneTurnOnParameters {Transition = transition});
+    public static void TurnOn(this SceneEntity target, long? transition = null) {
+        target.CallService("turn_on", new SceneTurnOnParameters { Transition = transition });
     }
 
     ///<summary>Activate a scene.</summary>
     ///<param name="target">The IEnumerable<SceneEntity> to call this service for</param>
     ///<param name="transition">Transition duration it takes to bring devices to the state defined in the scene.</param>
-    public static void TurnOn(this IEnumerable<SceneEntity> target, long? transition = null)
-    {
-        target.CallService("turn_on", new SceneTurnOnParameters {Transition = transition});
+    public static void TurnOn(this IEnumerable<SceneEntity> target, long? transition = null) {
+        target.CallService("turn_on", new SceneTurnOnParameters { Transition = transition });
     }
 }
 
-public static class SwitchEntityExtensionMethods
-{
+public static class SwitchEntityExtensionMethods {
     ///<summary>Toggles a switch state</summary>
-    public static void Toggle(this SwitchEntity target)
-    {
+    public static void Toggle(this SwitchEntity target) {
         target.CallService("toggle");
     }
 
     ///<summary>Toggles a switch state</summary>
-    public static void Toggle(this IEnumerable<SwitchEntity> target)
-    {
+    public static void Toggle(this IEnumerable<SwitchEntity> target) {
         target.CallService("toggle");
     }
 
     ///<summary>Turn a switch off</summary>
-    public static void TurnOff(this SwitchEntity target)
-    {
+    public static void TurnOff(this SwitchEntity target) {
         target.CallService("turn_off");
     }
 
     ///<summary>Turn a switch off</summary>
-    public static void TurnOff(this IEnumerable<SwitchEntity> target)
-    {
+    public static void TurnOff(this IEnumerable<SwitchEntity> target) {
         target.CallService("turn_off");
     }
 
     ///<summary>Turn a switch on</summary>
-    public static void TurnOn(this SwitchEntity target)
-    {
+    public static void TurnOn(this SwitchEntity target) {
         target.CallService("turn_on");
     }
 
     ///<summary>Turn a switch on</summary>
-    public static void TurnOn(this IEnumerable<SwitchEntity> target)
-    {
+    public static void TurnOn(this IEnumerable<SwitchEntity> target) {
         target.CallService("turn_on");
     }
 }
 
-public static class UpdateEntityExtensionMethods
-{
+public static class UpdateEntityExtensionMethods {
     ///<summary>Removes the skipped version marker from an update.</summary>
-    public static void ClearSkipped(this UpdateEntity target)
-    {
+    public static void ClearSkipped(this UpdateEntity target) {
         target.CallService("clear_skipped");
     }
 
     ///<summary>Removes the skipped version marker from an update.</summary>
-    public static void ClearSkipped(this IEnumerable<UpdateEntity> target)
-    {
+    public static void ClearSkipped(this IEnumerable<UpdateEntity> target) {
         target.CallService("clear_skipped");
     }
 
     ///<summary>Install an update for this device or service</summary>
-    public static void Install(this UpdateEntity target, UpdateInstallParameters data)
-    {
+    public static void Install(this UpdateEntity target, UpdateInstallParameters data) {
         target.CallService("install", data);
     }
 
     ///<summary>Install an update for this device or service</summary>
-    public static void Install(this IEnumerable<UpdateEntity> target, UpdateInstallParameters data)
-    {
+    public static void Install(this IEnumerable<UpdateEntity> target, UpdateInstallParameters data) {
         target.CallService("install", data);
     }
 
@@ -5670,29 +5077,25 @@ public static class UpdateEntityExtensionMethods
     ///<param name="target">The UpdateEntity to call this service for</param>
     ///<param name="version">Version to install, if omitted, the latest version will be installed. eg: 1.0.0</param>
     ///<param name="backup">Backup before installing the update, if supported by the integration.</param>
-    public static void Install(this UpdateEntity target, string? version = null, bool? backup = null)
-    {
-        target.CallService("install", new UpdateInstallParameters {Version = version, Backup = backup});
+    public static void Install(this UpdateEntity target, string? version = null, bool? backup = null) {
+        target.CallService("install", new UpdateInstallParameters { Version = version, Backup = backup });
     }
 
     ///<summary>Install an update for this device or service</summary>
     ///<param name="target">The IEnumerable<UpdateEntity> to call this service for</param>
     ///<param name="version">Version to install, if omitted, the latest version will be installed. eg: 1.0.0</param>
     ///<param name="backup">Backup before installing the update, if supported by the integration.</param>
-    public static void Install(this IEnumerable<UpdateEntity> target, string? version = null, bool? backup = null)
-    {
-        target.CallService("install", new UpdateInstallParameters {Version = version, Backup = backup});
+    public static void Install(this IEnumerable<UpdateEntity> target, string? version = null, bool? backup = null) {
+        target.CallService("install", new UpdateInstallParameters { Version = version, Backup = backup });
     }
 
     ///<summary>Mark currently available update as skipped.</summary>
-    public static void Skip(this UpdateEntity target)
-    {
+    public static void Skip(this UpdateEntity target) {
         target.CallService("skip");
     }
 
     ///<summary>Mark currently available update as skipped.</summary>
-    public static void Skip(this IEnumerable<UpdateEntity> target)
-    {
+    public static void Skip(this IEnumerable<UpdateEntity> target) {
         target.CallService("skip");
     }
 }

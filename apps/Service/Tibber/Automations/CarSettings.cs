@@ -1,7 +1,6 @@
 ﻿namespace NetDaemonApps.apps.Service.Tibber.Automations;
 
-public class CarSettings
-{
+public class CarSettings {
     public static string Name = "Car";
     public bool SkipFulePrice { get; set; }
     public bool SkipPlingotPrice { get; set; }
