@@ -28,7 +28,6 @@ public class TibberNotification {
         //var current = tibberService.GetCurrentPriceAsync().Result;
         //var _myEntities = new Entities(ha);
         //_myEntities.Sensor.PoolTemperature2 = new NumericSensorEntity(new Entity())        //Get(ha).Wait();
-
     }
 
 
