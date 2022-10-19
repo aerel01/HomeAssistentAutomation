@@ -29,12 +29,18 @@ public class CarChargeAutomation {
   public void HandleChargeCarOnNigth(Subscription subscription) {
     _logger.LogDebug(
         $"ChargeHour run {_chargeCount}, Max price to use for charging {_kostnadpermil} or Max price to use if charging at plingot {_settings.PlingotPrice}");
+
+    //get price list
     var priceInfo = subscription.PriceInfo;
     var prislista = priceInfo.Today.ToList();
     prislista.AddRange(priceInfo.Tomorrow);
+
+    //Translate to own model to get överföringsavgift and EnergyTax
     var translatedPrisLista = prislista.Select(x => new Pris(x));
     var currentPrice = new Pris(subscription.PriceInfo.Current);
     _logger.LogInformation($"Totalt pris inklusive nätavgift {currentPrice.TotalPriceInkElnat}");
+
+    //Get active ours
     if(DateTime.Now > DateTime.Today.AddHours(value: 17)) {
       //Om klockan är efter 17 så ska alla tider mellan nu och kl 7 i morgon på morgonen användas
       var activeHours = translatedPrisLista.Where(x =>
@@ -42,6 +48,9 @@ public class CarChargeAutomation {
           x.StartTid <= DateTime.Today.AddDays(value: 1).AddHours(value: 7)).ToList();
 
       CalculateIfCharge(activeHours, currentPrice);
+      if(DateTime.Now < DateTime.Today.AddHours(value: 22)) {
+        DontTurnOffIfCharging(currentPrice);
+      }
     } else if(DateTime.Now < DateTime.Today.AddHours(value: 8)) {
       //om klockan är innan klockan 7 på morgonen så ska alla tider mellan nu och klockan 7 användas
       var activeHours = translatedPrisLista.Where(x =>
@@ -50,19 +59,11 @@ public class CarChargeAutomation {
       CalculateIfCharge(activeHours, currentPrice);
     } else {
       //låt den vara på om priset är low eller verry low
-      if(currentPrice.Level is PriceLevel.VeryCheap or PriceLevel.Cheap) {
-        _myEntities.Switch.Device88.TurnOn();
-        _logger.LogDebug(
-            $"price is low, turn on switch. currentPrice {currentPrice.TotalPriceInkElnat}{currentPrice.Currency}");
-      } else if(_myEntities.Sensor.UtomhusplugPower2.State > 200) //om bilen ladar så ska den inte slås av
-      {
-        _logger.LogDebug($"Bil laddas, rör inte. {_myEntities.Sensor.UtomhusplugPower2.State}W");
-      } else {
+      if(!DontTurnOffIfCharging(currentPrice)) {
         _myEntities.Switch.Device88.TurnOff();
         _logger.LogDebug(
             $"Bil laddas inte så brytare stängs av. {_myEntities.Sensor.UtomhusplugPower2.State}W");
       }
-
       _logger.LogInformation("ChargeCount nollställs");
       _chargeCount = 0;
     }
@@ -105,5 +106,21 @@ public class CarChargeAutomation {
       Thread.Sleep(millisecondsTimeout: 2000);
       _logger.LogDebug($"Enhet är nu i state {_myEntities.Switch.Device88.State}");
     }
+
+
+  }
+  private bool DontTurnOffIfCharging(Pris currentPrice) {
+    //låt den vara på om priset är low eller verry low
+    if(currentPrice.Level is PriceLevel.VeryCheap or PriceLevel.Cheap) {
+      _myEntities.Switch.Device88.TurnOn();
+      _logger.LogDebug(
+          $"price is low, turn on switch. currentPrice {currentPrice.TotalPriceInkElnat}{currentPrice.Currency}");
+      return true;
+    } else if(_myEntities.Sensor.UtomhusplugPower2.State > 200) //om bilen ladar så ska den inte slås av
+    {
+      _logger.LogDebug($"Bil laddas, rör inte. {_myEntities.Sensor.UtomhusplugPower2.State}W");
+      return true;
+    }
+    return false;
   }
 }
