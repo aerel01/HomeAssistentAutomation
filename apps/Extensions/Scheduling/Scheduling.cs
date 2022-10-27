@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 // Use unique namespaces for your apps if you going to share with others to avoid
 // conflicting names
-namespace Extensions.Scheduling;
+namespace NetDaemonApps.apps.Extensions.Scheduling;
 
 /// <summary>
 ///     Showcase the scheduling capabilities of NetDaemon
@@ -16,7 +16,7 @@ public class SchedulingApp {
     var now = DateTime.Now;
     var starttime = DateTime.Today.AddHours(now.Hour + 1).AddMinutes(3);
     scheduler.RunEvery(TimeSpan.FromHours(1), new DateTimeOffset(starttime), () => {
-      
+
       var subscription = Task.Run(async () => await tibberService.GetCurrentSubscription()).Result;
       if(subscription == null) {
         logger.LogError("Didnt get any subscription from tibber");

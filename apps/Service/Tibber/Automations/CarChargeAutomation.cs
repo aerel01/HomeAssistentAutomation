@@ -1,4 +1,3 @@
-using HomeAssistantGenerated;
 using NetDaemonApps.apps.Service.Tibber.Models;
 using System.Collections.Generic;
 using System.Linq;
