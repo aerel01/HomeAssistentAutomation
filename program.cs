@@ -1,9 +1,11 @@
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NetDaemon.Extensions.Logging;
 using NetDaemon.Extensions.Scheduler;
 using NetDaemon.Extensions.Tts;
 using NetDaemon.Runtime;
 using NetDaemonApps.apps.Service.Tibber;
+using System.Net.Http;
 using System.Reflection;
 
 
@@ -21,6 +23,7 @@ try {
               .AddNetDaemonStateManager()
               .AddNetDaemonScheduler()
               .UseTibber(host)
+              .AddScoped<HttpClient>()
      //        .AddLogging(loggerFactory =>
      //loggerFactory.AddConsole().AddConfiguration(host.Configuration.GetSection("Logging")))
      )

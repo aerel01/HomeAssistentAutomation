@@ -43,5 +43,6 @@
         <PackageReference Include="Serilog.AspNetCore" Version="6.0.1" />
         <PackageReference Include="System.Reactive" Version="5.0.0" />
         <PackageReference Include="Tibber.Sdk" Version="0.5.0-beta" />
+        <PackageReference Include="RestSharp" Version="1.0.0"/>
     </ItemGroup>
 </Project>
