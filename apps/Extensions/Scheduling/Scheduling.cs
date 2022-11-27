@@ -22,8 +22,8 @@ public class SchedulingApp {
         logger.LogError("Didnt get any subscription from tibber");
         return;
       }
-      tibberAutomation.CurrentPriceAutomations(subscription);
-      carChargeAutomation.HandleChargeCarOnNigth(subscription);
+      //tibberAutomation.CurrentPriceAutomations(subscription);
+      //carChargeAutomation.HandleChargeCarOnNigth(subscription);
       floorHeatAutomation.HandleFloreHeat(subscription);
       logger.LogInformation($"This is a scheduled action! run at {DateTime.Now} and current price is {subscription?.PriceInfo?.Current?.Total}{subscription?.PriceInfo?.Current?.Currency}");
     });
