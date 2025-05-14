@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  netdaemon:
+    container_name: homeassist_automation
+    build:
+      context: ./TibberSmartPlug
+      dockerfile: Dockerfile
+    environment:
+      Tibber__Token: "${TIBBER_TOKEN}"
+      HomeAssistant__Host: "${HA_HOST}"
+      HomeAssistant__Token: "${HA_TOKEN}"
+      TZ: "Europe/Stockholm"
+      DOTNET_ENVIRONMENT: "Production"
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+    logging:
+      driver: loki
+      options:
+        loki-url: "http://127.0.0.1:3100/loki/api/v1/push"
