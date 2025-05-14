@@ -4,7 +4,7 @@ services:
   netdaemon:
     container_name: homeassist_automation
     build:
-      context: ./TibberSmartPlug
+      context: .
       dockerfile: Dockerfile
     environment:
       Tibber__Token: "${TIBBER_TOKEN}"
