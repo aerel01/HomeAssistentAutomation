@@ -5,6 +5,7 @@ using System.Reactive.Concurrency;
 using Tibber.Sdk;
 using TibberSmartPlug.apps.Services;
 using TibberSmartPlug.apps.Models;
+using Microsoft.Extensions.Options;
 
 namespace TibberSmartPlug.apps.Extensions.Scheduling
 {
@@ -26,10 +27,10 @@ namespace TibberSmartPlug.apps.Extensions.Scheduling
             INetDaemonScheduler runScheduler,
             ILogger<PoolScheduling> logger,
             TibberService tibberService,
-            PoolSchedulingSettings poolSchedulingSettings)
+            IOptions<PoolSchedulingSettings> config)
         {
             this.tibberService = tibberService;
-            this.poolSchedulingSettings = poolSchedulingSettings;
+            this.poolSchedulingSettings = config.Value;
             this.runScheduler = runScheduler;
             _ha = ha;
             _logger = logger;

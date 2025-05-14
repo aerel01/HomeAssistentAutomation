@@ -9,9 +9,9 @@ namespace TibberSmartPlug.apps.Configurations
     {
         public static IServiceCollection UsePool(this IServiceCollection service, HostBuilderContext context)
         {
+            service.Configure<PoolSchedulingSettings>(
+                context.Configuration.GetSection(PoolSchedulingSettings.Name));
 
-            var poolSchedulingSettings = new PoolSchedulingSettings();
-            context.Configuration.GetSection(PoolSchedulingSettings.Name).Bind(poolSchedulingSettings);
             return service;
         }
 
