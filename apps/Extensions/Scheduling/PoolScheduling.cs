@@ -1,11 +1,10 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using NetDaemon.Extensions.Scheduler;
 using System.Reactive.Concurrency;
 using Tibber.Sdk;
 using TibberSmartPlug.apps.Services;
-using NetDaemon.HassModel;
+using TibberSmartPlug.apps.Models;
 
 namespace TibberSmartPlug.apps.Extensions.Scheduling
 {
@@ -15,21 +14,22 @@ namespace TibberSmartPlug.apps.Extensions.Scheduling
         private readonly IHaContext _ha;
         private readonly ILogger<PoolScheduling> _logger;
         private readonly TibberService tibberService;
+        private readonly PoolSchedulingSettings poolSchedulingSettings;
         private readonly INetDaemonScheduler runScheduler;
         private readonly HashSet<DateTimeOffset> _scheduledTimes = [];
 
         private const string SmartPlugEntityId = "switch.pool_power_switch";
-        private const int HoursToRun = 3;
-        private const decimal RunningPrice = 0.5m;
 
         public PoolScheduling(
             IHaContext ha,
             IScheduler cronScheduler,
             INetDaemonScheduler runScheduler,
             ILogger<PoolScheduling> logger,
-            TibberService tibberService)
+            TibberService tibberService,
+            PoolSchedulingSettings poolSchedulingSettings)
         {
             this.tibberService = tibberService;
+            this.poolSchedulingSettings = poolSchedulingSettings;
             this.runScheduler = runScheduler;
             _ha = ha;
             _logger = logger;
@@ -56,13 +56,13 @@ namespace TibberSmartPlug.apps.Extensions.Scheduling
 
             // Välj alla under maxpris
             var turnOn = prislista
-                .Where(p => p.Total.Value <= RunningPrice)
+                .Where(p => p.Total.Value <= poolSchedulingSettings.RunningPrice)
                 .ToList();
 
             // Komplettera med billigaste om för få
-            if (turnOn.Count < HoursToRun)
+            if (turnOn.Count < poolSchedulingSettings.HoursToRun)
             {
-                var extra = prislista.Except(turnOn).Take(HoursToRun - turnOn.Count);
+                var extra = prislista.Except(turnOn).Take(poolSchedulingSettings.HoursToRun - turnOn.Count);
                 turnOn.AddRange(extra);
             }
 

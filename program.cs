@@ -23,6 +23,7 @@ try
                 .AddNetDaemonScheduler()
                 .AddHomeAssistantGenerated()
                 .UseTibber(host)
+                .UsePool(host)
         )
         .Build()
         .RunAsync()
