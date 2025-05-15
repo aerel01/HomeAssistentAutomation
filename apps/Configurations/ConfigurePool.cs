@@ -1,6 +1,6 @@
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TibberSmartPlug.apps.Extensions.Scheduling;
 using TibberSmartPlug.apps.Models;
 
 namespace TibberSmartPlug.apps.Configurations
@@ -11,7 +11,7 @@ namespace TibberSmartPlug.apps.Configurations
         {
             service.Configure<PoolSchedulingSettings>(
                 context.Configuration.GetSection(PoolSchedulingSettings.Name));
-
+            service.AddSingleton<SmartPlugScheduler>();
             return service;
         }
 

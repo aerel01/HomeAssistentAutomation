@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Headers;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -21,7 +17,7 @@ namespace TibberSmartPlug.apps.Configurations
 
             var userAgent = new ProductInfoHeaderValue("My-home-automation-system", "1.2");
             service.AddScoped(_ => new TibberApiClient(tibberSettings.Token, userAgent));
-            service.AddScoped<TibberService>();
+            service.AddScoped<ITibberService, TibberService>();
             return service;
         }
     }
