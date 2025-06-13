@@ -111,13 +111,6 @@ namespace TibberSmartPlug.apps.Extensions.Scheduling
         {
             var service = turnOn ? "turn_on" : "turn_off";
             _ha.CallService("switch", service, data: new { entity_id = SmartPlugEntityId });
-
-
-            _ha.CallService("notify", "persistent_notification", data: new
-            {
-                message = $"{(turnOn ? "Slår PÅ" : "Slår AV")} pluggen kl {time}, pris: {price}",
-                title = "Schedule!"
-            });
         }
     }
 }
