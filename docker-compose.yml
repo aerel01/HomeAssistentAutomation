@@ -2,20 +2,27 @@ version: "3.8"
 
 services:
   netdaemon:
-    container_name: homeassist_automation
+    container_name: homeassistant-netdaemon
     build:
-      context: .
+      context: ./TibberSmartPlug
       dockerfile: Dockerfile
     environment:
       Tibber__Token: "${TIBBER_TOKEN}"
-      HomeAssistant__Host: "${HA_HOST}"
-      HomeAssistant__Token: "${HA_TOKEN}"
-      TZ: "Europe/Stockholm"
-      DOTNET_ENVIRONMENT: "Production"
+      HomeAssistant__Host: "${HOMEASSISTANT_HOST}"
+      HomeAssistant__Token: "${HOMEASSISTANT_TOKEN}"
+      TZ: "${TZ}"
+      DOTNET_ENVIRONMENT: "${DOTNET_ENVIRONMENT}"
     tty: true
     stdin_open: true
     restart: unless-stopped
+    labels:
+      - "com.docker.compose.service=netdaemon"
+      - "logging.service=netdaemon"
+      - "monitoring.stack=homeassistant"
+      - "logging.promtail=true"
+      - "logging.job=homeassistant-netdaemon"
     logging:
-      driver: loki
+      driver: "json-file"
       options:
-        loki-url: "http://127.0.0.1:3100/loki/api/v1/push"
+        max-size: "10m"
+        max-file: "3"
