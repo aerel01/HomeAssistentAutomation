@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Globalization;
+using System.Threading.Tasks;
 using NetDaemon.Extensions.Scheduler;
 using System.Reactive.Concurrency;
 using Tibber.Sdk;
@@ -15,9 +16,9 @@ namespace TibberSmartPlug.apps.Extensions.Scheduling
     {
         private readonly IHaContext _ha;
         private readonly ILogger<PoolScheduling> _logger;
-        private readonly TibberService tibberService;
-        private readonly PoolSchedulingSettings poolSchedulingSettings;
-        private readonly INetDaemonScheduler runScheduler;
+        private readonly TibberService _tibberService;
+        private readonly PoolSchedulingSettings _poolSchedulingSettings;
+        private readonly INetDaemonScheduler _runScheduler;
         private readonly HashSet<DateTimeOffset> _scheduledTimes = [];
 
         private const string SmartPlugEntityId = "switch.pool_power_switch";
@@ -30,86 +31,67 @@ namespace TibberSmartPlug.apps.Extensions.Scheduling
             TibberService tibberService,
             IOptions<PoolSchedulingSettings> config)
         {
-            this.tibberService = tibberService;
-            this.poolSchedulingSettings = config.Value;
-            this.runScheduler = runScheduler;
+            _tibberService = tibberService;
+            _poolSchedulingSettings = config.Value;
+            _runScheduler = runScheduler;
             _ha = ha;
             _logger = logger;
 
             cronScheduler.ScheduleCron("10 0 * * *", () =>
             {
                 _logger.LogInformation("Kör daglig schemaläggning 00:10");
-                ScheduleSmartPlug();
+                _ = ScheduleSmartPlugAsync();
             });
 
             // Kör även direkt vid uppstart
-            ScheduleSmartPlug();
+            _ = ScheduleSmartPlugAsync();
         }
 
-        private void ScheduleSmartPlug()
+        private async Task ScheduleSmartPlugAsync()
         {
-            var subscription = tibberService.GetCurrentSubscription().GetAwaiter().GetResult();
-            var priceInfo = subscription.PriceInfo;
-
-            var prislista = priceInfo.Today
-                .Where(p => p.Total.HasValue)
-                .OrderBy(p => p.Total.Value)
-                .ToList();
-
-            // Välj alla under maxpris
-            var turnOn = prislista
-                .Where(p => p.Total.Value <= poolSchedulingSettings.RunningPrice)
-                .ToList();
-
-            // Komplettera med billigaste om för få
-            if (turnOn.Count < poolSchedulingSettings.HoursToRun)
+            try
             {
-                var extra = prislista.Except(turnOn).Take(poolSchedulingSettings.HoursToRun - turnOn.Count);
-                turnOn.AddRange(extra);
-            }
+                var subscription = await _tibberService.GetCurrentSubscription();
+                var priceInfo = subscription.PriceInfo;
 
-            var turnOff = prislista.Except(turnOn).ToList();
+                var prislista = priceInfo.Today
+                    .Where(p => p.Total.HasValue)
+                    .OrderBy(p => p.Total.Value)
+                    .ToList();
 
-            _logger.LogInformation(
-                "Regelverk poolvärme: Maxpris={RunningPrice:F3}, Min drifttid={HoursToRun}h",
-                poolSchedulingSettings.RunningPrice,
-                poolSchedulingSettings.HoursToRun);
+                // Välj alla under maxpris
+                var turnOn = prislista
+                    .Where(p => p.Total.Value <= _poolSchedulingSettings.RunningPrice)
+                    .ToList();
 
-            foreach (var price in turnOn
-                .OrderBy(p => DateTimeOffset.TryParse(p.StartsAt, out var startsAt) ? startsAt : DateTimeOffset.MaxValue)
-                .ToList())
-            {
-                if (!DateTimeOffset.TryParse(price.StartsAt, out var startsAt))
+                // Komplettera med billigaste om för få
+                if (turnOn.Count < _poolSchedulingSettings.HoursToRun)
                 {
-                    _logger.LogInformation("Schemalagd påslagen tid {Time} pris {Price}",
-                        price.StartsAt, FormatPriceForLog(price.Total));
-                    continue;
+                    var extra = prislista.Except(turnOn).Take(_poolSchedulingSettings.HoursToRun - turnOn.Count);
+                    turnOn.AddRange(extra);
                 }
 
-                _logger.LogInformation("Schemalagd påslagen tid {Time} pris {Price}",
-                    startsAt.ToString("yyyy-MM-dd HH:mm"), FormatPriceForLog(price.Total));
-            }
+                var turnOff = prislista.Except(turnOn).ToList();
 
-            foreach (var price in turnOff
-                .OrderBy(p => DateTimeOffset.TryParse(p.StartsAt, out var startsAt) ? startsAt : DateTimeOffset.MaxValue)
-                .ToList())
+                _logger.LogInformation(
+                    "Regelverk poolvärme: Maxpris={RunningPrice:F3}, Min drifttid={HoursToRun}h",
+                    _poolSchedulingSettings.RunningPrice,
+                    _poolSchedulingSettings.HoursToRun);
+
+                CleanupScheduledTimes();
+                LogScheduledPrices(turnOn, "påslagen");
+                LogScheduledPrices(turnOff, "avstängd");
+
+                foreach (var price in turnOn)
+                    ScheduleAction(price, true);
+
+                foreach (var price in turnOff)
+                    ScheduleAction(price, false);
+            }
+            catch (Exception ex)
             {
-                if (!DateTimeOffset.TryParse(price.StartsAt, out var startsAt))
-                {
-                    _logger.LogInformation("Schemalagd avstängd tid {Time} pris {Price}",
-                        price.StartsAt, FormatPriceForLog(price.Total));
-                    continue;
-                }
-
-                _logger.LogInformation("Schemalagd avstängd tid {Time} pris {Price}",
-                    startsAt.ToString("yyyy-MM-dd HH:mm"), FormatPriceForLog(price.Total));
+                _logger.LogError(ex, "Kunde inte schemalägga pool-pluggen utifrån Tibber-priser");
             }
-
-            foreach (var price in turnOn)
-                ScheduleAction(price, true);
-
-            foreach (var price in turnOff)
-                ScheduleAction(price, false);
         }
 
         private void ScheduleAction(Price price, bool turnOn)
@@ -133,20 +115,41 @@ namespace TibberSmartPlug.apps.Extensions.Scheduling
             }
 
             _scheduledTimes.Add(runAt);
-
-            runScheduler.RunAt(runAt, () =>
+            _runScheduler.RunAt(runAt, () =>
             {
                 _logger.LogInformation("Slår {Action} pluggen kl {Time}, pris: {Price}",
                     turnOn ? "PÅ" : "AV", runAt, price.Total);
 
-                SetPlugState(turnOn, price.StartsAt, price.Total);
+                SetPlugState(turnOn);
             });
         }
 
-        private void SetPlugState(bool turnOn, string time, decimal? price)
+        private void SetPlugState(bool turnOn)
         {
             var service = turnOn ? "turn_on" : "turn_off";
             _ha.CallService("switch", service, data: new { entity_id = SmartPlugEntityId });
+        }
+
+        private void CleanupScheduledTimes()
+        {
+            _scheduledTimes.RemoveWhere(t => t <= DateTimeOffset.Now);
+        }
+
+        private void LogScheduledPrices(IEnumerable<Price> prices, string actionLabel)
+        {
+            foreach (var price in prices
+                .OrderBy(p => DateTimeOffset.TryParse(p.StartsAt, out var startsAt) ? startsAt : DateTimeOffset.MaxValue))
+            {
+                if (!DateTimeOffset.TryParse(price.StartsAt, out var startsAt))
+                {
+                    _logger.LogInformation("Schemalagd {Action} tid {Time} pris {Price}",
+                        actionLabel, price.StartsAt, FormatPriceForLog(price.Total));
+                    continue;
+                }
+
+                _logger.LogInformation("Schemalagd {Action} tid {Time} pris {Price}",
+                    actionLabel, startsAt.ToString("yyyy-MM-dd HH:mm"), FormatPriceForLog(price.Total));
+            }
         }
 
         private static string FormatPriceForLog(decimal? price)

@@ -2,7 +2,7 @@ namespace TibberSmartPlug.apps.Models
 {
     public class PoolSchedulingSettings
     {
-        public static string Name = "PoolScheduling";
+        public const string SectionName = "PoolScheduling";
         public decimal RunningPrice { get; set; }
         public int HoursToRun { get; set; }
 
