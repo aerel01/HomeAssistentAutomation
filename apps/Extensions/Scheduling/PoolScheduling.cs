@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Globalization;
 using NetDaemon.Extensions.Scheduler;
 using System.Reactive.Concurrency;
 using Tibber.Sdk;
@@ -67,7 +68,42 @@ namespace TibberSmartPlug.apps.Extensions.Scheduling
                 turnOn.AddRange(extra);
             }
 
-            var turnOff = prislista.Except(turnOn);
+            var turnOff = prislista.Except(turnOn).ToList();
+
+            _logger.LogInformation(
+                "Regelverk poolvärme: Maxpris={RunningPrice:F3}, Min drifttid={HoursToRun}h",
+                poolSchedulingSettings.RunningPrice,
+                poolSchedulingSettings.HoursToRun);
+
+            foreach (var price in turnOn
+                .OrderBy(p => DateTimeOffset.TryParse(p.StartsAt, out var startsAt) ? startsAt : DateTimeOffset.MaxValue)
+                .ToList())
+            {
+                if (!DateTimeOffset.TryParse(price.StartsAt, out var startsAt))
+                {
+                    _logger.LogInformation("Schemalagd påslagen tid {Time} pris {Price}",
+                        price.StartsAt, FormatPriceForLog(price.Total));
+                    continue;
+                }
+
+                _logger.LogInformation("Schemalagd påslagen tid {Time} pris {Price}",
+                    startsAt.ToString("yyyy-MM-dd HH:mm"), FormatPriceForLog(price.Total));
+            }
+
+            foreach (var price in turnOff
+                .OrderBy(p => DateTimeOffset.TryParse(p.StartsAt, out var startsAt) ? startsAt : DateTimeOffset.MaxValue)
+                .ToList())
+            {
+                if (!DateTimeOffset.TryParse(price.StartsAt, out var startsAt))
+                {
+                    _logger.LogInformation("Schemalagd avstängd tid {Time} pris {Price}",
+                        price.StartsAt, FormatPriceForLog(price.Total));
+                    continue;
+                }
+
+                _logger.LogInformation("Schemalagd avstängd tid {Time} pris {Price}",
+                    startsAt.ToString("yyyy-MM-dd HH:mm"), FormatPriceForLog(price.Total));
+            }
 
             foreach (var price in turnOn)
                 ScheduleAction(price, true);
@@ -111,6 +147,17 @@ namespace TibberSmartPlug.apps.Extensions.Scheduling
         {
             var service = turnOn ? "turn_on" : "turn_off";
             _ha.CallService("switch", service, data: new { entity_id = SmartPlugEntityId });
+        }
+
+        private static string FormatPriceForLog(decimal? price)
+        {
+            if (!price.HasValue)
+                return "okänt";
+
+            if (price.Value < 1m)
+                return $"{(price.Value * 100m).ToString("N1", CultureInfo.GetCultureInfo("sv-SE"))} öre";
+
+            return $"{price.Value.ToString("N3", CultureInfo.GetCultureInfo("sv-SE"))} kr";
         }
     }
 }
