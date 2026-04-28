@@ -6,10 +6,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    env_file:
+      - .env
     environment:
-      Tibber__Token: "${TIBBER_TOKEN}"
-      HomeAssistant__Host: "${HOMEASSISTANT_HOST}"
-      HomeAssistant__Token: "${HOMEASSISTANT_TOKEN}"
       TZ: "${TZ}"
       DOTNET_ENVIRONMENT: "${DOTNET_ENVIRONMENT}"
     tty: true
